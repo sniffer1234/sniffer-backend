@@ -7,6 +7,7 @@ end
 
 gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
+gem 'figaro'
 
 # Default web server
 gem 'puma', '~> 3.0'
@@ -38,6 +39,9 @@ gem 'bootstrap-kaminari-views'
 
 # Image / videos
 gem 'paperclip', '~> 5.0.0'
+
+# Static
+gem 'aws-sdk', '>= 2.0.0'
 
 # CEP
 gem 'via_cep'
