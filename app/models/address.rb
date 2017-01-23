@@ -1,12 +1,12 @@
 class Address < ApplicationRecord
 
   # Third part
-  geocoded_by :geocode_address
+  #geocoded_by :geocode_address
 
   # Callbacks
   after_validation :remove_zipcode_bar
   after_validation :set_completed_address
-  after_validation :geocode
+#  after_validation :geocode
 
   # Relationship
   belongs_to :city
