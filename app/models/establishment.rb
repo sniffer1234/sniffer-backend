@@ -10,7 +10,8 @@ class Establishment < ApplicationRecord
 
   accepts_nested_attributes_for :imgs, :address, allow_destroy: true
 
-  validates_presence_of :name, :description, :phone
+  validates_presence_of :name, :small_description, :description, :phone
+  validates_length_of :small_description, :in => 30..150
   attr_accessor :completed_address
 
   # Search local by city name

@@ -45,17 +45,18 @@ ActiveRecord::Schema.define(version: 20170123120216) do
   create_table "establishments", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "small_description"
     t.string   "slug"
     t.string   "facebook"
     t.string   "instagram"
     t.string   "phone"
     t.string   "site"
     t.string   "email"
-    t.boolean  "vip",         default: false
-    t.boolean  "visible",     default: true
-    t.boolean  "active",      default: true
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "vip",               default: false
+    t.boolean  "visible",           default: true
+    t.boolean  "active",            default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["name"], name: "index_establishments_on_name", using: :btree
   end
 

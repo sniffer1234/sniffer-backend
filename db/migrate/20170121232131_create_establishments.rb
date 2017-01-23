@@ -3,6 +3,7 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
     create_table :establishments do |t|
       t.string :name, index: true
       t.text :description
+      t.string :small_description
       t.string :slug
       t.string :facebook
       t.string :instagram

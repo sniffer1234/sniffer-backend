@@ -20,14 +20,20 @@ states.each do |s|
 end
 
 #Users
-u = User.new(email: 'rafaelmotta021@gmail.com', password: 'galera07', name: 'Rafael Motta').save
-u = User.new(email: 'marcosdemetrio@gmail.com', password: 'galera07', name: 'Marcos Demetrio').save
+# u = User.new(email: 'rafaelmotta021@gmail.com', password: 'galera07', name: 'Rafael Motta')
+# u.skip_confirmation!
+# u.save
+#
+# u = User.new(email: 'marcosdemetrio@gmail.com', password: 'galera07', name: 'Marcos Demetrio')
+# u.skip_confirmation!
+# u.save
 
 
 # Establishment
 Establishment.create(
   name: 'Pacha Floripa',
   description: 'A praia de Jurerê Internacional abriga a Pacha Floripa, clube de 110 mil metros quadrados que tem capacidade para atender até 12 mil pessoas. Sob a administração dos grupos El Divino, Sirena e Warung, a Pacha Floripa conta com pista interativa - onde o gênero eletrônico house predomina e há 25 camarotes com entrada e estacionamento exclusivos. A casa também disponibiliza um palco livre para shows de artistas internacionais. Nove bares, um espaço gourmet, que serve pizzas e sushis, e estacionamento com capacidade para três mil veículos completam a lista de serviços oferecidos.',
+  small_description: 'A praia de Jurerê Internacional abriga a Pacha Floripa, clube de 110 mil metros quadrados que tem capacidade para atender até 12 mil pessoas.',
   phone: '(48) 3282-2054',
   email: 'contato@pachafloripa.com.br',
   facebook: 'https://www.facebook.com/pachafloripa/?fref=ts',
@@ -46,6 +52,7 @@ Address.create(
 
 Establishment.create(
   name: 'Chop do Gus',
+  small_description: 'Ambiente aconchegante, com estilo de botequim e decoração exclusiva.',
   description: 'Ambiente aconchegante, com estilo de botequim e decoração exclusiva. Música ao vivo todos os dias, porções exclusivas com pratos flambados, delicioso chopp Brahma e uma harmoniosa carta de vinhos.',
   phone: '(48) 3028-5807',
   email: 'contato@chopdogus.com.br',
@@ -64,7 +71,8 @@ Address.create(
 
 Establishment.create(
   name: 'P12',
-  description: 'Junto à praia, amplo espaço reconhecido pelas pool parties e música eletrônica também recebe artistas famosos.',
+  description: 'Localizado na praia de Jurerê Internacional em Florianópolis/SC, o P12 Parador Internacional segue a linha dos maiores day clubs mundiais, adequado às características locais.  O P12 conta com piscina, praia artificial com camas confortáveis, bangalôs, espaço lounge, deck de frente para a praia, restaurante, bares e entre outras opções.',
+  small_description: 'Junto à praia, amplo espaço reconhecido pelas pool parties e música eletrônica também recebe artistas famosos.',
   phone: '(48) 3284-8156',
   email: 'contato@p12.com.br',
   facebook: 'https://www.facebook.com/p12jurere',
