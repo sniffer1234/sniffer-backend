@@ -10,7 +10,7 @@ class Address < ApplicationRecord
 
   # Relationship
   belongs_to :city
-  belongs_to :establishment
+  belongs_to :addressable, polymorphic: true
 
   # Validation
   validates_presence_of :city, :number, :street, :neighborhood, :zipcode

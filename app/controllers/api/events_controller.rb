@@ -1,4 +1,4 @@
-class Api::EventsController < ApplicationController
+class Api::EventsController < Api::BaseController
   def index
     e = {
       data: [

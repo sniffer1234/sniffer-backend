@@ -1,4 +1,4 @@
-class Api::SniffsController < ApplicationController
+class Api::SniffsController < Api::BaseController
 
   # GET /api/sniffs
   def index

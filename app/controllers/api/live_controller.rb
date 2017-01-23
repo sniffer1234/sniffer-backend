@@ -1,4 +1,4 @@
-class Api::LiveController < ApplicationController
+class Api::LiveController < Api::BaseController
   def index
     s = {
       data: [

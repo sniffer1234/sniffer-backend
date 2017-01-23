@@ -10,7 +10,7 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
       t.references :city, null: false, index: true
-      t.references :local, null: false, index: true
+      t.references :addressable, polymorphic: true, index: true
 
       t.timestamps
     end

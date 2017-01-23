@@ -10,26 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122005321) do
+ActiveRecord::Schema.define(version: 20170123120216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "street",       null: false
-    t.string   "number",       null: false
+    t.string   "street",           null: false
+    t.string   "number",           null: false
     t.string   "complement"
     t.string   "completed"
     t.string   "zipcode"
     t.string   "neighborhood"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "city_id",      null: false
-    t.integer  "local_id",     null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "city_id",          null: false
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
     t.index ["city_id"], name: "index_addresses_on_city_id", using: :btree
-    t.index ["local_id"], name: "index_addresses_on_local_id", using: :btree
   end
 
   create_table "cities", force: :cascade do |t|
@@ -44,10 +45,32 @@ ActiveRecord::Schema.define(version: 20170122005321) do
   create_table "establishments", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "slug"
+    t.string   "facebook"
+    t.string   "instagram"
     t.string   "phone"
+    t.string   "site"
     t.string   "email"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "vip",         default: false
+    t.boolean  "visible",     default: true
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["name"], name: "index_establishments_on_name", using: :btree
+  end
+
+  create_table "imgs", force: :cascade do |t|
+    t.string   "label"
+    t.string   "src_file_name",    null: false
+    t.string   "src_content_type", null: false
+    t.integer  "src_file_size",    null: false
+    t.datetime "src_updated_at",   null: false
+    t.integer  "position"
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_imgs_on_imageable_type_and_imageable_id", using: :btree
   end
 
   create_table "states", force: :cascade do |t|
