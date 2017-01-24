@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   # Api routes
   namespace :api, defaults: { format: 'json' } do
+    mount_devise_token_auth_for 'User', at: 'auth'
+
     resources :events, only: [:index, :show]
     resources :establishments, only: [:index]
     resources :live, only: [:index]
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
   end
-
-  #mount_devise_token_auth_for 'User', at: 'api/auth'
 
   # Admin routes
   scope '/admin' do
