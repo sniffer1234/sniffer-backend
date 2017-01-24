@@ -18,7 +18,7 @@ gem 'rack-cors', :require => 'rack/cors'
 # Front
 gem 'sprockets-rails'
 gem 'sprockets', '>= 3.0.0'
-gem 'sprockets-es6'
+#gem 'sprockets-es6'
 
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5.0.0'
