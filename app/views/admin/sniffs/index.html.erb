@@ -1,0 +1,41 @@
+<div class="sniffs-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>Sniffs</h2>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 10%;">Ativo</th>
+          <th style="width: 20%;">Usuário</th>
+          <th style="width: 40%;">Conteúdo</th>
+          <th style="width: 20%;">Criado em</th>
+          <th style="width: 15%;">
+            Ações
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @sniffs.size == 0 %>
+          <tr>
+            <td colspan="5">
+              <div class="no-results-container">
+                <div>
+                  <i class="fa fa-remove"></i>
+                  Nenhum sniff encontrado
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-container">
+      <%= paginate @sniffs, :theme => 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

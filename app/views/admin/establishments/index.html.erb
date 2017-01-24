@@ -1,0 +1,62 @@
+<div class="establishments-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>Estabelecimentos</h2>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="width: 5%;">Vip</th>
+          <th style="width: 5%;">Ativo</th>
+          <th style="width: 5%;">Visível</th>
+
+          <th style="width: 40%;">Nome</th>
+          <th style="width: 30%;">Categoria</th>
+          <th style="width: 15%;" colspan="2">
+            Ações
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @establishments.each do |establishment| %>
+          <tr>
+            <td><%= icon_check(establishment.vip) %></td>
+            <td><%= icon_check(establishment.active) %></td>
+            <td><%= icon_check(establishment.visible) %></td>
+            <td>
+              <%= establishment.name %>
+            </td>
+            <td>
+              <% establishment.tags.each do |tag| %>
+                <span><%= t tag.alias %></span>
+              <% end %>
+              <% if establishment.tags.size == 0 %>
+                -
+              <% end %>
+            </td>
+            <td colspan="2">
+              <%= link_to [:edit, :admin, establishment] do %>
+                <button class="btn btn-sm btn-info" disabled>
+                  <i class="fa fa-pencil"></i>
+                </button>
+              <% end %>
+              <%= link_to [:admin, establishment], method: :delete, data: { confirm: 'Tem certeza que deseja continuar?' } do %>
+                <button class="btn btn-sm btn-warning" disabled>
+                  <i class="fa fa-remove"></i>
+                </button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-container">
+      <%= paginate @establishments, :theme => 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+
+</div>

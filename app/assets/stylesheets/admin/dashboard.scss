@@ -1,0 +1,83 @@
+.dashboard-page {
+
+  .card-block {
+    padding: 0;
+  }
+
+  table {
+    tr button {
+      margin-top: -5px;
+    }
+  }
+
+  .dashboard-item {
+    color: #FFF;
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: block;
+    padding: 30px 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
+
+    &.red {
+      background-color: #e5412d;
+    }
+
+    &.blue {
+      background-color: #2980b9;
+    }
+
+    &.green {
+      background-color: #2ecc71;
+    }
+
+    &.orange {
+      background-color: #d35400;
+    }
+
+    .visual {
+      z-index: 10;
+      float: right;
+      width: 54px;
+      height: 100%;
+
+      .fa {
+        position: absolute;
+        left: auto;
+        right: 15px;
+        bottom: 15px;
+        display: block;
+        height: 72px;
+        font-size: 72px;
+        text-shadow: none;
+        opacity: 0.5;
+      }
+    }
+
+    .details {
+      position: relative;
+      z-index: 11;
+      float: left;
+      margin-top: -10px;
+      text-align: left;
+
+      .content {
+        display: block;
+        margin-bottom: 1em;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .value {
+        display: block;
+        font-size: 32px;
+        font-weight: 600;
+      }
+    }
+  }
+}

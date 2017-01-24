@@ -1,4 +1,5 @@
 class Api::BaseController < ApplicationController
+  include DeviseTokenAuth::Concerns::SetUserByToken
   respond_to :json
 
   def pagination_dict(object, extra_meta = {})

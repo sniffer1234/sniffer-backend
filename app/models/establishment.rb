@@ -7,12 +7,17 @@ class Establishment < ApplicationRecord
 
   has_many :imgs, -> { order(:position) }, as: :imageable, dependent: :destroy
   has_one :address, as: :imageable, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   accepts_nested_attributes_for :imgs, :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone
   validates_length_of :small_description, :in => 30..150
   attr_accessor :completed_address
+
+  scope :pending, -> {
+    where(aprooved: false, active: true).limit(5)
+  }
 
   # Search local by city name
   # @param params - { Hash } - Hash params

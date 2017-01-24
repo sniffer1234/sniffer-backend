@@ -11,8 +11,10 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.string :site
       t.string :email
       t.boolean :vip, default: false
+      t.boolean :aprooved, default: true
       t.boolean :visible, default: true
       t.boolean :active, default: true
+      t.references :user, index: true
 
       t.timestamps
     end

@@ -1,0 +1,20 @@
+{
+  "name": "sniffer-backend",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "jquery-ujs": "^1.2.2",
+    "perfect-scrollbar": "^0.6.16",
+    "bootstrap": "boostrap#^4.0.0-alpha.6"
+  }
+}

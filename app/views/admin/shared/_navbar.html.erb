@@ -1,0 +1,42 @@
+<div class="container">
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="<%= admin_dashboard_index_path %>">
+      Sniffer App
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item <%= active_class(admin_dashboard_index_path) %>">
+          <%= link_to admin_dashboard_index_path, class: 'nav-link' do %>
+            Home
+          <% end %>
+        </li>
+        <li class="nav-item <%= active_class(admin_establishments_path) %>">
+          <%= link_to admin_establishments_path, class: 'nav-link' do %>
+            Estabelecimentos
+          <% end %>
+        </li>
+        <li class="nav-item <%= active_class(admin_users_path) %>">
+          <%= link_to admin_users_path, class: 'nav-link' do %>
+            Usuários
+          <% end %>
+        </li>
+        <li class="nav-item <%= active_class(admin_sniffs_path) %>">
+          <%= link_to admin_sniffs_path, class: 'nav-link' do %>
+            Sniffs
+          <% end %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <%= link_to "Sair",
+              destroy_user_session_path,
+              method: "delete",
+              class: "btn btn-primary navbar-btn navbar-right" %>
+        </li>
+      </ul>
+    </div>
+
+</div>

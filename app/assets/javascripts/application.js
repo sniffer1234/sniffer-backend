@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //= require turbolinks
+//= require perfect-scrollbar
 //= require_tree .

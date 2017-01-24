@@ -1,0 +1,47 @@
+<div class="users-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>Usuários</h2>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo de conta</th>
+          <th>Membro desde</th>
+          <th>Último login</th>
+          <th colspan="2">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= t(user.role) %></td>
+            <td><%= l(user.created_at, format: :registred_at) %></td>
+            <td><%= l(user.last_sign_in_at, format: :registred_at) rescue nil %></td>
+            <td colspan="2">
+              <%= link_to [:edit, :admin, user] do %>
+                <button class="btn btn-sm btn-info" disabled>
+                  <i class="fa fa-pencil"></i>
+                </button>
+              <% end %>
+              <%= link_to [:admin, user], method: :delete, data: { confirm: 'Tem certeza que deseja continuar?' } do %>
+                <button class="btn btn-sm btn-warning" disabled>
+                  <i class="fa fa-remove"></i>
+                </button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="pagination-container">
+      <%= paginate @users, :theme => 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>

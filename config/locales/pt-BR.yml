@@ -1,4 +1,30 @@
 pt-BR:
+
+  restaurant: Restaurante
+  event: Evento
+  beverage_distributor: Distribuidor de bebidas
+  bar: Bar
+  nightclub: Casa noturna
+  pizzaria: Pizzaria
+  steak_house: Churrascaria
+  pastry_chop: Pastelaria
+  japanese: Japonesa
+  lunch: Almoço
+  dinner: Janta
+  arabic: Árabe
+
+  default: Normal
+  admin: Administrator
+  owner: Dono de estabelecimento
+
+  views:
+    pagination:
+      first: Primeira
+      last: Última
+      next: Próxima
+      previous: Anterior
+      truncate: ...
+
   activerecord:
     models:
       address: Endereço
@@ -120,6 +146,9 @@ pt-BR:
     - :day
     - :month
     - :year
+
+
+
   datetime:
     distance_in_words:
       about_x_hours:
@@ -276,3 +305,9 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+
+    formats:
+      default: "%d-%m-%Y"
+      registred_at: "%d-%m-%Y %H:%M"
+      short: "%b %d"
+      long: "%B %d, %Y"

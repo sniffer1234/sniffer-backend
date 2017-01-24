@@ -1,0 +1,2 @@
+module Admin::SniffsHelper
+end

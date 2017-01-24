@@ -16,10 +16,17 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors', :require => 'rack/cors'
 
 # Front
+gem 'sprockets-rails'
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+
 gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5.0.0'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uglifier', '>= 1.3.0'
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
+gem 'font-awesome-rails'
+gem 'simple_form'
+gem 'devise-bootstrap-views'
 
 # Secure
 gem 'bcrypt', '~> 3.1.7'
@@ -35,7 +42,7 @@ gem 'faker'
 
 # Pagination
 gem 'kaminari'
-gem 'bootstrap-kaminari-views'
+gem 'bootstrap-kaminari-views', git: 'https://github.com/rafaelmotta/bootstrap-kaminari-views.git'
 
 # Image / videos
 gem 'paperclip', '~> 5.0.0'

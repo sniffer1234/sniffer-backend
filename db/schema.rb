@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123120216) do
+ActiveRecord::Schema.define(version: 20170124122926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,11 +53,30 @@ ActiveRecord::Schema.define(version: 20170123120216) do
     t.string   "site"
     t.string   "email"
     t.boolean  "vip",               default: false
+    t.boolean  "aprooved",          default: true
     t.boolean  "visible",           default: true
     t.boolean  "active",            default: true
+    t.integer  "user_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.index ["name"], name: "index_establishments_on_name", using: :btree
+    t.index ["user_id"], name: "index_establishments_on_user_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.datetime "when"
+    t.text     "description"
+    t.string   "slug"
+    t.boolean  "vip",              default: false
+    t.boolean  "aprooved",         default: true
+    t.boolean  "visible",          default: true
+    t.boolean  "active",           default: true
+    t.integer  "establishment_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["establishment_id"], name: "index_events_on_establishment_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "imgs", force: :cascade do |t|
@@ -74,6 +93,22 @@ ActiveRecord::Schema.define(version: 20170123120216) do
     t.index ["imageable_type", "imageable_id"], name: "index_imgs_on_imageable_type_and_imageable_id", using: :btree
   end
 
+  create_table "sniffs", force: :cascade do |t|
+    t.string   "src_file_name",    null: false
+    t.string   "src_content_type", null: false
+    t.integer  "src_file_size",    null: false
+    t.datetime "src_updated_at",   null: false
+    t.string   "label"
+    t.integer  "duration"
+    t.string   "sniffable_type"
+    t.integer  "sniffable_id"
+    t.integer  "user_id",          null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["sniffable_type", "sniffable_id"], name: "index_sniffs_on_sniffable_type_and_sniffable_id", using: :btree
+    t.index ["user_id"], name: "index_sniffs_on_user_id", using: :btree
+  end
+
   create_table "states", force: :cascade do |t|
     t.string   "name"
     t.string   "short_name"
@@ -82,6 +117,14 @@ ActiveRecord::Schema.define(version: 20170123120216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_states_on_name", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer  "alias",            null: false
+    t.integer  "establishment_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["establishment_id"], name: "index_tags_on_establishment_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,6 +149,8 @@ ActiveRecord::Schema.define(version: 20170123120216) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "email",                                    null: false
+    t.integer  "role",                   default: 0,       null: false
+    t.integer  "sniffs_count",           default: 0
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false

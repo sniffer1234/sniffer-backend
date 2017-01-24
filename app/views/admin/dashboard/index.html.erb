@@ -1,0 +1,196 @@
+<div class="dashboard-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>Dashboard <small>Descubra dados relevantes</small></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="dashboard-item red">
+        <div class="visual">
+    		  <i class="fa fa-users"></i>
+    		</div>
+        <div class="details">
+    			<span class="content">Usuários</span>
+    			<span class="value"><%= @count[:users] %></span>
+    		</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="dashboard-item blue">
+        <div class="visual">
+    		  <i class="fa fa-building"></i>
+    		</div>
+        <div class="details">
+    			<span class="content">Estabelecimentos</span>
+    			<span class="value"><%= @count[:establishments] %></span>
+    		</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="dashboard-item orange">
+        <div class="visual">
+    		  <i class="fa fa-star"></i>
+    		</div>
+        <div class="details">
+    			<span class="content">Eventos</span>
+    			<span class="value"><%= @count[:events] %></span>
+    		</div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 ">
+      <div class="dashboard-item green">
+        <div class="visual">
+    		  <i class="fa fa-camera"></i>
+    		</div>
+        <div class="details">
+    			<span class="content">Sniffs</span>
+    			<span class="value"><%= @count[:sniffs] %></span>
+    		</div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-user"></i>
+          Novos usuários
+        </div>
+        <div class="card-block">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 33.3%;">Nome</th>
+                <th style="width: 33.3%;">E-mail</th>
+                <th style="width: 33.3%;">Entrou em</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @new_users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= l user.created_at, format: :registred_at %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-line-chart"></i>
+          Usuários mais ativos
+        </div>
+        <div class="card-block">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 40%;">Nome</th>
+                <th style="width: 20%;">Acessos</th>
+                <th style="width: 20%;">Sniffs</th>
+                <th style="width: 20%;">Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @most_active_users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.sign_in_count %></td>
+                  <td>0</td>
+                  <td>
+                    <button class="btn btn-info btn-sm" disabled>
+                      <i class="fa fa-search-plus"></i>
+                    </button>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-building"></i>
+          Sugestão de estabelecimentos
+        </div>
+        <div class="card-block">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 50%;">Nome</th>
+                <th style="width: 25%;">Usuário</th>
+                <th style="width: 25%;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if @pending_establishments.size == 0 %>
+                <tr>
+                  <td colspan="3">
+                    <div class="no-results-container">
+                      <div>
+                        <i class="fa fa-check"></i>
+                        Nenhum estabelecimento pendente
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-star"></i>
+          Sugestão de eventos
+        </div>
+        <div class="card-block">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width: 50%;">Nome</th>
+                <th style="width: 25%;">Usuário</th>
+                <th style="width: 25%;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if @pending_events.size == 0 %>
+                <tr>
+                  <td colspan="3">
+                    <div class="no-results-container">
+                      <div>
+                        <i class="fa fa-check"></i>
+                        Nenhum evento pendente
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
