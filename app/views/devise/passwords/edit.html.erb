@@ -1,9 +1,9 @@
 <%= bootstrap_devise_error_messages! %>
-<div class="panel panel-default devise-bs">
-  <div class="panel-heading">
+<div class="card">
+  <div class="card-header">
     <h4><%= t('.change_your_password', :default => 'Change your password') %></h4>
   </div>
-  <div class="panel-body">
+  <div class="card-block">
     <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, role: "form" }) do |f| %>
       <%= f.hidden_field :reset_password_token %>
 
@@ -17,7 +17,7 @@
         <%= f.password_field :password_confirmation, class: "form-control"  %>
       </div>
 
-      <%= f.submit t('.change_my_password', :default => 'Change my password'), class: "btn btn-primary" %>
+      <%= f.submit t('.change_my_password', :default => 'Change my password'), class: "btn-block btn btn-primary" %>
     <% end %>
   </div>
 </div>

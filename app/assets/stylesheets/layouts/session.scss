@@ -1,6 +1,14 @@
 .sessions-layout {
   margin-top: 30px;
 
+  .card {
+    margin-bottom: 15px;
+
+    h4 {
+      margin-bottom: 0;
+    }
+  }
+
   > div {
     width: 400px;
     margin: 0 auto;
@@ -9,5 +17,9 @@
   a {
     display: block;
     text-align: center;
+  }
+
+  .btn {
+    margin-top: 15px;
   }
 }
