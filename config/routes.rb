@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :establishments, only: [:index]
     resources :live, only: [:index]
     resources :sniffs, only: [:index]
+    resources :tags, only: [:index]
   end
 
   #mount_devise_token_auth_for 'User', at: 'api/auth'
