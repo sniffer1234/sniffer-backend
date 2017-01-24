@@ -4,3 +4,6 @@ AWS_BUCKET: 'sniffer-app'
 AWS_ACCESS_KEY_ID: 'AKIAJJ6WYCQTF26CLSYA'
 AWS_SECRET_ACCESS_KEY: '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'
 S3_DEFAULT_PATH: 'https://s3-sa-east-1.amazonaws.com/sniffer-app'
+
+SECRET_KEY_BASE: 'lorem'
+secret_key_base: 'lorem'
