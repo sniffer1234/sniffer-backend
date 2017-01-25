@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label class="form-control-label">
+    Avatar
+  </label>
+  <div>
+    <%= image_tag @user.avatar.url(:medium) %>
+  </div>
+</div>
+<%= f.input :name %>
+<%= f.input :email %>
+<%= f.input :cellphone %>
+<%= f.input :sniffs_count, disabled: true %>

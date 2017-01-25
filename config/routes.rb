@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :live, only: [:index]
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
+    resources :zipcode, only: [:index]
   end
 
   # Admin routes
@@ -20,8 +21,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :establishments, only: [:index, :create, :destroy, :edit, :update]
-    resources :users, only: [:index, :create, :destroy, :edit, :update]
+    resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
+      resources :events, only: [:create, :edit, :update]
+      resources :sniffs, only: [:destroy]
+    end
+    resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :sniffs, only: [:index, :destroy]
   end
 end

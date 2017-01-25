@@ -30,7 +30,7 @@ pt-BR:
       address: Endereço
       city: Cidade
       img: Imagem
-      local: Estabelecimento
+      establishment: Estabelecimento
       state: Estado
       user: Usuário
 
@@ -52,11 +52,12 @@ pt-BR:
         label: Label
         src: Fonte
 
-      local:
+      establishment:
         category: Categoria
         title: Título
         name: Nome
         description: Descrição
+        small_description: Descrição curta
         slug: Slug
         facebook: Facebook
         instagram: Instagram
@@ -74,8 +75,12 @@ pt-BR:
       user:
         name: Nome
         email: Email
+        cellphone: Telefone
+        created_at: Registro em
         password: Senha
         password_confirmation: Confirmação de senha
+        sniffs_count: Sniffs enviado
+        role: Perfil
 
     errors:
       messages:

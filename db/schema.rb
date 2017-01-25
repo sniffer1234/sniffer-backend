@@ -94,17 +94,18 @@ ActiveRecord::Schema.define(version: 20170124122926) do
   end
 
   create_table "sniffs", force: :cascade do |t|
-    t.string   "src_file_name",    null: false
-    t.string   "src_content_type", null: false
-    t.integer  "src_file_size",    null: false
-    t.datetime "src_updated_at",   null: false
+    t.string   "src_file_name",                   null: false
+    t.string   "src_content_type",                null: false
+    t.integer  "src_file_size",                   null: false
+    t.datetime "src_updated_at",                  null: false
     t.string   "label"
     t.integer  "duration"
     t.string   "sniffable_type"
     t.integer  "sniffable_id"
-    t.integer  "user_id",          null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "user_id",                         null: false
+    t.boolean  "active",           default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["sniffable_type", "sniffable_id"], name: "index_sniffs_on_sniffable_type_and_sniffable_id", using: :btree
     t.index ["user_id"], name: "index_sniffs_on_user_id", using: :btree
   end
@@ -149,8 +150,10 @@ ActiveRecord::Schema.define(version: 20170124122926) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "email",                                    null: false
+    t.string   "cellphone"
     t.integer  "role",                   default: 0,       null: false
     t.integer  "sniffs_count",           default: 0
+    t.boolean  "active",                 default: false
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false

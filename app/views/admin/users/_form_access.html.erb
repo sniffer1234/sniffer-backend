@@ -1,0 +1,26 @@
+<%= f.input :role, collection: @roles.map {|role, key| [t(role), role] }, hint: 'Define as regras para acesso ao sistema', include_blank: false %>
+<hr />
+<div class="form-group">
+  <label class="form-control-label">
+    Registrado em
+  </label>
+  <div>
+    <input class="form-control" disabled readonly value="<%= l(@user.created_at, format: :registred_at) rescue '-' %>">
+  </div>
+</div>
+<div class="form-group">
+  <label class="form-control-label">
+    Último login
+  </label>
+  <div>
+    <input class="form-control" disabled readonly value="<%= l(@user.last_sign_in_at, format: :registred_at) rescue '-' %>">
+  </div>
+</div>
+<div class="form-group">
+  <label class="form-control-label">
+    Último IP
+  </label>
+  <div>
+    <input class="form-control" disabled readonly value="<%= @user.last_sign_in_ip || '-' %>">
+  </div>
+</div>

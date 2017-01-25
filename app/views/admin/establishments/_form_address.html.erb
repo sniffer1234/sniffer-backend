@@ -1,0 +1,10 @@
+
+<%= f.simple_fields_for :address do |a| %>
+  <%= a.input :zipcode, input_html: { class: 'zipcode' } %>
+  <%= a.input :city, disabled: true, input_html: { value: @establishment.address && @establishment.address.city ? @establishment.address.city.name : '' } %>
+  <%= a.input :city_id, as: :hidden, input_html: { class: 'city-id' } %>
+  <%= a.input :neighborhood, input_html: { class: 'neighborhood' } %>
+  <%= a.input :street, input_html: { class: 'street' } %>
+  <%= a.input :number, input_html: { class: 'number' }  %>
+  <%= a.input :complement %>
+<% end %>

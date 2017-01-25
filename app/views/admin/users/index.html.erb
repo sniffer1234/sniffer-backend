@@ -2,9 +2,77 @@
   <div class="page-title">
     <div class="clearfix">
       <div class="pull-left">
-        <h2>Usuários</h2>
+        <h2>
+          Usuários
+          <small>
+            <%= @users.total_count %> usuários encontrados
+          </small>
+        </h2>
+      </div>
+      <div class="pull-right">
+        <a href="<%= new_admin_user_path %>" class="btn btn-success">
+          <i class="fa fa-plus-square"></i>
+          Novo
+        </a>
       </div>
     </div>
+  </div>
+  <div>
+  <%= render "admin/shared/notice" %>
+  <div class="slats-container">
+    <form action="<%= admin_users_path %>" method="GET">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="input-group">
+            <div class="input-group-addon">
+              Busca
+            </div>
+            <input type="search" name="search" class="form-control" placeholder="Digite o nome do usuário" value="<%= params[:search] %>">
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          <div class="dropdown pull-right">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              Ordenar
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item <%= filter_link_class(params, 'name', 'asc') %>">
+                <%= link_to admin_users_path(order_by_attr: 'name', order_by_asc: 'asc') do %>
+                  Nome ASC
+                <% end %>
+              </li>
+              <li class="dropdown-item <%= filter_link_class(params, 'name', 'desc') %>">
+                <%= link_to admin_users_path(order_by_attr: 'name', order_by_asc: 'desc') do %>
+                  Nome DESC
+                <% end %>
+              </li>
+              <li class="dropdown-item <%= filter_link_class(params, 'created_at', 'asc') %>">
+                <%= link_to admin_users_path(order_by_attr: 'created_at', order_by_asc: 'asc') do %>
+                  Últimos registrados
+                <% end %>
+              </li>
+              <li class="dropdown-item <%= filter_link_class(params, 'last_sign_in_at', 'asc') %>">
+                <%= link_to admin_users_path(order_by_attr: 'last_sign_in_at', order_by_asc: 'asc') do %>
+                  Últimos login
+                <% end %>
+              </li>
+              <li class="dropdown-item <%= filter_link_class(params, 'active', 'desc') %>">
+                <%= link_to admin_users_path(order_by_attr: 'active', order_by_asc: 'desc') do %>
+                  Bloqueados
+                <% end %>
+              </li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">
+                <a href="<%= admin_users_path %>">
+                  Remover ordenação
+                </a>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
   <div>
     <table class="table">
@@ -19,21 +87,23 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <tr>
+          <tr class="<%= user.active ? 'table-danger' : '' %>">
             <td><%= user.name %></td>
             <td><%= t(user.role) %></td>
             <td><%= l(user.created_at, format: :registred_at) %></td>
-            <td><%= l(user.last_sign_in_at, format: :registred_at) rescue nil %></td>
+            <td><%= l(user.last_sign_in_at, format: :registred_at) rescue '-' %></td>
             <td colspan="2">
-              <%= link_to [:edit, :admin, user] do %>
-                <button class="btn btn-sm btn-info" disabled>
-                  <i class="fa fa-pencil"></i>
-                </button>
+              <%= link_to [:edit, :admin, user], class: 'btn btn-sm btn-info' do %>
+                <i class="fa fa-pencil"></i>
               <% end %>
-              <%= link_to [:admin, user], method: :delete, data: { confirm: 'Tem certeza que deseja continuar?' } do %>
-                <button class="btn btn-sm btn-warning" disabled>
-                  <i class="fa fa-remove"></i>
-                </button>
+              <% if user.active %>
+                <%= link_to [:admin, user], method: :delete, class: "btn btn-sm btn-success", data: { confirm: 'Esta ação irá desbloquear o usuário e ele poderá acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
+                  <i class="fa fa-user-plus"></i>
+                <% end %>
+              <% else %>
+                <%= link_to [:admin, user], method: :delete, class: "btn btn-sm btn-warning", data: { confirm: 'Esta ação irá bloquear o usuário e ele não terá como acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
+                  <i class="fa fa-user-times"></i>
+                <% end %>
               <% end %>
             </td>
           </tr>

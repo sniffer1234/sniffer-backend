@@ -2,11 +2,22 @@
   <div class="page-title">
     <div class="clearfix">
       <div class="pull-left">
-        <h2>Estabelecimentos</h2>
+        <h2>Estabelecimentos
+          <small>
+            <%= @establishments.total_count %> estabelecimentos encontrados
+          </small>
+        </h2>
+      </div>
+      <div class="pull-right">
+        <a href="<%= new_admin_establishment_path %>" class="btn btn-success">
+          <i class="fa fa-plus-square"></i>
+          Novo
+        </a>
       </div>
     </div>
   </div>
   <div>
+    <%= render "admin/shared/notice" %>
     <table class="table">
       <thead>
         <tr>
@@ -39,15 +50,11 @@
               <% end %>
             </td>
             <td colspan="2">
-              <%= link_to [:edit, :admin, establishment] do %>
-                <button class="btn btn-sm btn-info" disabled>
-                  <i class="fa fa-pencil"></i>
-                </button>
+              <%= link_to [:edit, :admin, establishment], class: 'btn btn-sm btn-info' do %>
+                <i class="fa fa-pencil"></i>
               <% end %>
-              <%= link_to [:admin, establishment], method: :delete, data: { confirm: 'Tem certeza que deseja continuar?' } do %>
-                <button class="btn btn-sm btn-warning" disabled>
-                  <i class="fa fa-remove"></i>
-                </button>
+              <%= link_to [:admin, establishment], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+                <i class="fa fa-remove"></i>
               <% end %>
             </td>
           </tr>

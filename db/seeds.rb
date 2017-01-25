@@ -24,6 +24,11 @@ u = User.new(email: 'rafaelmotta021@gmail.com', password: 'galera07', name: 'Raf
 u.skip_confirmation!
 u.save
 
+
+u = User.new(email: 'juliano@sfhera.com.br', password: 'juliano1', name: 'Juliano Londero', role: 'admin')
+u.skip_confirmation!
+u.save
+
 100.times do
   u = User.new(
     email: Faker::Internet.email,

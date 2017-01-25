@@ -1,0 +1,40 @@
+<%= simple_form_for [:admin, user],  html: { multipart: true } do |f| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-warning">
+      <div>
+        <b>Ops! <%= pluralize( user.errors.count, "erros") %> ocorreram:</b>
+      </div>
+      <br />
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <hr />
+  <% end %>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#form-access" role="tab">Acesso</a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active" id="form-basic" role="tabpanel">
+      <%= render 'form_basic', f: f %>
+    </div>
+    <div class="tab-pane" id="form-access" role="tabpanel">
+      <%= render 'form_access', f: f %>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="actions">
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  </div>
+<% end %>

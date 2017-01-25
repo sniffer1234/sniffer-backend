@@ -6,13 +6,14 @@ class Establishment < ApplicationRecord
   before_validation :format_url
 
   has_many :imgs, -> { order(:position) }, as: :imageable, dependent: :destroy
-  has_one :address, as: :imageable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
   has_many :tags, dependent: :destroy
 
   accepts_nested_attributes_for :imgs, :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone
   validates_length_of :small_description, :in => 30..150
+  validates_length_of :description, :in => 30..500
   attr_accessor :completed_address
 
   scope :pending, -> {

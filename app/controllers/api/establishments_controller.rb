@@ -6,6 +6,4 @@ class Api::EstablishmentsController < Api::BaseController
     render json: @establishments, root: 'data', meta: pagination_dict(@establishments)
   end
 
-  def show
-  end
 end

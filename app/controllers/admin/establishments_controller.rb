@@ -1,22 +1,43 @@
 class Admin::EstablishmentsController < Admin::BaseController
 
-  before_action :load_establishment, only: [:create, :destroy]
+  before_action :load_establishment, only: [:destroy, :edit, :update]
 
-  # GET /admin/users
+  # GET /admin/establishments
   def index
     @establishments = Establishment.order(:name).page(params[:page] || 1)
   end
 
-  # POST /admin/users
+  # GET /admin/establishments/new
+  def new
+    @establishment = Establishment.new
+    @establishment.build_address
+  end
+
+  # POST /admin/establishments
   def create
+    @establishment = Establishment.new(establishment_params)
+
+    if @establishment.save
+      redirect_to admin_establishments_path, notice: 'Estabelecimento criado com sucesso.'
+    else
+      render :new
+    end
   end
 
-  # PUT /admin/users/:id
+  # PUT /admin/establishments/:id
   def update
+    if @establishment.update_attributes(establishment_params)
+      redirect_to admin_establishments_path, notice: 'Estabelecimento editado com sucesso.'
+    else
+      render :edit
+    end
   end
 
-  # DELETE /admin/users/:id
+  # DELETE /admin/establishments/:id
   def destroy
+    if @establishment.destroy
+      redirect_to admin_establishments_path, notice: 'Estabelecimento removido com sucesso.'
+    end
   end
 
   private
@@ -24,11 +45,10 @@ class Admin::EstablishmentsController < Admin::BaseController
     @establishment = Establishment.find(params[:id])
   end
 
-  def local_params
-    params.require(:local).permit(
-      :name, :description,:email, :site, :facebook,
-      :instagram, :vip, :active, :phone, :imgs,
-      address_attributes: [:id, :zipcode, :neighborhood, :street, :number, :complement, :city_id]
+  def establishment_params
+    params.require(:establishment).permit(
+      :name, :small_description, :description, :site,
+      :facebook, :instagram, :phone, :email
     )
   end
 end

@@ -1,2 +1,20 @@
-<h1>Admin::Establishments#create</h1>
-<p>Find me in app/views/admin/establishments/create.html.erb</p>
+<div class="establishments-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>
+          Novo estabelecimento
+        </h2>
+      </div>
+      <div class="pull-right">
+        <a href="<%= admin_establishments_path %>" class="btn btn-success">
+          <i class="fa fa-angle-left"></i>
+          Voltar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <%= render "form", establishment: @establishment %>
+</div>

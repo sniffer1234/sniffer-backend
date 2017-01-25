@@ -3,17 +3,26 @@ class User < ApplicationRecord
 
   paginates_per 20
 
+  enum :role => [ :default, :admin, :owner ]
+
   devise :database_authenticatable, :registerable, :confirmable,
           :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_attached_file :avatar, styles: {
+    medium: '300x300#',
+    thumb: '150x150#'
+   }, default_url:  "#{ Rails.application.secrets.amazon_s3_path }/default/:style/missing.png"
+
   validates :name, :email, presence: true
   validates :role, :inclusion => { :in => %w(default admin owner) }
+  validates_attachment :avatar,
+    content_type: {
+      content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+    }
 
   has_many :sniffs
   has_many :events
   has_many :establishments
-
-  enum :role => [ :default, :admin, :owner ]
 
   scope :newest, -> {
     order(created_at: :desc).limit(5)
@@ -28,6 +37,13 @@ class User < ApplicationRecord
 
   def first_name
     self.name.split(' ').first
+  end
+
+  # Search local by name
+  # @param search - { String } - Name to be found
+  def self.by_name(search)
+    return all if !search.present?
+    where("name ILIKE ?", "%#{search}%")
   end
 
 end
