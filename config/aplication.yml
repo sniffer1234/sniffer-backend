@@ -7,3 +7,6 @@ S3_DEFAULT_PATH: 'https://s3-sa-east-1.amazonaws.com/sniffer-app'
 
 SECRET_KEY_BASE: 'lorem'
 secret_key_base: 'lorem'
+
+FACEBOOK_KEY: '101392153704728'
+FACEBOOK_SECRET: '82610774e6ef2a417efddc5dc50e2988'

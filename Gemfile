@@ -35,6 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth'
 gem 'devise_token_auth'
+gem 'omniauth-facebook'
+
 
 # JSON
 gem 'active_model_serializers', '~> 0.10.0'

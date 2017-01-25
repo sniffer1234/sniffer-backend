@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'events/index'
+  end
+
+  namespace :admin do
+    get 'events/new'
+  end
+
+  namespace :admin do
+    get 'events/edit'
+  end
+
   root :to => redirect('admin/dashboard')
 
   # Api routes
@@ -21,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
+    resources :events, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
       resources :events, only: [:create, :edit, :update]
       resources :sniffs, only: [:destroy]
