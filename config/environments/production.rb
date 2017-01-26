@@ -93,5 +93,5 @@ Rails.application.configure do
     :authentication => :plain,
   }
 
-  Rails.application.routes.default_url_options[:host] = 'snifferapp.com'
+  Rails.application.routes.default_url_options[:host] = 'http://snifferapp.com'
 end
