@@ -40,7 +40,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.0]
       t.string :cellphone
       t.integer :role, null: false, default: 0
       t.integer :sniffs_count, default: 0
-      t.boolean :active, default: false
+      t.boolean :active, default: true
 
       ## Tokens
       t.json :tokens

@@ -1,6 +1,6 @@
 class Api::BaseController < ApplicationController
   include DeviseTokenAuth::Concerns::SetUserByToken
-  respond_to :json
+
 
   def pagination_dict(object, extra_meta = {})
     {
@@ -11,4 +11,6 @@ class Api::BaseController < ApplicationController
       total_count: object.total_count
     }.merge(extra_meta)
   end
+
+  
 end
