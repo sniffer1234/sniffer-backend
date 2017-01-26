@@ -92,4 +92,6 @@ Rails.application.configure do
     :domain         => ENV['MAILGUN_DOMAIN'],
     :authentication => :plain,
   }
+
+  Rails.application.routes.default_url_options[:host] = 'snifferapp.com'
 end

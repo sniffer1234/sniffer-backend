@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'events/index'
-  end
-
-  namespace :admin do
-    get 'events/new'
-  end
-
-  namespace :admin do
-    get 'events/edit'
-  end
-
   root :to => redirect('admin/dashboard')
 
   # Api routes

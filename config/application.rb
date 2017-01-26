@@ -10,7 +10,7 @@ module SnifferBackend
   class Application < Rails::Application
 
     # Default locales
-    config.i18n.default_locale = :'pt-BR'
+    #config.i18n.default_locale = :'pt-BR'
 
     # Enable CORS
     config.middleware.insert_before 0, Rack::Cors do
