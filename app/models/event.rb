@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   validates_presence_of :name, :description, :when
 
   scope :pending, -> {
-    where(aprooved: false, active: true).limit(5)
+    where(aprooved: false).limit(5)
   }
 
 end
