@@ -54,6 +54,7 @@ end
   Address.create(
     city_id: City.where(name: 'Florianópolis').first.id,
     addressable_type: 'Establishment',
+    addressable_id: Establishment.last.id,
     street: 'Servidão José Cardoso de Oliveira',
     number: 's/n',
     zipcode: '88053-306',

@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20170124122926) do
     t.boolean  "vip",               default: false
     t.boolean  "aprooved",          default: true
     t.boolean  "visible",           default: true
-    t.boolean  "active",            default: true
     t.integer  "user_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -153,7 +152,7 @@ ActiveRecord::Schema.define(version: 20170124122926) do
     t.string   "cellphone"
     t.integer  "role",                   default: 0,       null: false
     t.integer  "sniffs_count",           default: 0
-    t.boolean  "active",                 default: false
+    t.boolean  "active",                 default: true
     t.json     "tokens"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
