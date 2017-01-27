@@ -5,7 +5,9 @@ class Event < ApplicationRecord
   belongs_to :user
   belongs_to :establishment
 
-  validates_presence_of :description, :when
+  accepts_nested_attributes_for :imgs, allow_destroy: true
+
+  validates_presence_of :name, :description, :when
 
   scope :pending, -> {
     where(aprooved: false, active: true).limit(5)

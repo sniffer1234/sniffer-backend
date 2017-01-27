@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170124122926) do
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                              null: false
     t.text     "description"
     t.string   "small_description"
     t.string   "slug"
@@ -63,18 +63,19 @@ ActiveRecord::Schema.define(version: 20170124122926) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string   "name",                             null: false
     t.datetime "when"
     t.text     "description"
     t.string   "slug"
     t.boolean  "vip",              default: false
     t.boolean  "aprooved",         default: true
     t.boolean  "visible",          default: true
-    t.boolean  "active",           default: true
     t.integer  "establishment_id"
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["establishment_id"], name: "index_events_on_establishment_id", using: :btree
+    t.index ["name"], name: "index_events_on_name", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 

@@ -1,7 +1,7 @@
 class CreateEstablishments < ActiveRecord::Migration[5.0]
   def change
     create_table :establishments do |t|
-      t.string :name, index: true
+      t.string :name, index: true, null: false
       t.text :description
       t.string :small_description
       t.string :slug
