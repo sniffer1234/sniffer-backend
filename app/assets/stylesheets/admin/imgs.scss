@@ -1,0 +1,45 @@
+.img-list {
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.img-item {
+  position: relative;
+
+  > div {
+    border: 1px solid #EEE;
+  }
+
+  .btn-remove {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+  }
+
+  .label {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 12px;
+  }
+}
+
+.sortable-placeholder {
+  border: 1px dashed #CCC;
+  background-color: #f9f9f9;
+  height: 300px;
+  margin-bottom: 10px;
+  float: left;
+      width: 33.33333333%;
+}
+
+.sortable {
+  display: list-item;
+}

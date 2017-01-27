@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ujs
 //= require turbolinks
+//= require maskedinput
 //= require tether
 //= require bootstrap
 //= require_tree .

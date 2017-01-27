@@ -41,7 +41,12 @@ class Admin::EstablishmentsController < Admin::BaseController
     @establishment = Establishment.new(establishment_params)
 
     if @establishment.save
-      redirect_to admin_establishments_path, notice: 'Estabelecimento criado com sucesso.'
+      if params[:images]
+        params[:images].each { |image| @establishment.imgs.create(src: image) }
+        redirect_to [:edit, :admin, @establishment, show_img_tab: true], notice: 'Estabelecimento criado com sucesso.'
+      else
+        redirect_to admin_establishments_path, notice: 'Estabelecimento criado com sucesso.'
+      end
     else
       render :new
     end
@@ -50,7 +55,12 @@ class Admin::EstablishmentsController < Admin::BaseController
   # PUT /admin/establishments/:id
   def update
     if @establishment.update_attributes(establishment_params)
-      redirect_to admin_establishments_path, notice: 'Estabelecimento editado com sucesso.'
+      if params[:images]
+        params[:images].each { |image| @establishment.imgs.create(src: image) }
+        redirect_to [:edit, :admin, @establishment, show_img_tab: true], notice: 'Estabelecimento editado com sucesso.'
+      else
+        redirect_to admin_establishments_url, notice: 'Estabelecimento editado com sucesso.'
+      end
     else
       render :edit
     end
@@ -72,7 +82,10 @@ class Admin::EstablishmentsController < Admin::BaseController
     params.require(:establishment).permit(
       :name, :small_description, :description, :site,
       :facebook, :instagram, :phone, :email, :active, :visible,
-      :vip, :aprooved
+      :vip, :aprooved, :phone, :images,
+      address_attributes: [
+        :id, :zipcode, :neighborhood, :street, :number, :complement, :city_id
+      ]
     )
   end
 end

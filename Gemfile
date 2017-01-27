@@ -27,6 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'font-awesome-rails'
 gem 'simple_form'
 gem 'devise-bootstrap-views'
+gem 'maskedinput-rails'
 
 # Secure
 gem 'bcrypt', '~> 3.1.7'

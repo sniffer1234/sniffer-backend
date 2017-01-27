@@ -14,15 +14,17 @@
     <hr />
   <% end %>
 
+  <%= render "admin/shared/notice" %>
+
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
+      <a class="nav-link <%= 'active' unless params[:show_img_tab].present? %>" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#form-address" role="tab">Endereço</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-images" role="tab">Imagens</a>
+      <a class="nav-link <%= 'active' if params[:show_img_tab].present? %>" data-toggle="tab" href="#form-images" role="tab">Imagens</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">Visibilidade</a>
@@ -36,13 +38,13 @@
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane active" id="form-basic" role="tabpanel">
+    <div class="tab-pane <%= 'active' unless params[:show_img_tab].present? %>" id="form-basic" role="tabpanel">
       <%= render 'form_basic', f: f %>
     </div>
     <div class="tab-pane" id="form-address" role="tabpanel">
       <%= render 'form_address', f: f %>
     </div>
-    <div class="tab-pane" id="form-images" role="tabpanel">
+    <div class="tab-pane <%= 'active' if params[:show_img_tab].present? %>" id="form-images" role="tabpanel">
       <%= render 'form_images', f: f %>
     </div>
     <div class="tab-pane" id="form-visibility" role="tabpanel">

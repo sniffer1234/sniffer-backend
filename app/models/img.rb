@@ -13,7 +13,7 @@ class Img < ApplicationRecord
   }, default_url:  "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.jpg"
 
  # Validations
- validates_presence_of :local, :src
+ validates_presence_of :imageable_id, :imageable_type, :src
  validates_attachment :src, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
  def source
@@ -22,9 +22,10 @@ class Img < ApplicationRecord
 
  protected
  def set_position
-   unless self.position
-     amount = self.local.imgs.size || 0
-     self.position = amount + 1
-   end
+   1
+  #  unless self.position
+  #    amount = self.local.imgs.size || 0
+  #    self.position = amount + 1
+  #  end
  end
 end
