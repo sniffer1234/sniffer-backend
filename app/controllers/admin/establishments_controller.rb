@@ -25,7 +25,6 @@ class Admin::EstablishmentsController < Admin::BaseController
     end
 
     @establishments = Establishment
-                        .where(active: true)
                         .by_name(params[:search])
                         .order(order_by)
                         .page(params[:page] || 1)
