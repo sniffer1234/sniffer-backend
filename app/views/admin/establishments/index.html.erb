@@ -18,14 +18,14 @@
   </div>
   <div>
     <%= render "admin/shared/notice" %>
+    <%= render "search" %>
     <table class="table">
       <thead>
         <tr>
           <th style="width: 5%;">Vip</th>
-          <th style="width: 5%;">Ativo</th>
           <th style="width: 5%;">Visível</th>
-
-          <th style="width: 40%;">Nome</th>
+          <th style="width: 5%;">Aprovado</th>
+          <th style="width: 30%;">Nome</th>
           <th style="width: 30%;">Categoria</th>
           <th style="width: 15%;" colspan="2">
             Ações
@@ -34,10 +34,10 @@
       </thead>
       <tbody>
         <% @establishments.each do |establishment| %>
-          <tr>
+          <tr class="<%= !establishment.aprooved ? 'table-warning' : '' %> <%= !establishment.visible ? 'table-warning' : '' %> <%= establishment.vip ? 'table-info' : '' %>">
             <td><%= icon_check(establishment.vip) %></td>
-            <td><%= icon_check(establishment.active) %></td>
             <td><%= icon_check(establishment.visible) %></td>
+            <td><%= icon_check(establishment.aprooved) %></td>
             <td>
               <%= establishment.name %>
             </td>

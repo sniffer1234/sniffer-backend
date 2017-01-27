@@ -17,7 +17,7 @@ class Establishment < ApplicationRecord
   attr_accessor :completed_address
 
   scope :pending, -> {
-    where(aprooved: false, active: true).limit(5)
+    where(aprooved: false).limit(5)
   }
 
   # Search local by city name

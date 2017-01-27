@@ -67,6 +67,9 @@ pt-BR:
         vip: VIP
         aprooved: Aprovado
         active: Ativo
+        visible: Visível
+
+
       state:
         name: Handle
         short_name: Handle

@@ -4,7 +4,31 @@ class Admin::EstablishmentsController < Admin::BaseController
 
   # GET /admin/establishments
   def index
-    @establishments = Establishment.order(:name).page(params[:page] || 1)
+    order_by_attrs = ['vip', 'name', 'aprooved', 'active']
+    order_by_asc = ['asc', 'desc']
+    order_by = ""
+
+    if params[:order_by_attr]
+       if order_by_attrs.include?(params[:order_by_attr])
+         order_by += params[:order_by_attr]
+       end
+    end
+
+    if params[:order_by_asc] && !order_by.blank?
+       if order_by_asc.include?(params[:order_by_asc])
+         order_by += " #{ params[:order_by_asc] }"
+       end
+    end
+
+    if order_by.blank?
+      order_by = "name"
+    end
+
+    @establishments = Establishment
+                        .where(active: true)
+                        .by_name(params[:search])
+                        .order(order_by)
+                        .page(params[:page] || 1)
   end
 
   # GET /admin/establishments/new
@@ -48,7 +72,8 @@ class Admin::EstablishmentsController < Admin::BaseController
   def establishment_params
     params.require(:establishment).permit(
       :name, :small_description, :description, :site,
-      :facebook, :instagram, :phone, :email
+      :facebook, :instagram, :phone, :email, :active, :visible,
+      :vip, :aprooved
     )
   end
 end
