@@ -1,2 +1,20 @@
-<h1>Admin::Events#edit</h1>
-<p>Find me in app/views/admin/events/edit.html.erb</p>
+<div class="events-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h3>
+          Editar evento em <%= @establishment.name %>
+        </h3>
+      </div>
+      <div class="pull-right">
+        <a href="<%= admin_establishment_events_path %>" class="btn btn-info">
+          <i class="fa fa-angle-left"></i>
+          Voltar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <%= render "form", event: @event %>
+</div>

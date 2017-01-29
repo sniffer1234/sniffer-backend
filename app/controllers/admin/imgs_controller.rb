@@ -2,17 +2,17 @@ class Admin::ImgsController < Admin::BaseController
 
   before_action :set_img, only: [:update, :destroy]
 
-  # DELETE /admin/establishments/:establishment_id/:establishment_id/imgs/:id
+  # DELETE /admin/:resource/:resource_id/imgs/:id
   def destroy
     if @img.destroy
-      redirect_to [:edit, :admin, @establishment, show_img_tab: true], notice: 'Estabelecimento criado com sucesso.'
+      redirect_to [:edit, :admin, @resource, show_img_tab: true], notice: 'Imagem removida com sucesso.'
     end
   end
 
-  # PATCH /admin/establishments/:establishment_id/:establishment_id/imgs/:id
+  # PATCH /admin/:resource/:resource_id/imgs/:id
   def update
     if @img.update(img_params)
-      redirect_to [:edit, :admin, @establishment, show_img_tab: true], notice: 'Estabelecimento editado com sucesso.'
+      redirect_to [:edit, :admin, @resource, show_img_tab: true], notice: 'Imagem editada com sucesso.'
     else
       render :edit
     end
@@ -30,8 +30,8 @@ class Admin::ImgsController < Admin::BaseController
   private
 
   def set_img
-    @establishment = Establishment.find(params[:establishment_id])
-    @img = @establishment.imgs.find(params[:id])
+    @img = Img.find(params[:id])
+    @resource = @img.imageable_type.constantize.find(@img.imageable_id)
   end
 
   def img_params

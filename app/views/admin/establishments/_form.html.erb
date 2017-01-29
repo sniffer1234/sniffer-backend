@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, establishment], wrapper: :horizontal_form, html: { multipart: true } do |f| %>
+<%= simple_form_for [:admin, establishment], html: { multipart: true } do |f| %>
   <% if establishment.errors.any? %>
     <div class="alert alert-warning">
       <div>
@@ -18,23 +18,37 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link <%= 'active' unless params[:show_img_tab].present? %>" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
+      <a class="nav-link <%= 'active' unless params[:show_img_tab].present? %>" data-toggle="tab" href="#form-basic" role="tab">
+        Dados básicos
+      </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-address" role="tab">Endereço</a>
+      <a class="nav-link" data-toggle="tab" href="#form-address" role="tab">
+        Endereço
+      </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link <%= 'active' if params[:show_img_tab].present? %>" data-toggle="tab" href="#form-images" role="tab">Imagens</a>
+      <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">
+        Visibilidade
+      </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">Visibilidade</a>
+      <a class="nav-link <%= 'active' if params[:show_img_tab].present? %>" data-toggle="tab" href="#form-images" role="tab">
+        Imagens (<%= @establishment.imgs.size %>)
+      </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-events" role="tab">Eventos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-sniffs" role="tab">Sniffs</a>
-    </li>
+    <% if @establishment.id %>
+      <li class="nav-item">
+        <%= link_to [:admin, @establishment, :events], class: 'nav-link', role: 'tab' do %>
+          Eventos (<%= @establishment.events.size %>)
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sniffs-visibility" role="tab">
+          Sniffs (<%= @establishment.sniffs.size %>)
+        </a>
+      </li>
+    <% end %>
   </ul>
 
   <div class="tab-content">
@@ -49,12 +63,6 @@
     </div>
     <div class="tab-pane" id="form-visibility" role="tabpanel">
       <%= render 'form_visibility', f: f %>
-    </div>
-    <div class="tab-pane" id="form-events" role="tabpanel">
-      <%= render 'form_events', f: f %>
-    </div>
-    <div class="tab-pane" id="form-sniffs" role="tabpanel">
-      <%= render 'form_sniffs', f: f %>
     </div>
   </div>
 

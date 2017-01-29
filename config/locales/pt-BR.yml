@@ -33,6 +33,7 @@ pt-BR:
       establishment: Estabelecimento
       state: Estado
       user: Usuário
+      event: Evento
 
     attributes:
       address:
@@ -52,7 +53,18 @@ pt-BR:
         label: Label
         src: Fonte
 
+      event:
+        name: Nome
+        description: Descricao
+        when: Data
+        visible: Visível
+        aprooved: Aprovado
+        vip: VIP
+        establishment: Estabelecimento
+        user: Usuário
+
       establishment:
+        id: Estabelecimento
         category: Categoria
         title: Título
         name: Nome
@@ -306,6 +318,7 @@ pt-BR:
       last_word_connector: " e "
       two_words_connector: " e "
       words_connector: ", "
+
   time:
     am: ''
     formats:
@@ -315,7 +328,13 @@ pt-BR:
     pm: ''
 
     formats:
+      day: "%d"
+      month_name: "%B"
+      week_day_name: "%A"
+
       default: "%d-%m-%Y"
       registred_at: "%d-%m-%Y %H:%M"
+      abbreviated: "%d-%m - %H:%M"
+      only_dates: "%d-%m-%Y"
       short: "%b %d"
       long: "%B %d, %Y"

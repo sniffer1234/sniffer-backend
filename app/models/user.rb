@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
+  before_create :set_default_values
+
   paginates_per 20
 
   enum :role => [ :default, :admin, :owner ]
@@ -44,6 +46,11 @@ class User < ApplicationRecord
   def self.by_name(search)
     return all if !search.present?
     where("name ILIKE ?", "%#{search}%")
+  end
+
+  private
+  def set_default_values
+    self.tokens = nil
   end
 
 end

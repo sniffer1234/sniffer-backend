@@ -87,7 +87,7 @@
       </thead>
       <tbody>
         <% @users.each do |user| %>
-          <tr class="<%= user.active ? 'table-danger' : '' %>">
+          <tr class="<%= !user.active ? 'table-danger' : '' %>">
             <td><%= user.name %></td>
             <td><%= t(user.role) %></td>
             <td><%= l(user.created_at, format: :registred_at) %></td>

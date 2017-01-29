@@ -1,0 +1,65 @@
+<div class="slats-container">
+  <form action="<%= admin_establishment_events_path %>">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            Busca
+          </div>
+          <input type="search" name="search" class="form-control" placeholder="Digite o nome do evento" value="<%= params[:search] %>">
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-3">
+        <div class="dropdown pull-right">
+          <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Ordenar
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item <%= filter_link_class(params, 'name', 'asc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'name', order_by_asc: 'asc') do %>
+                Nome ASC
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'name', 'desc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'name', order_by_asc: 'desc') do %>
+                Nome DESC
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'when', 'asc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'when', order_by_asc: 'asc') do %>
+                Data ASC
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'when', 'desc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'when', order_by_asc: 'desc') do %>
+                Data DESC
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'vip', 'desc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'vip', order_by_asc: 'desc') do %>
+                VIP
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'visible', 'desc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'visible', order_by_asc: 'desc') do %>
+                Não visíveis
+              <% end %>
+            </li>
+            <li class="dropdown-item <%= filter_link_class(params, 'aprooved', 'asc') %>">
+              <%= link_to admin_establishment_events_path(order_by_attr: 'aprooved', order_by_asc: 'asc') do %>
+                À aprovar
+              <% end %>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-item">
+              <a href="<%= admin_establishment_events_path %>">
+                Remover ordenação
+              </a>
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

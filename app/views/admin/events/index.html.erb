@@ -2,17 +2,21 @@
   <div class="page-title">
     <div class="clearfix">
       <div class="pull-left">
-        <h2>Eventos
+        <h3>Eventos em <%= @establishment.name %>
           <small>
             <%= @events.total_count %> eventos encontrados
           </small>
-        </h2>
+        </h3>
       </div>
       <div class="pull-right">
-        <a href="<%= new_admin_event_path %>" class="btn btn-success">
+        <%= link_to [:edit, :admin, @establishment], class: 'btn btn-info' do %>
+          <i class="fa fa-angle-left"></i>
+          Voltar
+        <% end %>
+        <%= link_to new_admin_establishment_event_path, class: 'btn btn-success' do %>
           <i class="fa fa-plus-square"></i>
           Novo
-        </a>
+        <% end %>
       </div>
     </div>
   </div>
@@ -25,8 +29,8 @@
           <th style="width: 5%;">Vip</th>
           <th style="width: 5%;">Visível</th>
           <th style="width: 5%;">Aprovado</th>
-          <th style="width: 30%;">Nome</th>
-          <th style="width: 30%;">Categoria</th>
+          <th style="width: 35%;">Nome</th>
+          <th style="width: 25%;">Quando</th>
           <th style="width: 15%;" colspan="2">
             Ações
           </th>
@@ -42,20 +46,22 @@
               <%= event.name %>
             </td>
             <td>
-              <% event.tags.each do |tag| %>
-                <span><%= t tag.alias %></span>
-              <% end %>
-              <% if event.tags.size == 0 %>
-                -
-              <% end %>
+              <%= l event.when, format: :abbreviated %>
             </td>
             <td colspan="2">
-              <%= link_to [:edit, :admin, event], class: 'btn btn-sm btn-info' do %>
+              <%= link_to [:edit, :admin, @establishment, event], class: 'btn btn-sm btn-info' do %>
                 <i class="fa fa-pencil"></i>
               <% end %>
-              <%= link_to [:admin, event], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+              <%= link_to [:admin, @establishment, event], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
                 <i class="fa fa-remove"></i>
               <% end %>
+            </td>
+          </tr>
+        <% end %>
+        <% if @events.size == 0 %>
+          <tr>
+            <td colspan="6">
+              <%= render "no_results" %>
             </td>
           </tr>
         <% end %>
@@ -65,5 +71,4 @@
       <%= paginate @events, :theme => 'twitter-bootstrap-4' %>
     </div>
   </div>
-
 </div>

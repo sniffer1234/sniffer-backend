@@ -21,16 +21,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :events, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
       resources :imgs, only: [:update, :destroy]
-      resources :events, only: [:create, :edit, :update]
+      
+      resources :events, only: [:index, :new, :create, :destroy, :edit, :update] do
+        resources :imgs, only: [:update, :destroy]
+      end
       resources :sniffs, only: [:destroy]
     end
     resources :imgs do
       put :sort, on: :collection
     end
-    
+
     resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :sniffs, only: [:index, :destroy]
   end

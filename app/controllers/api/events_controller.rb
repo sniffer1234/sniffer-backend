@@ -1,35 +1,16 @@
 class Api::EventsController < Api::BaseController
-  def index
-    e = {
-      data: [
-        {
-          id: 1,
-          name: 'Pato Loko',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          image: 'http://www.pilgrimageclubbingtours.com/Pacha1.jpg',
-          location: 'Rodovia Jornalista Maurício Sirotski Sobrinho, s/n - Jurerê Internacional, Florianópolis - SC, 88058-250',
-          establishmentID: 1
-        },
-        {
-          id: 2,
-          name: 'Fantasiarq',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          image: 'http://www.pilgrimageclubbingtours.com/Pacha1.jpg',
-          location: 'Rodovia Jornalista Maurício Sirotski Sobrinho, s/n - Jurerê Internacional, Florianópolis - SC, 88058-250',
-          establishmentID: 1
-        },
-        {
-          id: 3,
-          name: 'Betonada da Civil',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          image: 'http://www.pilgrimageclubbingtours.com/Pacha1.jpg',
-          location: 'Rodovia Jornalista Maurício Sirotski Sobrinho, s/n - Jurerê Internacional, Florianópolis - SC, 88058-250',
-          establishmentID: 1
-        }
-      ]
-    }
 
-    render json: e
+  def index
+    events_calendar = []
+    events_by_date = Event.group_by_date
+
+    events_by_date.each do |date, event|
+      event_item = EventCalendar.new(when: date)
+      event_item.events.push(event)
+      events_calendar.push(event_item)
+    end
+
+    render json: events_calendar, root: 'data'
   end
 
   def show
