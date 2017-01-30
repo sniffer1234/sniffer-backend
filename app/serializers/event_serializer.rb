@@ -1,7 +1,9 @@
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :name, :description,
              :starts_at, :ends_at, :no_time_to_end,
-             :start_time, :establishment_name, :cover, :when
+             :start_time, :cover, :when
+
+  has_one :establishment, serializer: ShortEstablishmentSerializer
 
   def start_time
     I18n.l(object.starts_at, format: :time)

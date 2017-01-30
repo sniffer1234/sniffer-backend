@@ -17,7 +17,7 @@ class Api::EventsController < Api::BaseController
   # GET /api/events/:id
   def show
     @event = Event.find(params[:id])
-    render json: @event
+    render json: @event, root: 'data'
   end
 
   # POST /api/events
