@@ -126,18 +126,18 @@ pt-BR:
     - Sáb
     abbr_month_names:
     -
-    - Jan
-    - Fev
-    - Mar
-    - Abr
-    - Mai
-    - Jun
-    - Jul
-    - Ago
-    - Set
-    - Out
-    - Nov
-    - Dez
+    - JAN
+    - FEV
+    - MAR
+    - ABR
+    - MAI
+    - JUN
+    - JUL
+    - AGO
+    - SET
+    - OUT
+    - NOV
+    - DEZ
     day_names:
     - Domingo
     - Segunda-feira
@@ -324,7 +324,7 @@ pt-BR:
   time:
     formats:
       day: "%d"
-      month_name: "%B"
+      month_name: "%b"
       week_day_name: "%A"
 
       default: "%d-%m-%Y"
