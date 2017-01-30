@@ -32,6 +32,14 @@ class Event < ApplicationRecord
     where("name ILIKE ?", "%#{search}%")
   }
 
+  def when
+    {
+      day: I18n.l(self.starts_at, format: :day),
+      month_name: I18n.l(self.starts_at, format: :month_name),
+      week_day_name: I18n.l(self.starts_at, format: :week_day_name),
+    }
+  end
+
   def establishment_name
     self.establishment.name
   end

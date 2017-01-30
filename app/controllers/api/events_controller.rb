@@ -1,5 +1,6 @@
 class Api::EventsController < Api::BaseController
 
+  # GET /api/events
   def index
     events_calendar = []
     events_by_date = Event.group_by_date
@@ -11,6 +12,12 @@ class Api::EventsController < Api::BaseController
     end
 
     render json: events_calendar, root: 'data'
+  end
+
+  # GET /api/events/:id
+  def show
+    @event = Event.find(params[:id])
+    render json: @event
   end
 
   # POST /api/events
@@ -29,10 +36,7 @@ class Api::EventsController < Api::BaseController
   end
 
   private
-
   def event_params
-    params.require(:event).permit(
-      :name, :phone, :suggestion_message
-    )
+    params.require(:event).permit(:name, :phone, :suggestion_message)
   end
 end
