@@ -12,10 +12,4 @@ class Api::EventsController < Api::BaseController
 
     render json: events_calendar, root: 'data'
   end
-
-  def show
-  end
-
-  def create
-  end
 end

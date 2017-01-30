@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
 
     resources :events, only: [:index, :show]
-    resources :establishments, only: [:index]
+    resources :establishments, only: [:index] do
+      member { get :events }
+    end
     resources :live, only: [:index]
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
@@ -21,10 +23,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
+    resources :events, only: [:index, :edit, :update, :destroy]
     resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
       resources :imgs, only: [:update, :destroy]
-      
-      resources :events, only: [:index, :new, :create, :destroy, :edit, :update] do
+
+      resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update] do
         resources :imgs, only: [:update, :destroy]
       end
       resources :sniffs, only: [:destroy]

@@ -1,0 +1,6 @@
+<%= f.input :vip, hint: 'Se selecionado, estabelecimento aparecerá sempre no topo' %>
+<%= f.input :visible, hint: 'Se não estiver selecionado, estabelecimento não irá ser exibido' %>
+
+<% if @event.aprooved == false %>
+  <%= f.input :aprooved %>
+<% end %>

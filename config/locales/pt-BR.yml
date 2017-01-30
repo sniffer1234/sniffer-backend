@@ -55,6 +55,7 @@ pt-BR:
 
       event:
         name: Nome
+        cover: Capa
         description: Descricao
         visible: Visível
         aprooved: Aprovado

@@ -1,6 +1,6 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :starts_at, :ends_at, :no_time_to_end, :start_time, :establishment_name
-  
+  attributes :id, :name, :description, :starts_at, :ends_at, :no_time_to_end, :start_time, :establishment_name, :cover
+
   def start_time
     I18n.l(object.starts_at, format: :time)
   end
@@ -11,6 +11,11 @@ class EventSerializer < ActiveModel::Serializer
 
   def ends_at
     I18n.l(object.starts_at, format: :abbreviated)
+  end
+
+  def cover
+    'teste'
+  #/  self.cover.url(:medium)
   end
 
 

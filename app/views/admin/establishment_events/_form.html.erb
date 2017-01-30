@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @establishment, event], html: { multipart: true } do |f| %>
+<%= simple_form_for [:admin, @establishment, 'establishment', event], html: { multipart: true } do |f| %>
   <% if event.errors.any? %>
     <div class="alert alert-warning">
       <div>

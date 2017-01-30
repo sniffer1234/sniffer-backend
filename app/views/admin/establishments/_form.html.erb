@@ -39,7 +39,7 @@
     </li>
     <% if @establishment.id %>
       <li class="nav-item">
-        <%= link_to [:admin, @establishment, :events], class: 'nav-link', role: 'tab' do %>
+        <%= link_to [:admin, @establishment, :establishment_events], class: 'nav-link', role: 'tab' do %>
           Eventos (<%= @establishment.events.size %>)
         <% end %>
       </li>

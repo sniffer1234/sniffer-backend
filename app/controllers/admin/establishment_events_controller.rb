@@ -1,4 +1,4 @@
-class Admin::EventsController < Admin::BaseController
+class Admin::EstablishmentEventsController < Admin::BaseController
   before_action :set_establishment
   before_action :set_event, only: [:destroy, :edit, :update]
 
@@ -42,7 +42,7 @@ class Admin::EventsController < Admin::BaseController
     @event = @establishment.events.build(event_params)
 
     if @event.save
-      redirect_to admin_establishment_events_path, notice: 'Evento criado com sucesso.'
+      redirect_to admin_establishment_establishment_events_path, notice: 'Evento criado com sucesso.'
     else
       render :new
     end
@@ -51,7 +51,7 @@ class Admin::EventsController < Admin::BaseController
   # PUT /admin/establishemnts/:establishment_id/events/:id
   def update
     if @event.update_attributes(event_params)
-      redirect_to admin_establishment_events_path, notice: 'Evento editado com sucesso.'
+      redirect_to admin_establishment_establishment_events_path, notice: 'Evento editado com sucesso.'
     else
       render :edit
     end
@@ -60,7 +60,7 @@ class Admin::EventsController < Admin::BaseController
   # DELETE /admin/establishemnts/:establishment_id/events/:id
   def destroy
     if @event.destroy
-      redirect_to admin_establishment_events_path, notice: 'Evento removido com sucesso.'
+      redirect_to admin_establishment_establishment_events_path, notice: 'Evento removido com sucesso.'
     end
   end
 

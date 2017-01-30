@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   before_save :set_to_time
 
+  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
   has_many :imgs, -> { order(:position) }, as: :imageable, dependent: :destroy
 
   belongs_to :user
@@ -8,10 +9,15 @@ class Event < ApplicationRecord
 
   accepts_nested_attributes_for :establishment, :imgs, allow_destroy: true
   validates_presence_of :name, :description, :starts_at
+  validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Events created by default users and not aprooved
   scope :pending, -> {
     where(aprooved: false).limit(5)
+  }
+
+  scope :to_happen, -> {
+    where("starts_at >= ?", Time.zone.now)
   }
 
   # Group events by date
@@ -45,5 +51,4 @@ class Event < ApplicationRecord
       self.ends_at = nil
     end
   end
-
 end

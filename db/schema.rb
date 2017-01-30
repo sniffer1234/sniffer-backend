@@ -69,19 +69,23 @@ ActiveRecord::Schema.define(version: 20170129143923) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "name",                             null: false
-    t.datetime "starts_at",                        null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "name",                               null: false
+    t.datetime "starts_at",                          null: false
     t.datetime "ends_at"
-    t.boolean  "no_time_to_end",   default: false
-    t.text     "description",                      null: false
+    t.boolean  "no_time_to_end",     default: false
+    t.text     "description",                        null: false
     t.string   "slug"
-    t.boolean  "vip",              default: false
-    t.boolean  "aprooved",         default: true
-    t.boolean  "visible",          default: true
+    t.boolean  "vip",                default: false
+    t.boolean  "aprooved",           default: true
+    t.boolean  "visible",            default: true
     t.integer  "establishment_id"
     t.integer  "user_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["establishment_id"], name: "index_events_on_establishment_id", using: :btree
     t.index ["name"], name: "index_events_on_name", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
