@@ -1,6 +1,8 @@
 class CreateEstablishments < ActiveRecord::Migration[5.0]
   def change
     create_table :establishments do |t|
+      t.attachment :cover
+      
       t.string :name, index: true, null: false
       t.text :description
       t.string :small_description

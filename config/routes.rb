@@ -25,11 +25,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :events, only: [:index, :edit, :update, :destroy]
     resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
-      resources :imgs, only: [:update, :destroy]
-
-      resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update] do
-        resources :imgs, only: [:update, :destroy]
-      end
+      resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update]
       resources :sniffs, only: [:destroy]
     end
     resources :imgs do

@@ -1,3 +1,7 @@
+<% if @establishment.cover %>
+    <%= image_tag @establishment.cover.url(:thumb) %>
+<% end %>
+<%= f.input :cover, as: :file %>
 <%= f.input :name %>
 <%= f.input :small_description, hint: 'Entre 30 à 150 carácteres', input_html: { rows: 6 } %>
 <%= f.input :description, hint: 'Entre 30 à 500 carácteres', input_html: { rows: 6 } %>

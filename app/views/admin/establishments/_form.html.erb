@@ -18,7 +18,7 @@
 
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-link <%= 'active' unless params[:show_img_tab].present? %>" data-toggle="tab" href="#form-basic" role="tab">
+    <a class="nav-link active" data-toggle="tab" href="#form-basic" role="tab">
         Dados básicos
       </a>
     </li>
@@ -30,11 +30,6 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">
         Visibilidade
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link <%= 'active' if params[:show_img_tab].present? %>" data-toggle="tab" href="#form-images" role="tab">
-        Imagens (<%= @establishment.imgs.size %>)
       </a>
     </li>
     <% if @establishment.id %>
@@ -57,9 +52,6 @@
     </div>
     <div class="tab-pane" id="form-address" role="tabpanel">
       <%= render 'form_address', f: f %>
-    </div>
-    <div class="tab-pane <%= 'active' if params[:show_img_tab].present? %>" id="form-images" role="tabpanel">
-      <%= render 'form_images', f: f %>
     </div>
     <div class="tab-pane" id="form-visibility" role="tabpanel">
       <%= render 'form_visibility', f: f %>

@@ -43,7 +43,11 @@ ActiveRecord::Schema.define(version: 20170129143923) do
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string   "name",                              null: false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "name",                               null: false
     t.text     "description"
     t.string   "small_description"
     t.string   "slug"
@@ -52,12 +56,12 @@ ActiveRecord::Schema.define(version: 20170129143923) do
     t.string   "phone"
     t.string   "site"
     t.string   "email"
-    t.boolean  "vip",               default: false
-    t.boolean  "aprooved",          default: true
-    t.boolean  "visible",           default: true
+    t.boolean  "vip",                default: false
+    t.boolean  "aprooved",           default: true
+    t.boolean  "visible",            default: true
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["name"], name: "index_establishments_on_name", using: :btree
     t.index ["user_id"], name: "index_establishments_on_user_id", using: :btree
   end

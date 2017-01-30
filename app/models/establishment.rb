@@ -5,19 +5,20 @@ class Establishment < ApplicationRecord
 
   before_validation :format_url
 
-  has_many :imgs, -> { order(:position) }, as: :imageable, dependent: :destroy
+  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+
   has_one :address, as: :addressable, dependent: :destroy
   has_many :sniffs, as: :sniffable, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :tags, dependent: :destroy
 
-  accepts_nested_attributes_for :imgs, :address, allow_destroy: true
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone
   validates_length_of :small_description, :in => 30..250
   validates_length_of :description, :in => 30..1500
-  attr_accessor :completed_address
+  validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   scope :pending, -> {
     where(aprooved: false).limit(5)
@@ -40,18 +41,8 @@ class Establishment < ApplicationRecord
     where("name ILIKE ?", "%#{search}%")
   end
 
-  def image
-    'http://leocoelho.com/website/wp-content/uploads/2012/12/Pacha-Floripa-reformada.jpg'
-  end
-
   def completed_address
     self.address.completed
-  end
-
-  def cover
-    {
-      source: if self.imgs.size > 0 then self.imgs.first.src.url(:medium) else "#{ ENV['S3_DEFAULT_PATH'] }/default/medium/missing.png" end
-    }
   end
 
   private
