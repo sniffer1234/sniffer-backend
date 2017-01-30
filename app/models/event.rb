@@ -19,6 +19,10 @@ class Event < ApplicationRecord
     all.where(aprooved: true).order(:starts_at).group_by{ |event| event.starts_at.to_date }
   }
 
+  def establishment_name
+    self.establishment.name
+  end
+
   # Search event by name
   # @param search - { String } - Name to be found
   def self.by_name(search)
