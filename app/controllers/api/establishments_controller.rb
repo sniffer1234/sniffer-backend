@@ -8,7 +8,7 @@ class Api::EstablishmentsController < Api::BaseController
 
   # GET /api/establishments/:id/events
   def events
-    @events = Event.all.where(establishment_id: params[:id]).page(params[:page] || 1)
+    @events = Event.by_establishment(params[:id]).page(params[:page] || 1)
     render json: @events, root: 'data', meta: pagination_dict(@events)
   end
 

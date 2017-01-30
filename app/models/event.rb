@@ -19,27 +19,21 @@ class Event < ApplicationRecord
     where("starts_at >= ?", Time.zone.now)
   }
 
-  # Group events by date
   scope :group_by_date, -> {
     where(aprooved: true).order(:starts_at).group_by{ |event| event.starts_at.to_date }
   }
 
-  def establishment_name
-    self.establishment.name
-  end
+  scope :by_establishment, -> (id) {
+    where(establishment_id: id, aprooved: true).order(:starts_at)
+  }
 
-  # Search event by name
-  # @param search - { String } - Name to be found
-  def self.by_name(search)
+  scope :by_name, -> (search) {
     return all if !search.present?
     where("name ILIKE ?", "%#{search}%")
-  end
+  }
 
-  # Search event by establishment id
-  # @param establishment - { Object } - establishment to filter
-  def self.by_establishment(establishment)
-    return all if !establishment.present?
-    where(establishment_id: establishment.id)
+  def establishment_name
+    self.establishment.name
   end
 
   private
