@@ -56,12 +56,14 @@ pt-BR:
       event:
         name: Nome
         description: Descricao
-        when: Data
         visible: Visível
         aprooved: Aprovado
         vip: VIP
         establishment: Estabelecimento
         user: Usuário
+        starts_at: Começa em
+        ends_at: Termina em
+        no_time_to_end: Sem hora para terminar
 
       establishment:
         id: Estabelecimento
@@ -320,13 +322,6 @@ pt-BR:
       words_connector: ", "
 
   time:
-    am: ''
-    formats:
-      default: "%a, %d de %B de %Y, %H:%M:%S %z"
-      long: "%d de %B de %Y, %H:%M"
-      short: "%d de %B, %H:%M"
-    pm: ''
-
     formats:
       day: "%d"
       month_name: "%B"
@@ -336,5 +331,5 @@ pt-BR:
       registred_at: "%d-%m-%Y %H:%M"
       abbreviated: "%d-%m - %H:%M"
       only_dates: "%d-%m-%Y"
-      short: "%b %d"
-      long: "%B %d, %Y"
+      short: "%d/%m - %H:%M"
+      long: "%B %d - %Y"

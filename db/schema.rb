@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20170129143923) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",                             null: false
-    t.date     "when",                             null: false
-    t.string   "from",                             null: false
-    t.string   "to",                               null: false
+    t.datetime "starts_at",                        null: false
+    t.datetime "ends_at"
+    t.boolean  "no_time_to_end",   default: false
     t.text     "description",                      null: false
     t.string   "slug"
     t.boolean  "vip",              default: false

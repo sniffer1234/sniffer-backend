@@ -1,5 +1,10 @@
 document.addEventListener('turbolinks:load', function(){
 
+  $('[data-mask]').each(function(key, el){
+    var $el = $(el)
+    $el.mask($el.data('mask'))
+  });
+
   $notice = $('.notice-container');
   window.setTimeout((function(){
     $notice.remove();

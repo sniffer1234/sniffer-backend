@@ -29,8 +29,9 @@
           <th style="width: 5%;">Vip</th>
           <th style="width: 5%;">Visível</th>
           <th style="width: 5%;">Aprovado</th>
-          <th style="width: 35%;">Nome</th>
-          <th style="width: 25%;">Quando</th>
+          <th style="width: 30%;">Nome</th>
+          <th style="width: 20%;">Início</th>
+          <th style="width: 20%;">Final</th>
           <th style="width: 15%;" colspan="2">
             Ações
           </th>
@@ -46,7 +47,10 @@
               <%= event.name %>
             </td>
             <td>
-              <%= l event.when, format: :abbreviated %>
+              <%= l event.starts_at, format: :short %>
+            </td>
+            <td>
+            <%= l event.ends_at, format: :short rescue 'Sem horário para terminar' %>
             </td>
             <td colspan="2">
               <%= link_to [:edit, :admin, @establishment, event], class: 'btn btn-sm btn-info' do %>

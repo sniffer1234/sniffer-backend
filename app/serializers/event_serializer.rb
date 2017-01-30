@@ -1,7 +1,11 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :when, :from, :to
+  attributes :id, :name, :description, :starts_at, :ends_at, :no_time_to_end
 
-  def when
-    I18n.l(object.when, format: :registred_at)
+  def starts_at
+    I18n.l(object.starts_at, format: :default)
+  end
+
+  def ends_at
+    I18n.l(object.starts_at, format: :default)
   end
 end
