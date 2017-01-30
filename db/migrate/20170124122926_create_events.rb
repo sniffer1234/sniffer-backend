@@ -3,6 +3,8 @@ class CreateEvents < ActiveRecord::Migration[5.0]
     create_table :events do |t|
       t.attachment :cover
 
+      t.text :suggestion_message
+
       t.string :name, index: true, null: false
       t.datetime :starts_at, null: false
       t.datetime :ends_at

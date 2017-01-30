@@ -1,6 +1,6 @@
 <div class="dashboard-page">
   <%= render "admin/shared/notice" %>
-  
+
   <div class="page-title">
     <div class="clearfix">
       <div class="pull-left">
@@ -137,12 +137,23 @@
           <table class="table">
             <thead>
               <tr>
-                <th style="width: 50%;">Nome</th>
+                <th style="width: 45%;">Nome</th>
                 <th style="width: 25%;">Usuário</th>
-                <th style="width: 25%;">Ações</th>
+                <th style="width: 30%;">Ações</th>
               </tr>
             </thead>
             <tbody>
+              <% @pending_establishments.each do |establishment| %>
+                <tr>
+                  <td><%= establishment.name %></td>
+                  <td><%= establishment.user.name rescue '-' %></td>
+                  <td>
+                    <%= link_to [:edit, :admin, establishment], class: 'btn btn-sm btn-info' do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
               <% if @pending_establishments.size == 0 %>
                 <tr>
                   <td colspan="3">
@@ -176,6 +187,17 @@
               </tr>
             </thead>
             <tbody>
+              <% @pending_events.each do |event| %>
+                <tr>
+                  <td><%= event.name %></td>
+                  <td><%= event.user.name rescue '-' %></td>
+                  <td>
+                    <%= link_to [:edit, :admin, event], class: 'btn btn-sm btn-info' do %>
+                      <i class="fa fa-pencil"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
               <% if @pending_events.size == 0 %>
                 <tr>
                   <td colspan="3">

@@ -4,6 +4,8 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.attachment :avatar
       t.attachment :cover
 
+      t.text :suggestion_message
+
       t.string :name, index: true, null: false
       t.text :description
       t.string :small_description

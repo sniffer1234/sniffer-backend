@@ -24,15 +24,17 @@ class Establishment < ApplicationRecord
   validates_presence_of :name, :small_description, :description, :phone
   validates_length_of :small_description, :in => 30..250
   validates_length_of :description, :in => 30..1500
+  validates_length_of :suggestion_message, maximum: 500, allow_blank: true
+
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   scope :pending, -> {
-    where(aprooved: false).limit(5)
+    all.where(aprooved: false).limit(5)
   }
 
   scope :available, -> {
-    where(visible: true, aprooved: true).order(:name)
+    all.where(visible: true, aprooved: true).order(:name)
   }
 
   # Search local by city name

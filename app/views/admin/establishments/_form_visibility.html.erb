@@ -3,4 +3,10 @@
 
 <% if @establishment.aprooved == false %>
   <%= f.input :aprooved %>
+  <% if @establishment.suggestion_message %>
+    <div class="alert alert-info">
+      <b>Mensagem do usuário:</b>
+      <%= @establishment.suggestion_message %>
+    </div>
+  <% end %>
 <% end %>

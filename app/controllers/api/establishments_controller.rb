@@ -12,4 +12,27 @@ class Api::EstablishmentsController < Api::BaseController
     render json: @events, root: 'data', meta: pagination_dict(@events)
   end
 
+  # POST /api/establishments
+  def create
+    # TODO - SET USER_ID
+    @establishment = Establishment.new(establishment_params)
+
+    # Necessary to filter
+    @establishment.aprooved = false
+
+    if @establishment.save(validate: false)
+      render json: {}
+    else
+      render json: { errors: @establishment.errors.full_messages }
+    end
+  end
+
+  private
+
+  def establishment_params
+    params.require(:establishment).permit(
+      :name, :phone, :suggestion_message
+    )
+  end
+
 end
