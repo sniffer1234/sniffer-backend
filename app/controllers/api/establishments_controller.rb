@@ -6,6 +6,12 @@ class Api::EstablishmentsController < Api::BaseController
     render json: @establishments, root: 'data', meta: pagination_dict(@establishments)
   end
 
+  # GET /api/establishments/:id
+  def show
+    @establishment = Establishment.find(params[:id])
+    render json: @establishment, root: 'data'
+  end
+
   # GET /api/establishments/:id/events
   def events
     @events = Event.by_establishment(params[:id]).page(params[:page] || 1)

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
 
     resources :events, only: [:index, :show]
-    resources :establishments, only: [:index, :create] do
+    resources :establishments, only: [:index, :show, :create] do
       member { get :events }
     end
     resources :live, only: [:index]
