@@ -323,10 +323,10 @@ pt-BR:
 
   time:
     formats:
+      time: "%H:%M"
       day: "%d"
       month_name: "%b"
       week_day_name: "%A"
-
       default: "%d-%m-%Y"
       registred_at: "%d-%m-%Y %H:%M"
       abbreviated: "%d-%m - %H:%M"
