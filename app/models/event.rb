@@ -37,6 +37,7 @@ class Event < ApplicationRecord
       day: I18n.l(self.starts_at, format: :day),
       month_name: I18n.l(self.starts_at, format: :month_name),
       week_day_name: I18n.l(self.starts_at, format: :week_day_name),
+      timing: "#{ I18n.l(self.starts_at, format: :timing_starts) }#{ I18n.l(self.ends_at, format: :timing_ends) rescue nil}",
     }
   end
 

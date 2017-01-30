@@ -327,6 +327,8 @@ pt-BR:
       time: "%H:%M"
       day: "%d"
       month_name: "%b"
+      timing_starts: "A partir das %H:%M"
+      timing_ends: " até %H:%M"
       week_day_name: "%A"
       default: "%d-%m-%Y"
       registred_at: "%d-%m-%Y %H:%M"
