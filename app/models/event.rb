@@ -21,7 +21,7 @@ class Event < ApplicationRecord
 
   # Group events by date
   scope :group_by_date, -> {
-    all.where(aprooved: true).order(:starts_at).group_by{ |event| event.starts_at.to_date }
+    where(aprooved: true).order(:starts_at).group_by{ |event| event.starts_at.to_date }
   }
 
   def establishment_name

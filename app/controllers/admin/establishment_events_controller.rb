@@ -76,7 +76,7 @@ class Admin::EstablishmentEventsController < Admin::BaseController
   def event_params
     params.require(:event).permit(
       :name, :description, :when,
-      :images, :vip, :aprooved,
+      :images, :vip, :aprooved, :cover,
       :visible, :starts_at, :ends_at, :no_time_to_end
     ).merge(user_id: @current_user.id)
   end
