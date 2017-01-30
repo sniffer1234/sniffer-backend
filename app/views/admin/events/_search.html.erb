@@ -26,13 +26,13 @@
                 Nome DESC
               <% end %>
             </li>
-            <li class="dropdown-item <%= filter_link_class(params, 'when', 'asc') %>">
-              <%= link_to admin_events_path(order_by_attr: 'when', order_by_asc: 'asc') do %>
+            <li class="dropdown-item <%= filter_link_class(params, 'starts_at', 'asc') %>">
+              <%= link_to admin_events_path(order_by_attr: 'starts_at', order_by_asc: 'asc') do %>
                 Data ASC
               <% end %>
             </li>
-            <li class="dropdown-item <%= filter_link_class(params, 'when', 'desc') %>">
-              <%= link_to admin_events_path(order_by_attr: 'when', order_by_asc: 'desc') do %>
+            <li class="dropdown-item <%= filter_link_class(params, 'starts_at', 'desc') %>">
+              <%= link_to admin_events_path(order_by_attr: 'starts_at', order_by_asc: 'desc') do %>
                 Data DESC
               <% end %>
             </li>
