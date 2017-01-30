@@ -5,7 +5,9 @@ class Establishment < ApplicationRecord
 
   before_validation :format_url
 
-  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+  has_attached_file :cover,
+    styles: { medium: "300x300>", thumb: "100x100>" },
+    default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   has_one :address, as: :addressable, dependent: :destroy
   has_many :sniffs, as: :sniffable, dependent: :destroy
