@@ -5,6 +5,10 @@ class Establishment < ApplicationRecord
 
   before_validation :format_url
 
+  has_attached_file :avatar,
+    styles: { default: "40x40>" },
+    default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+
   has_attached_file :cover,
     styles: { medium: "300x300>", thumb: "100x100>" },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
@@ -21,6 +25,7 @@ class Establishment < ApplicationRecord
   validates_length_of :small_description, :in => 30..250
   validates_length_of :description, :in => 30..1500
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   scope :pending, -> {
     where(aprooved: false).limit(5)
