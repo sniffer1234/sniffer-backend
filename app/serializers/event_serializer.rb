@@ -13,10 +13,4 @@ class EventSerializer < ActiveModel::Serializer
     I18n.l(object.starts_at, format: :abbreviated)
   end
 
-  def cover
-    'teste'
-  #/  self.cover.url(:medium)
-  end
-
-
 end
