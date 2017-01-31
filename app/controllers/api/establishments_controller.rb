@@ -2,7 +2,7 @@ class Api::EstablishmentsController < Api::BaseController
 
   # GET /api/establishments
   def index
-    @establishments = Establishment.page(params[:page] || 1)
+    @establishments = Establishment.by_name(params[:search]).page(params[:page] || 1)
     render json: @establishments, root: 'data', meta: pagination_dict(@establishments)
   end
 

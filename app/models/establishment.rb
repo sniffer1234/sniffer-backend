@@ -37,17 +37,15 @@ class Establishment < ApplicationRecord
     all.where(visible: true, aprooved: true).order(:name)
   }
 
+  scope :by_name, -> (search) {
+    return all if !search.present?
+    where("name ILIKE ?", "%#{search}%")
+  }
+
   # Search local by city name
   # @param params - { Hash } - Hash params
   def self.by_city(params)
     includes(:address).where(addresses: { city_id: params[:city_id] })
-  end
-
-  # Search local by name
-  # @param search - { String } - Name to be found
-  def self.by_name(search)
-    return all if !search.present?
-    where("name ILIKE ?", "%#{search}%")
   end
 
   def completed_address
