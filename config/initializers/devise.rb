@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@snifferapp.com'
+  config.mailer_sender = 'contato@snifferapp.com'
   config.secret_key = '479c40780daa8b08f448f58f32b6e0fb0efd2001d216c02a474054e37aefe5381ecba27aab4f636c96276fe1a4402163960f5fb31f72f77e41131e3b17bfb0f9'
 
   # Configure the class responsible to send e-mails.
@@ -27,7 +27,7 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
   require './lib/devise_failure'
-  
+
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -50,6 +50,7 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [:email]
+  config.http_authenticatable = true
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
@@ -108,7 +109,7 @@ Devise.setup do |config|
   # config.pepper = '21baf43d30d02ac3b9eae705389e1706e72e56ff1c4b5e34d155a00fa5094d1a082e2a4629f1537d29b21a01cb1ecc6eeced821566e598eaf85ad0f8644eea9c'
 
   # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -254,6 +255,10 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  config.warden do |manager|
+    manager.intercept_401 = true
+    manager.failure_app = DeviseFailure
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

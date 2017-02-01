@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129143923) do
+ActiveRecord::Schema.define(version: 20170201161748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 20170129143923) do
     t.datetime "updated_at",       null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
     t.index ["city_id"], name: "index_addresses_on_city_id", using: :btree
+  end
+
+  create_table "authentications", force: :cascade do |t|
+    t.string   "token",      null: false
+    t.datetime "expiration", null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_authentications_on_token", using: :btree
+    t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
   end
 
   create_table "cities", force: :cascade do |t|
@@ -101,6 +111,15 @@ ActiveRecord::Schema.define(version: 20170129143923) do
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
+  end
+
   create_table "imgs", force: :cascade do |t|
     t.string   "label"
     t.string   "src_file_name",    null: false
@@ -113,6 +132,17 @@ ActiveRecord::Schema.define(version: 20170129143923) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["imageable_type", "imageable_id"], name: "index_imgs_on_imageable_type_and_imageable_id", using: :btree
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "var",         null: false
+    t.text     "value"
+    t.string   "target_type", null: false
+    t.integer  "target_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true, using: :btree
+    t.index ["target_type", "target_id"], name: "index_settings_on_target_type_and_target_id", using: :btree
   end
 
   create_table "sniffs", force: :cascade do |t|
@@ -151,38 +181,33 @@ ActiveRecord::Schema.define(version: 20170129143923) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "provider",               default: "email", null: false
-    t.string   "uid",                    default: "",      null: false
-    t.string   "encrypted_password",     default: "",      null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,       null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name",                                     null: false
+    t.string   "name"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "email",                                    null: false
     t.string   "cellphone"
-    t.integer  "role",                   default: 0,       null: false
+    t.integer  "role",                   default: 0
     t.integer  "sniffs_count",           default: 0
     t.boolean  "active",                 default: true
-    t.json     "tokens"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
 end

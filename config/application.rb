@@ -13,17 +13,6 @@ module SnifferBackend
     # Default locales
     config.i18n.default_locale = :'pt-BR'
 
-    # Enable CORS
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-          :headers => :any,
-          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-          :methods => [:get, :post, :options, :delete, :put]
-      end
-    end
-
     # AWS settings
     config.paperclip_defaults = {
       storage: :s3,
@@ -36,5 +25,6 @@ module SnifferBackend
         secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
       }
     }
+
   end
 end

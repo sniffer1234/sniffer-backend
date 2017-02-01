@@ -2,10 +2,19 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
+  scope '/api' do
+    devise_for :users, path: 'auth',
+      :controllers => {
+        :sessions => 'api/devise/sessions',
+        :registrations => 'api/devise/registrations',
+        :passwords => 'api/devise/passwords',
+        :confirmations => 'api/devise/confirmations',
+        :omniauth_callbacks => 'api/devise/omniauth_callbacks'
+      }
+  end
+
   # Api routes
   namespace :api, defaults: { format: 'json' } do
-    mount_devise_token_auth_for 'User', at: 'auth'
-
     resources :events, only: [:index, :show]
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }
@@ -14,12 +23,14 @@ Rails.application.routes.draw do
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
     resources :zipcode, only: [:index]
+    match '/me' => 'me#update', via: :put
+    match '/me/password' => 'me#update_password', via: :put
   end
 
   # Admin routes
-  scope '/admin' do
-    devise_for :users, path: 'auth'
-  end
+  # scope '/admin' do
+  #   devise_for :users, path: 'auth'
+  # end
 
   namespace :admin do
     resources :dashboard, only: [:index]

@@ -13,7 +13,7 @@ gem 'figaro'
 gem 'puma', '~> 3.0'
 
 # Enable cors
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors'
 
 # Front
 gem 'sprockets-rails'
@@ -35,8 +35,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Authentication
 gem 'devise'
 gem 'omniauth'
-gem 'devise_token_auth'
 gem 'omniauth-facebook'
+gem 'ledermann-rails-settings'
 
 
 # JSON
