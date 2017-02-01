@@ -8,7 +8,7 @@ class Api::Devise::ConfirmationsController < Devise::ConfirmationsController
     # Necessário para gerar um authentication token
     resource.after_database_authentication
 
-    unlessresource.errors.empty?
+    unless resource.errors.empty?
       return render :json => { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
     end
 
@@ -27,10 +27,10 @@ class Api::Devise::ConfirmationsController < Devise::ConfirmationsController
     yield resource if block_given?
 
     unless successfully_sent?(resource)
-      render json: { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
-    else
-      render json: {}
+      return render json: { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
     end
+
+    render json: {}
   end
 
 end
