@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
-  scope '/api', defaults: { format: 'json' } do
+  scope '/api' do
     devise_for :users, path: 'auth',
       :controllers => {
         :sessions => 'api/devise/sessions',
