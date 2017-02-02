@@ -56,10 +56,9 @@ class User < ApplicationRecord
     where("name ILIKE ?", "%#{search}%")
   }
 
-  # Extend warden search
-  scope :find_for_authentication, -> (warden_conditions) {
+  def find_for_authentication(warden_conditions)
     find_by(email: warden_conditions[:email])
-  }
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
