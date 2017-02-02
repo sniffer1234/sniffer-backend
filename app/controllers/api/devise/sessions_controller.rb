@@ -1,10 +1,5 @@
 class Api::Devise::SessionsController < Devise::SessionsController
   respond_to :json, :html
-
-  def new
-    render json: {}
-  end
-
   def create
     self.resource = warden.authenticate!(auth_options)
     sign_in(resource_name, resource)
