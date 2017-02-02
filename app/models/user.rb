@@ -150,7 +150,7 @@ class User < ApplicationRecord
   end
 
   def set_avatar
-    if self.avatar_data
+    unless self.avatar_data.blank?
       self.avatar = self.avatar_data
       self.avatar_file_name = "file.jpeg"
       self.avatar_content_type = "image/jpeg"
