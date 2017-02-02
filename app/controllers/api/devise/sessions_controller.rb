@@ -1,5 +1,5 @@
 class Api::Devise::SessionsController < Devise::SessionsController
-  respond_to :json
+  respond_to :json, :html
 
   def create
     self.resource = warden.authenticate!(auth_options)
