@@ -24,7 +24,7 @@ class User < ApplicationRecord
    # Valdations
   validates :name, :email, presence: true
   validates :role, inclusion: { in: %w(default admin owner) }
-  validates_attachment :avatar, presence: true, content_type: { content_type: ["image/jpg", "image/jpeg", "image/jpg"] }, size: { in: 0..10.megabytes }
+  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/jpg"] }, size: { in: 0..10.megabytes }
 
 
   # Relations
