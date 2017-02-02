@@ -25,7 +25,7 @@ class Api::MeController < Api::BaseController
   def user_params
     params.require(:user)
       .permit(
-        :name, :phone, :cellphone, :avatar_data,
+        :name, :phone, :cellphone, :avatar_url,
         :avatar, :password, :password_confirmation,
         :email_notification, :push_notification
       )

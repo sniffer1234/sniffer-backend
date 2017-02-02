@@ -36,8 +36,8 @@ class User < ApplicationRecord
 
   enum role: [ :default, :admin, :owner ]
 
-  attr_accessor :auto_password, :email_notification, :push_notification,
-                :avatar_data
+  attr_accessor :auto_password, :email_notification,
+                :push_notification, :avatar_url
 
 
   # Find last 5 users registred
@@ -149,8 +149,8 @@ class User < ApplicationRecord
   end
 
   def set_avatar
-    unless self.avatar_data.blank?
-      self.avatar = self.avatar_data
+    unless self.avatar_url.blank?
+      self.avatar = "data:image/jpeg;base64,#{ Base64.encode64(self.avatar_url) }"
       self.avatar_file_name = "file.jpeg"
       self.avatar_content_type = "image/jpeg"
     end
