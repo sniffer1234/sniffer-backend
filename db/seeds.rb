@@ -20,12 +20,12 @@ states.each do |s|
 end
 
 #Users
-u = User.new(email: 'rafaelmotta021@gmail.com', password: 'galera07', name: 'Rafael Motta', role: 'admin')
+u = User.new(email: 'rafaelmotta021@gmail.com', password: 'galera07', password_confirmation: 'galera07', name: 'Rafael Motta', role: 'admin')
 u.skip_confirmation!
 u.save
 
 
-u = User.new(email: 'juliano@sfhera.com.br', password: 'juliano1', name: 'Juliano Londero', role: 'admin')
+u = User.new(email: 'juliano@sfhera.com.br', password: 'juliano1', password_confirmation: 'galera07', name: 'Juliano Londero', role: 'admin')
 u.skip_confirmation!
 u.save
 
