@@ -5,10 +5,9 @@ class User < ApplicationRecord
     s.key :notifications, defaults: { email: false, push: true }
   end
 
+  # Callbacks
   before_validation :generate_password
-
-  enum role: [ :default, :admin, :owner ]
-  attr_accessor :auto_password, :email_notification, :push_notification
+  before_validation :set_avatar
 
   # Third part
   paginates_per 20
@@ -25,7 +24,8 @@ class User < ApplicationRecord
    # Valdations
   validates :name, :email, presence: true
   validates :role, inclusion: { in: %w(default admin owner) }
-  validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  validates_attachment :avatar, presence: true, content_type: { content_type: ["image/jpg", "image/jpeg", "image/jpg"] }, size: { in: 0..10.megabytes }
+
 
   # Relations
   has_many :authentications
@@ -34,25 +34,32 @@ class User < ApplicationRecord
   has_many :events
   has_many :establishments
 
-  # Scopes
+  enum role: [ :default, :admin, :owner ]
+
+  attr_accessor :auto_password, :email_notification, :push_notification,
+                :avatar_data
+
+
+  # Find last 5 users registred
   scope :newest, -> {
     order(created_at: :desc).limit(5)
   }
 
+  # Find most active users
   scope :activers, -> {
     order(sign_in_count: :desc, sniffs_count: :desc).limit(5)
   }
 
+  # Find user by name
   scope :by_name, -> (search) {
     return all if !search.present?
     where("name ILIKE ?", "%#{search}%")
   }
 
-  # Extende a busca pelo user no banco
-  # @param warden_conditions - { Hash } - Objeto do gem Warden
-  def self.find_for_authentication(warden_conditions)
+  # Extend warden search
+  scope :find_for_authentication, -> (warden_conditions) {
     find_by(email: warden_conditions[:email])
-  end
+  }
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
@@ -93,17 +100,14 @@ class User < ApplicationRecord
     user
   end
 
-  # Retorna o authentication_token atual
   def authentication_token
     current_authentication.token if self.current_authentication
   end
 
-  # Busca o authentication atual
   def current_authentication
     authentication = self.authentications.last
   end
 
-  # Expira token
   def expire!
     Authentication.expire!(self.current_authentication.id)
   end
@@ -123,13 +127,19 @@ class User < ApplicationRecord
     }
   end
 
-  # def facebook_avatar
-  #   facebook_identity = self.identities.find_by(provider: "facebook")
-  #   return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?type=large" if facebook_identity
-  #   nil
-  # end
+  def facebook_identity
+    self.identities.find_by(provider: "facebook")
+  end
 
-  private
+  def facebook_avatar
+    facebook_identity = self.facebook_identity
+
+    if facebook_identity
+      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?type=large"
+    end
+  end
+
+  protected
 
   # Gera senha de forma automatica
   def generate_password
@@ -139,4 +149,11 @@ class User < ApplicationRecord
     end
   end
 
+  def set_avatar
+    if self.avatar_data
+      self.avatar = self.avatar_data
+      self.avatar_file_name = "file.jpeg"
+      self.avatar_content_type = "image/jpeg"
+    end
+  end
 end

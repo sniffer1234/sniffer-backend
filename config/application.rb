@@ -13,6 +13,8 @@ module SnifferBackend
     # Default locales
     config.i18n.default_locale = :'pt-BR'
 
+    
+
     # AWS settings
     config.paperclip_defaults = {
       storage: :s3,
