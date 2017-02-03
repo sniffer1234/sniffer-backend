@@ -1,10 +1,10 @@
 class Api::Devise::SessionsController < Devise::SessionsController
-  respond_to :json
+  respond_to :json, :html
 
   def create
     puts '------ 1 ----'
     puts '------ 1 ----'
-    
+
     self.resource = warden.authenticate!(auth_options)
     puts '------ 2 ----'
     puts '------ 2 ----'
