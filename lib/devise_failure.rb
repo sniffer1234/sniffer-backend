@@ -6,6 +6,7 @@ class DeviseFailure < Devise::FailureApp
     self.content_type = 'application/json'
 
     response = if http_auth? then JSON.parse(http_auth)['error'] else http_auth end
+      
     response_body = {
       :error => {
         :description => response,

@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   #root :to => redirect('admin/dashboard')
 
-  # Api routes
-  namespace :api, defaults: { format: 'json' } do
+  scope '/api' do
     devise_for :users, path: 'auth',
       controllers: {
         sessions: 'api/devise/sessions',
@@ -12,7 +11,10 @@ Rails.application.routes.draw do
         confirmations: 'api/devise/confirmations',
         omniauth_callbacks: 'api/devise/omniauth_callbacks'
       }
-      
+  end
+
+  # Api routes
+  namespace :api, defaults: { format: 'json' } do
     resources :events, only: [:index, :show]
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }
