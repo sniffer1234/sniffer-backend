@@ -17,6 +17,7 @@ class User < ApplicationRecord
          :trackable, :validatable, :omniauthable
 
   has_attached_file :avatar, styles: {
+    large: '600x600#',
     medium: '300x300#',
     thumb: '150x150#'
    }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
