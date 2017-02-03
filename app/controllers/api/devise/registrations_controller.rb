@@ -1,5 +1,4 @@
 class Api::Devise::RegistrationsController < Devise::RegistrationsController
-  respond_to :json, :html
   before_action :configure_devise_permitted_parameters
 
   def configure_devise_permitted_parameters
