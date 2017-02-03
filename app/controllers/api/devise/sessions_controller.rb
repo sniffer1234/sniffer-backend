@@ -1,6 +1,9 @@
 class Api::Devise::SessionsController < Devise::SessionsController
   respond_to :json, :html
   def create
+    puts '=== - '
+    puts '=== - '
+
     self.resource = warden.authenticate!(auth_options)
     puts '=== 1 '
     sign_in(resource_name, resource)
