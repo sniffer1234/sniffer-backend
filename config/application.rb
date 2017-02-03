@@ -10,12 +10,8 @@ Bundler.require(*Rails.groups)
 module SnifferBackend
   class Application < Rails::Application
 
-    config.web_console.whitelisted_ips = '192.168.15.3'
-
     # Default locales
     config.i18n.default_locale = :'pt-BR'
-
-
 
     # AWS settings
     config.paperclip_defaults = {
