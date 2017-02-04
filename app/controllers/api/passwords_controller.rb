@@ -1,5 +1,7 @@
 class Api::PasswordsController < Devise::PasswordsController
 
+  skip_before_filter :require_no_authentication
+  
   # POST /resource/password/new
   def create
     @user = User.where.not(confirmed_at: nil).find_by(:email => resource_params[:email])
@@ -33,5 +35,11 @@ class Api::PasswordsController < Devise::PasswordsController
     end
 
     render json: {}
+  end
+
+  private
+  def authenticate_account!(opts={})
+    opts[:scope] = :account
+    warden.authenticate!(opts)
   end
 end

@@ -1,4 +1,6 @@
 class Api::RegistrationsController < Devise::RegistrationsController
+
+  skip_before_filter :require_no_authentication
   before_action :configure_devise_permitted_parameters
 
   def configure_devise_permitted_parameters
@@ -40,5 +42,11 @@ class Api::RegistrationsController < Devise::RegistrationsController
     end
 
     return render json: {}
+  end
+
+  private
+  def authenticate_account!(opts={})
+    opts[:scope] = :account
+    warden.authenticate!(opts)
   end
 end
