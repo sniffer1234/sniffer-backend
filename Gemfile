@@ -18,7 +18,6 @@ gem 'rack-cors'
 # Front
 gem 'sprockets-rails'
 gem 'sprockets', '>= 3.0.0'
-#gem 'sprockets-es6'
 
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5.0.0'
@@ -34,8 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Authentication
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
+# gem 'omniauth'
+# gem 'omniauth-facebook'
+gem 'koala', '~> 2.2'
 gem 'ledermann-rails-settings'
 
 

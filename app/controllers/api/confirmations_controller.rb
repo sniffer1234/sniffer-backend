@@ -1,4 +1,4 @@
-class Api::Devise::ConfirmationsController < Devise::ConfirmationsController
+class Api::ConfirmationsController < Devise::ConfirmationsController
 
 # GET /resource/confirmation?confirmation_token=abcdef
   def show

@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :confirmable, :recoverable, :rememberable,
-         :trackable, :validatable, :omniauthable
+         :trackable, :validatable
 
   has_attached_file :avatar, styles: {
     large: '600x600#',
@@ -60,41 +60,36 @@ class User < ApplicationRecord
     find_by(email: warden_conditions[:email])
   end
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
+  def self.find_for_oauth(auth)
+
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
-
-    # If a signed_in_resource is provided it always overrides the existing user
-    # to prevent the identity being locked with accidentally created accounts.
-    # Note that this may leave zombie accounts (with no associated identity) which
-    # can be cleaned up at a later date.
     user = identity.user
 
     # Create the costumer if needed
     if user.nil?
-
-      email = auth.info.email
-      user = User.where(email: email).first if email
+      user = User.find_by(email: auth[:email]) rescue nil
 
       # Create the user if it's a new registration
       if user.nil?
-
         user = User.new(
-          name: auth.extra.raw_info.name,
-          email: email,
+          name: auth[:name],
+          email: auth[:email],
           auto_password: true
         )
 
-        # Não é necessário confirmar a conta (padrao é)
-        user.skip_confirmation!
+        if auth[:manual_email]
+          user.skip_confirmation!
+        end
+
         user.save!
       end
     end
 
-
-    # Associa com o usuário
-    identity.user = user
-    identity.save!
+    if identity.user.nil?
+      identity.user = user
+      identity.save!
+    end
 
     user
   end

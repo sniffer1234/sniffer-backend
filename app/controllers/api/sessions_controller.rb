@@ -1,4 +1,4 @@
-class Api::Devise::SessionsController < Devise::SessionsController
+class Api::SessionsController < Devise::SessionsController
   respond_to :json
 
   skip_before_filter :require_no_authentication
@@ -13,7 +13,7 @@ class Api::Devise::SessionsController < Devise::SessionsController
   private
   def authenticate_account!(opts={})
     opts[:scope] = :account
-    warden.authenticate!(opts) 
+    warden.authenticate!(opts)
   end
 
 end

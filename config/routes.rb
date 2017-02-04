@@ -2,13 +2,12 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
-  devise_for :users, path: 'api/auth',
+  devise_for :users, path: 'api',
     controllers: {
-      sessions: 'api/devise/sessions',
-      registrations: 'api/devise/registrations',
-      passwords: 'api/devise/passwords',
-      confirmations: 'api/devise/confirmations',
-      omniauth_callbacks: 'api/devise/omniauth_callbacks'
+      sessions: 'api/sessions',
+      registrations: 'api/registrations',
+      passwords: 'api/passwords',
+      confirmations: 'api/confirmations'
     }
 
   # Api routes
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
     resources :zipcode, only: [:index]
+    resources :facebook, only: [:index]
     match '/me' => 'me#update', via: :put
     match '/me/password' => 'me#update_password', via: :put
   end

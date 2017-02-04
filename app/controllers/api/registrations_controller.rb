@@ -1,4 +1,4 @@
-class Api::Devise::RegistrationsController < Devise::RegistrationsController
+class Api::RegistrationsController < Devise::RegistrationsController
   before_action :configure_devise_permitted_parameters
 
   def configure_devise_permitted_parameters

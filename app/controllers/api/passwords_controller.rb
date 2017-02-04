@@ -1,4 +1,4 @@
-class Api::Devise::PasswordsController < Devise::PasswordsController
+class Api::PasswordsController < Devise::PasswordsController
 
   # POST /resource/password/new
   def create
