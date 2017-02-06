@@ -78,9 +78,7 @@ class User < ApplicationRecord
           auto_password: true
         )
 
-        if auth[:manual_email]
-          user.skip_confirmation!
-        end
+        user.skip_confirmation!
 
         user.save!
       end
@@ -119,18 +117,6 @@ class User < ApplicationRecord
       email: self.settings(:notifications).email,
       push: self.settings(:notifications).push
     }
-  end
-
-  def facebook_identity
-    self.identities.find_by(provider: "facebook")
-  end
-
-  def facebook_avatar
-    facebook_identity = self.facebook_identity
-
-    if facebook_identity
-      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?type=large"
-    end
   end
 
   protected

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :sniffs, only: [:index]
     resources :tags, only: [:index]
     resources :zipcode, only: [:index]
-    resources :facebook, only: [:index]
+    resources :facebook, only: [:create]
     match '/me' => 'me#update', via: :put
     match '/me/password' => 'me#update_password', via: :put
   end

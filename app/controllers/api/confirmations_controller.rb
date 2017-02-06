@@ -30,7 +30,7 @@ class Api::ConfirmationsController < Devise::ConfirmationsController
       return render json: { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
     end
 
-    render json: {}
+    render json: resource, root: 'data'
   end
 
 end
