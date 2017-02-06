@@ -8,6 +8,10 @@ class Api::FacebookController < ApplicationController
       email: params[:email]
     })
 
+    if @current_user.sign_in_count == 0
+      OauthMailer.welcome(@current_user).deliver_now
+    end
+
     sign_in(:user, @current_user)
     @current_user.after_database_authentication
 
