@@ -2,15 +2,16 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
-  devise_for :users, path: 'api',
-    controllers: {
-      sessions: 'api/sessions',
-      registrations: 'api/registrations',
-      passwords: 'api/passwords',
-      confirmations: 'api/confirmations'
-    }
-
-  # Api routes
+  # Api
+  # Necessary to use devise_scope to avoid route conflicts
+  devise_scope :user do
+    match "/api/sign_in" => 'api/sessions#create', via: :post
+    match "/api/sign_up" => 'api/registrations#create', via: :post
+    match "/api/password" => 'api/passwords#create', via: :post
+    match "/api/password" => 'api/passwords#update', via: :put
+    match "/api/confirmation" => 'api/confirmations#show', via: :get
+  end
+  
   namespace :api, defaults: { format: 'json' } do
     resources :events, only: [:index, :show]
     resources :establishments, only: [:index, :show, :create] do
@@ -25,23 +26,19 @@ Rails.application.routes.draw do
     match '/me/password' => 'me#update_password', via: :put
   end
 
-  # Admin routes
-  # scope '/admin' do
-  #   devise_for :users, path: 'auth'
-  # end
-
-  # namespace :admin do
-  #   resources :dashboard, only: [:index]
-  #   resources :events, only: [:index, :edit, :update, :destroy]
-  #   resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
-  #     resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update]
-  #     resources :sniffs, only: [:destroy]
-  #   end
-  #   resources :imgs do
-  #     put :sort, on: :collection
-  #   end
-  #
-  #   resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
-  #   resources :sniffs, only: [:index, :destroy]
-  # end
+  # Admin
+  devise_for :users, path: '/admin/users'
+  namespace :admin do
+    resources :dashboard, only: [:index]
+    resources :events, only: [:index, :edit, :update, :destroy]
+    resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
+      resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update]
+      resources :sniffs, only: [:destroy]
+    end
+    resources :imgs do
+      put :sort, on: :collection
+    end
+    resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
+    resources :sniffs, only: [:index, :destroy]
+  end
 end

@@ -48,10 +48,6 @@ class Establishment < ApplicationRecord
     includes(:address).where(addresses: { city_id: params[:city_id] })
   end
 
-  def completed_address
-    self.address.completed
-  end
-
   private
   def format_url
     ['site', 'facebook', 'instagram'].each do |attr|
