@@ -11,4 +11,8 @@ class Tag < ApplicationRecord
   belongs_to :establishment
   validates_presence_of :establishment, :alias
 
+  def name
+    I18n.t(self.alias)
+  end
+
 end

@@ -4,6 +4,8 @@ class EstablishmentSerializer < ActiveModel::Serializer
             :site, :facebook, :instagram,
              :vip, :cover, :avatar, :address
 
+  has_one :tags, serializer: TagSerializer
+
   def address
     object.address.completed
   end

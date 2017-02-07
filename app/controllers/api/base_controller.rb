@@ -1,9 +1,9 @@
 class Api::BaseController < ApplicationController
 
-  before_action :authenticate_user_from_token!
-  before_action :authenticate_user!
-  before_action :token_expired!
-  before_action :renew_token
+#  before_action :authenticate_user_from_token!
+#  before_action :authenticate_user!
+#  before_action :token_expired!
+#  before_action :renew_token
 
   def pagination_dict(object, extra_meta = {})
     {

@@ -38,8 +38,13 @@ class Establishment < ApplicationRecord
   }
 
   scope :by_name, -> (search) {
-    return all if !search.present?
+    return all unless search.present?
     where("name ILIKE ?", "%#{search}%")
+  }
+
+  scope :by_tags, -> (tags) {
+    return all unless tags.present?
+    joins(:tags).where(tags: { alias: [tags.split(',')]})
   }
 
   # Search local by city name

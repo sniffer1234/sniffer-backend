@@ -2,8 +2,16 @@ class User < ApplicationRecord
   include TokenHelper
 
   has_settings do |s|
-    s.key :notifications, defaults: { email: false, push: true }
+    s.key :notifications, defaults: {
+      email: false,
+      push: true
+    }
   end
+
+  enum :alias => [ :restaurant, :event, :beverage_distributor,
+    :bar, :nightclub, :pizzaria, :steak_house,
+    :pastry_chop, :japanese, :lunch, :dinner, :arabic
+  ]
 
   # Callbacks
   before_validation :generate_password
