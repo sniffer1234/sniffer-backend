@@ -12,7 +12,7 @@ class Api::FacebookController < ApplicationController
       OauthMailer.welcome(@current_user).deliver_now
     end
 
-    sign_in(:user, @current_user)
+    sign_in(:user, @current_user, store: false)
     @current_user.after_database_authentication
 
     render json: @current_user, root: 'data'

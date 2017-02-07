@@ -28,7 +28,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
 
       # Criado com sucesso, nao precisa de confirmação
       if resource.active_for_authentication?
-        sign_up(resource_name, resource)
+        sign_up(resource_name, resource, store: false)
       else
 
         # Conta criada com sucesso, necessita fazer confirmação
