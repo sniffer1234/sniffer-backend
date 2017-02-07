@@ -1,3 +1,3 @@
 class ShortEstablishmentSerializer < ActiveModel::Serializer
-  attributes :id, :name, :completed_address
+  attributes :id, :name, :address
 end
