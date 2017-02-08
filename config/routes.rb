@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
+  mount ActionCable.server => '/cable'
+
   # Api
   # Necessary to use devise_scope to avoid route conflicts
   devise_scope :user do
@@ -11,11 +13,14 @@ Rails.application.routes.draw do
     match "/api/password" => 'api/passwords#update', via: :put
     match "/api/confirmation" => 'api/confirmations#show', via: :get
   end
-  
+
   namespace :api, defaults: { format: 'json' } do
     resources :events, only: [:index, :show]
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }
+      resources :chat, only: [:index] do
+        resources :chat_messages, only: [:create]
+      end
     end
     resources :live, only: [:index]
     resources :sniffs, only: [:index]

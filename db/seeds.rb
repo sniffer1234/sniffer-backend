@@ -29,7 +29,7 @@ u = User.new(email: 'juliano@sfhera.com.br', password: 'juliano1', password_conf
 u.skip_confirmation!
 u.save
 
-u = User.new(email: 'marcos@kincode.com.br', password: 'galera07', password_confirmation: 'galera07', name: 'Gelada Marcos', role: 'admin')
+u = User.new(email: 'marcos@kincode.com.br', password: 'galera07', password_confirmation: 'galera07', name: 'Marcos Demétrio', role: 'admin')
 u.skip_confirmation!
 u.save
 

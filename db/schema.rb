@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170201161748) do
+ActiveRecord::Schema.define(version: 20170208150651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,25 @@ ActiveRecord::Schema.define(version: 20170201161748) do
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_authentications_on_token", using: :btree
     t.index ["user_id"], name: "index_authentications_on_user_id", using: :btree
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text     "content",                   null: false
+    t.boolean  "visible",    default: true
+    t.integer  "chat_id",                   null: false
+    t.integer  "user_id",                   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["chat_id"], name: "index_chat_messages_on_chat_id", using: :btree
+    t.index ["user_id"], name: "index_chat_messages_on_user_id", using: :btree
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer  "establishment_id",                null: false
+    t.integer  "chat_messages_count", default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["establishment_id"], name: "index_chats_on_establishment_id", using: :btree
   end
 
   create_table "cities", force: :cascade do |t|

@@ -4,6 +4,7 @@ class Establishment < ApplicationRecord
   paginates_per 20
 
   before_validation :format_url
+  before_create :create_chat
 
   has_attached_file :avatar,
     styles: { default: "40x40>" },
@@ -14,6 +15,7 @@ class Establishment < ApplicationRecord
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   has_one :address, as: :addressable, dependent: :destroy
+  has_one :chat, dependent: :destroy
   has_many :sniffs, as: :sniffable, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :events, dependent: :destroy
@@ -60,6 +62,10 @@ class Establishment < ApplicationRecord
         self[attr] = "http://#{self[attr]}" unless self[attr][/^https?/]
       end
     end
+  end
+
+  def create_chat
+    self.build_chat
   end
 
 end
