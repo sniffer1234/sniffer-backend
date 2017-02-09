@@ -11,8 +11,10 @@ class Api::ChatMessagesController < Api::BaseController
       return render :json => { :error => { :code => 422, :description =>  @chat_message.errors.full_messages } }, :status => 422
     end
 
-    ActionCable.server.broadcast 'messages',
-      chat_message: @chat_message
+    Pusher.trigger("chat-#{@chat_message.chat.id}",
+                   'new:message',
+                    ActiveModelSerializers::SerializableResource.new(@chat_message, adapter: :json, root: 'data').as_json
+                  )
 
     render json: @chat_message, root: 'data'
   end

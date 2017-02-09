@@ -9,6 +9,8 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'figaro'
 
+gem 'pusher'
+
 # Default web server
 gem 'puma', '~> 3.0'
 

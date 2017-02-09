@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root :to => redirect('admin/dashboard')
 
-  mount ActionCable.server => '/cable'
-
   # Api
   # Necessary to use devise_scope to avoid route conflicts
   devise_scope :user do
