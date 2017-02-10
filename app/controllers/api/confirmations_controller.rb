@@ -5,8 +5,7 @@ class Api::ConfirmationsController < Devise::ConfirmationsController
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
     yield resource if block_given?
 
-    # Necessário para gerar um authentication token
-    resource.after_database_authentication
+    sign_in(:user, @user, store: false)
 
     unless resource.errors.empty?
       return render :json => { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
