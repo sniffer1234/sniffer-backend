@@ -5,4 +5,5 @@ class Chat < ApplicationRecord
 
   # Validations
   validates_associated :establishment
+  attr_accessor :messages
 end

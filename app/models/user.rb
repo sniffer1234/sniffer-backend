@@ -132,7 +132,7 @@ class User < ApplicationRecord
   # Gera senha de forma automatica
   def generate_password
     if self.auto_password
-      self.password = TokenHelper::TokenGenerator.generate(6)
+      self.password = TokenHelper::TokenGenerator.generate(4)
       self.password_confirmation = self.password
     end
   end

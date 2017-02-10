@@ -1,6 +1,6 @@
 class ChatMessage < ApplicationRecord
 
-  paginates_per 20
+  paginates_per 10
 
   # Relations
   belongs_to :chat, counter_cache: :chat_messages_count
