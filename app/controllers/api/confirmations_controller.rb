@@ -6,6 +6,7 @@ class Api::ConfirmationsController < Devise::ConfirmationsController
     yield resource if block_given?
 
     sign_in(:user, @user, store: false)
+    @user.after_database_authentication
 
     unless resource.errors.empty?
       return render :json => { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
