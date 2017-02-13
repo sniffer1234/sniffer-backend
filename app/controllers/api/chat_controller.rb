@@ -6,7 +6,7 @@ class Api::ChatController < Api::BaseController
   # GET /api/establishments/:establishment_id/chats
   def index
     @chat.messages = @chat.chat_messages
-                       .page(params[:page] || 1)
+                          .page(params[:page] || 1)
 
     render json: @chat, root: 'data', meta: pagination_dict(@chat.messages)
   end

@@ -1,6 +1,6 @@
 class Chat < ApplicationRecord
 
-  has_many :chat_messages, -> { order(created_at: :asc) }
+  has_many :chat_messages, -> { order(created_at: :desc) }
   belongs_to :establishment
 
   # Validations
