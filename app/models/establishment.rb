@@ -55,6 +55,11 @@ class Establishment < ApplicationRecord
     includes(:address).where(addresses: { city_id: params[:city_id] })
   end
 
+  # Return last sniff
+  def last_sniff
+    self.sniffs.last rescue nil
+  end
+
   private
   def format_url
     ['site', 'facebook', 'instagram'].each do |attr|

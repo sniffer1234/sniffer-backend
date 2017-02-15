@@ -21,6 +21,17 @@ class Api::MeController < Api::BaseController
     render json: @current_user, root: 'data'
   end
 
+  # POST /api/me/sniff
+  def create_sniff
+    @sniff = @current_user.sniffs.build(sniff_params)
+
+    unless @sniff.save
+      return render :json => { :error => { :description => @current_user.errors.full_messages, :code => 422 }} , :status => 422
+    end
+
+    render json: @sniff, root: 'data'
+  end
+
   protected
   def user_params
     params.require(:user)
@@ -28,6 +39,13 @@ class Api::MeController < Api::BaseController
         :name, :phone, :cellphone, :avatar_data,
         :avatar, :password, :password_confirmation,
         :email_notification, :push_notification
+      )
+  end
+
+  def sniff_params
+    params.require(:sniff)
+      .permit(
+        :src, :src_data, :sniffable_id, :sniffable_type
       )
   end
 end

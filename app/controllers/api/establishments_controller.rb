@@ -38,7 +38,6 @@ class Api::EstablishmentsController < Api::BaseController
   end
 
   private
-
   def establishment_params
     params.require(:establishment).permit(
       :name, :phone, :suggestion_message

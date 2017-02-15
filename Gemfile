@@ -40,7 +40,6 @@ gem 'devise'
 gem 'koala', '~> 2.2'
 gem 'ledermann-rails-settings'
 
-
 # JSON
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'faker'
@@ -51,6 +50,7 @@ gem 'bootstrap-kaminari-views', git: 'https://github.com/rafaelmotta/bootstrap-k
 
 # Image / videos
 gem 'paperclip', '~> 5.0.0'
+gem 'paperclip-av-transcoder'
 
 # Static
 gem 'aws-sdk', '>= 2.0.0'

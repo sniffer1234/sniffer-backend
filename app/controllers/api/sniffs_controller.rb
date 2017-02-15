@@ -2,32 +2,23 @@ class Api::SniffsController < Api::BaseController
 
   # GET /api/sniffs
   def index
-    s = {
-      data: [
-        {
-          id: 1,
-          name: 'Marcos',
-          time: '15:00',
-          image: 'https://upload.wikimedia.org/wikipedia/en/e/ef/Pacha_logo.png',
-          video: ''
-        },
-        {
-          id: 2,
-          name: 'José',
-          time: '16:00',
-          image: 'https://upload.wikimedia.org/wikipedia/en/e/ef/Pacha_logo.png',
-          video: ''
-        },
-        {
-          id: 3,
-          name: 'Rafael',
-          time: '18:00',
-          image: 'https://upload.wikimedia.org/wikipedia/en/e/ef/Pacha_logo.png',
-          video: ''
-        }
-      ]
-    }
 
-    render json: s
+
+    #
+    #
+    #
+    # TODO IMPROVE THIS
+    if params[:establishment_id]
+      @sniffs = Sniff.where(sniffable_type: 'Establishment', sniffable_id: params[:establishment_id])
+      render json: @sniffs, root: 'data'
+    else
+      @establishments = Establishment.joins(:sniffs)
+                                     .page(params[:page] || 1)
+
+      render json: @establishments,
+             each_serializer: EstablishmentSniffSerializer,
+             root: 'data',
+             meta: pagination_dict(@establishments)
+    end
   end
 end

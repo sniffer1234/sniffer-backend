@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     resources :events, only: [:index, :show]
+    resources :sniffs, only: [:index]
+
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }
       resources :chat, only: [:index] do
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     resources :facebook, only: [:create]
     match '/me' => 'me#update', via: :put
     match '/me/password' => 'me#update_password', via: :put
+    match '/me/sniff' => 'me#create_sniff', via: :post
   end
 
   # Admin
