@@ -36,11 +36,11 @@ class User < ApplicationRecord
   validates_attachment :avatar, content_type: { content_type: ["image/jpg", "image/jpeg", "image/jpg"] }, size: { in: 0..10.megabytes }
 
   # Relations
-  has_many :authentications
-  has_many :identities
-  has_many :sniffs
-  has_many :events
-  has_many :establishments
+  has_many :authentications, dependent: :destroy
+  has_many :identities, dependent: :destroy
+  has_many :sniffs, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :establishments, dependent: :destroy
 
   enum role: [ :default, :admin, :owner ]
 
