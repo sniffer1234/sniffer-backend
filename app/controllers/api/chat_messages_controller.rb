@@ -11,9 +11,11 @@ class Api::ChatMessagesController < Api::BaseController
       return render :json => { :error => { :code => 422, :description =>  @chat_message.errors.full_messages } }, :status => 422
     end
 
+    message = ActiveModelSerializers::SerializableResource.new(@chat_message, adapter: :json, root: 'data').as_json
+
     Pusher.trigger("chat-#{@chat_message.chat.id}",
                    'new:message',
-                    ActiveModelSerializers::SerializableResource.new(@chat_message, adapter: :json, root: 'data').as_json
+                    message
                   )
 
     render json: @chat_message, root: 'data'

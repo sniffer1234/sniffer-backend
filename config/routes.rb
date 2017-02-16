@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }
+      collection { get :sniffs }
+      resources :sniffs, only: [:index]
       resources :chat, only: [:index] do
         resources :chat_messages, only: [:create]
       end

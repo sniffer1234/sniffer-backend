@@ -4,7 +4,6 @@ class Api::SessionsController < Devise::SessionsController
   skip_before_action :require_no_authentication
 
   def create
-
     self.resource = warden.authenticate!(auth_options.merge({ store:false }))
 
     sign_in(resource_name, resource, store: false)

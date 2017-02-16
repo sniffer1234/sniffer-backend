@@ -1,10 +1,13 @@
+include ActionView::Helpers::DateHelper
+
 class Sniff < ApplicationRecord
 
   # Callbacks
   before_validation :set_src
 
+  # Paperclip image
   has_attached_file :src,
-    styles: { thumb: "120x80>" },
+    styles: { medium: "480x640>", large: "810x1080>", thumb: "90x120>" },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   # Relations
@@ -17,6 +20,17 @@ class Sniff < ApplicationRecord
     content_type: ['image/jpg', 'image/jpeg', 'video/mp4']
 
   attr_accessor :src_data
+
+  # Find sniffs by establishment id
+  scope :by_establishment, -> (id) {
+    return all if !id.present?
+    where(sniffable_type: 'Establishment', sniffable_id: id)
+  }
+
+  # Return created at with time_ago helper
+  def time_ago
+    return "#{ time_ago_in_words(self.created_at) } atrás"
+  end
 
   private
   def set_src

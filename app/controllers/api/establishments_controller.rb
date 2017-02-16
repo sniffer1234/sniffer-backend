@@ -37,6 +37,19 @@ class Api::EstablishmentsController < Api::BaseController
     end
   end
 
+  # GET api/establishments/sniffs
+  def sniffs
+    @establishments = Establishment
+                        .includes(:sniffs)
+                        .where.not(sniffs: { id: nil })
+                        .page(params[:page] || 1)
+
+    render json: @establishments,
+           each_serializer: EstablishmentSniffSerializer,
+           root: 'data',
+           meta: pagination_dict(@establishments)
+  end
+
   private
   def establishment_params
     params.require(:establishment).permit(

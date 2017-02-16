@@ -1,24 +1,8 @@
-class Api::SniffsController < Api::BaseController 
+class Api::SniffsController < Api::BaseController
 
-  # GET /api/sniffs
+  # GET /api/establishment/:id/sniffs
   def index
-
-
-    #
-    #
-    #
-    # TODO IMPROVE THIS
-    if params[:establishment_id]
-      @sniffs = Sniff.where(sniffable_type: 'Establishment', sniffable_id: params[:establishment_id])
-      render json: @sniffs, root: 'data'
-    else
-      @establishments = Establishment.joins(:sniffs)
-                                     .page(params[:page] || 1)
-
-      render json: @establishments,
-             each_serializer: EstablishmentSniffSerializer,
-             root: 'data',
-             meta: pagination_dict(@establishments)
-    end
+    @sniffs = Sniff.by_establishment(params[:establishment_id]).order(id: :desc)
+    render json: @sniffs, root: 'data'
   end
 end

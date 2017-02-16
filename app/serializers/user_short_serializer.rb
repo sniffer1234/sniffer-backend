@@ -3,10 +3,8 @@ class UserShortSerializer < ActiveModel::Serializer
 
   def avatar
     {
-      large: object.avatar.url(:large),
       medium: object.avatar.url(:medium),
-      thumb: object.avatar.url(:thumb),
-      original: object.avatar.url(:original)
+      thumb: object.avatar.url(:thumb)
     }
   end
 end

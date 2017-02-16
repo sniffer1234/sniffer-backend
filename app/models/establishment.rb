@@ -57,7 +57,7 @@ class Establishment < ApplicationRecord
 
   # Return last sniff
   def last_sniff
-    self.sniffs.last rescue nil
+    self.sniffs.first rescue nil
   end
 
   private
