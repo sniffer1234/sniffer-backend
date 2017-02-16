@@ -11,7 +11,7 @@ class Sniff < ApplicationRecord
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   # Relations
-  belongs_to :user, dependent: :destroy, counter_cache: true
+  belongs_to :user, counter_cache: true
   belongs_to :sniffable, polymorphic: true
 
   # Validations
