@@ -49,6 +49,12 @@ class Establishment < ApplicationRecord
     joins(:tags).where(tags: { alias: [tags.split(',')]})
   }
 
+  scope :with_sniffs, -> () {
+    includes(:sniffs)
+    .where.not(sniffs: { id: nil })
+    .order('sniffs.id DESC')
+  }
+
   # Search local by city name
   # @param params - { Hash } - Hash params
   def self.by_city(params)

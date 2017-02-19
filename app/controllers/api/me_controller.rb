@@ -27,6 +27,17 @@ class Api::MeController < Api::BaseController
 
     unless @sniff.save
       return render :json => { :error => { :description => @current_user.errors.full_messages, :code => 422 }} , :status => 422
+    else
+
+      # Create active model serializers
+      sniff = ActiveModelSerializers::SerializableResource.new(
+        Establishment.with_sniffs.limit(1),
+        each_serializer: EstablishmentSniffSerializer,
+        root: 'data'
+      ).as_json
+
+      # Send push notification
+      Pusher.trigger('live', 'new:sniff', sniff)
     end
 
     render json: @sniff, root: 'data'

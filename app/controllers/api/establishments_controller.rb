@@ -39,10 +39,7 @@ class Api::EstablishmentsController < Api::BaseController
 
   # GET api/establishments/sniffs
   def sniffs
-    @establishments = Establishment
-                        .includes(:sniffs)
-                        .where.not(sniffs: { id: nil })
-                        .page(params[:page] || 1)
+    @establishments = Establishment.with_sniffs.page(params[:page] || 1)
 
     render json: @establishments,
            each_serializer: EstablishmentSniffSerializer,

@@ -184,18 +184,18 @@ pt-BR:
         one: 1 ano
         other: "%{count} anos"
       almost_x_years:
-        one: quase 1 ano
-        other: quase %{count} anos
-      half_a_minute: meio minuto
+        one: Quase 1 ano
+        other: Quase %{count} anos
+      half_a_minute: Meio minuto
       less_than_x_minutes:
-        one: menos de um minuto
-        other: menos de %{count} minutos
+        one: Menos de um minuto
+        other: Menos de %{count} minutos
       less_than_x_seconds:
-        one: menos de 1 segundo
-        other: menos de %{count} segundos
+        one: Menos de 1 segundo
+        other: Menos de %{count} segundos
       over_x_years:
-        one: mais de 1 ano
-        other: mais de %{count} anos
+        one: Mais de 1 ano
+        other: Mais de %{count} anos
       x_days:
         one: 1 dia
         other: "%{count} dias"
