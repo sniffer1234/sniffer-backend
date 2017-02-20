@@ -21,6 +21,8 @@ class Establishment < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :tags, dependent: :destroy
 
+  belongs_to :user
+
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone
