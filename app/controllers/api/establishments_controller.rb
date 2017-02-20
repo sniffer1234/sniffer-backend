@@ -2,11 +2,7 @@ class Api::EstablishmentsController < Api::BaseController
 
   # GET /api/establishments
   def index
-    @establishments = Establishment
-                        .by_name(params[:search])
-                        .by_tags(params[:tags])
-                        .page(params[:page] || 1)
-
+    @establishments = Establishment.by_name(params[:search]).by_tags(params[:tags]).page(params[:page] || 1)
     render json: @establishments, root: 'data', meta: pagination_dict(@establishments)
   end
 
@@ -24,34 +20,27 @@ class Api::EstablishmentsController < Api::BaseController
 
   # POST /api/establishments
   def create
-    # TODO - SET USER_ID
     @establishment = Establishment.new(establishment_params)
 
     # Necessary to filter
     @establishment.aprooved = false
 
-    if @establishment.save(validate: false)
-      render json: {}
-    else
-      render json: { errors: @establishment.errors.full_messages }
+    unless @establishment.save(validate: false)
+      return render :json => { :error => { :code => 422, :description =>  @establishment.errors.full_messages } }, :status => 422
     end
   end
 
   # GET api/establishments/sniffs
   def sniffs
     @establishments = Establishment.with_sniffs.page(params[:page] || 1)
-
-    render json: @establishments,
-           each_serializer: EstablishmentSniffSerializer,
-           root: 'data',
-           meta: pagination_dict(@establishments)
+    render json: @establishments, each_serializer: EstablishmentSniffSerializer, root: 'data', meta: pagination_dict(@establishments)
   end
 
   private
   def establishment_params
     params.require(:establishment).permit(
       :name, :phone, :suggestion_message
-    )
+    ).merge(user_id: @current_user.id)
   end
 
 end

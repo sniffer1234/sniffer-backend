@@ -7,7 +7,7 @@ class Sniff < ApplicationRecord
 
   # Paperclip image
   has_attached_file :src,
-    styles: { medium: "480x640>", large: "810x1080>", thumb: "63x84>" },
+    styles: { medium: "480x640>", large: "810x1080>", thumb: "24x32>" },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   # Relations
