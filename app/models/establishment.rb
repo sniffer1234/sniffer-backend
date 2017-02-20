@@ -78,7 +78,7 @@ class Establishment < ApplicationRecord
   end
 
   def create_chat
-    self.build_chat
+    self.build_chat.save
   end
 
 end

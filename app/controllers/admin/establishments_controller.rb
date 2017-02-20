@@ -24,10 +24,7 @@ class Admin::EstablishmentsController < Admin::BaseController
       order_by = "name"
     end
 
-    @establishments = Establishment
-                        .by_name(params[:search])
-                        .order(order_by)
-                        .page(params[:page] || 1)
+    @establishments = Establishment.by_name(params[:search]).order(order_by).page(params[:page] || 1)
   end
 
   # GET /admin/establishments/new
@@ -44,6 +41,13 @@ class Admin::EstablishmentsController < Admin::BaseController
       redirect_to admin_establishments_path, notice: 'Estabelecimento criado com sucesso.'
     else
       render :new
+    end
+  end
+
+  # GET admin/establishments/:id/edit
+  def edit
+    if @establishment.address.nil?
+      @establishment.build_address
     end
   end
 
