@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => redirect('admin/dashboard')
+  get '/' => 'landing_page/home#index'
 
   # Api
   # Necessary to use devise_scope to avoid route conflicts

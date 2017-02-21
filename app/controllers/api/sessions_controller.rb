@@ -1,6 +1,5 @@
 class Api::SessionsController < Devise::SessionsController
   respond_to :json
-  #before_action :renew_session
   skip_before_action :require_no_authentication
 
   def create
@@ -10,8 +9,4 @@ class Api::SessionsController < Devise::SessionsController
     render json: resource, root: 'data'
   end
 
-  # private
-  # def renew_session
-  #   reset_session
-  # end
 end

@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/rafaelmotta/bootstrap-kaminari-views.git
-  revision: e8d57b2fbf56607731c6c9bf254f24f38ce2beec
-  specs:
-    bootstrap-kaminari-views (0.0.5)
-      kaminari (>= 0.13)
-      rails (>= 3.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -54,22 +46,20 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
-    autoprefixer-rails (6.7.2)
-      execjs
     av (0.9.0)
       cocaine (~> 0.5.3)
-    aws-sdk (2.7.4)
-      aws-sdk-resources (= 2.7.4)
-    aws-sdk-core (2.7.4)
+    aws-sdk (2.7.11)
+      aws-sdk-resources (= 2.7.11)
+    aws-sdk-core (2.7.11)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.4)
-      aws-sdk-core (= 2.7.4)
+    aws-sdk-resources (2.7.11)
+      aws-sdk-core (= 2.7.11)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (9.0.6)
     case_transform (0.2)
@@ -121,10 +111,9 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    koala (2.4.0)
+    koala (2.5.0)
       addressable
       faraday
-      multi_json (>= 1.3.0)
     ledermann-rails-settings (2.4.2)
       activerecord (>= 3.1)
     listen (3.0.8)
@@ -160,7 +149,7 @@ GEM
       paperclip (>= 2.5.2)
     pg (0.19.0)
     public_suffix (2.0.5)
-    puma (3.7.0)
+    puma (3.7.1)
     pusher (1.3.0)
       httpclient (~> 2.7)
       multi_json (~> 1.0)
@@ -251,8 +240,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   aws-sdk (>= 2.0.0)
   bcrypt (~> 3.1.7)
-  bootstrap-kaminari-views!
-  bootstrap-sass (~> 3.3.6)
+  bootstrap-kaminari-views
   byebug
   devise
   devise-bootstrap-views

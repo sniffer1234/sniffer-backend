@@ -1,2 +1,0 @@
-module Admin::EstablishmentsHelper
-end

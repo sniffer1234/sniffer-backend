@@ -23,11 +23,9 @@ gem 'sprockets', '>= 3.0.0'
 
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5.0.0'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'uglifier', '>= 1.3.0'
 gem 'font-awesome-rails'
 gem 'simple_form'
-gem 'devise-bootstrap-views'
 gem 'maskedinput-rails'
 
 # Secure
@@ -35,8 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Authentication
 gem 'devise'
-# gem 'omniauth'
-# gem 'omniauth-facebook'
+gem 'devise-bootstrap-views'
+
 gem 'koala', '~> 2.2'
 gem 'ledermann-rails-settings'
 
@@ -46,7 +44,7 @@ gem 'faker'
 
 # Pagination
 gem 'kaminari'
-gem 'bootstrap-kaminari-views', git: 'https://github.com/rafaelmotta/bootstrap-kaminari-views.git'
+gem 'bootstrap-kaminari-views'
 
 # Image / videos
 gem 'paperclip', '~> 5.0.0'

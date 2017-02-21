@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sniffer | Admin</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'admin/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <%= render "admin/shared/navbar" %>
+    </nav>
+    <section class="page-content">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
+  </body>
+</html>

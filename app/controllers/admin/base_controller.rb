@@ -1,7 +1,6 @@
 class Admin::BaseController < ApplicationController
-
+  layout 'application_admin'
   protect_from_forgery with: :exception
-  layout 'application_logged'
 
   before_action :authenticate_user!
   before_action :get_current_user
