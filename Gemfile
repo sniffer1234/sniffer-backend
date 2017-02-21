@@ -39,6 +39,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'devise-bootstrap-views'
 
+gem 'koala', '~> 2.2'
 gem 'ledermann-rails-settings'
 
 # JSON
