@@ -10,6 +10,18 @@ body {
   margin-top: 30px;
 }
 
+.devise-content {
+  .inner {
+    max-width: 400px;
+    margin: 0 auto;
+
+    > a {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
 .tab-content {
   margin-top: 30px;
 }
@@ -65,5 +77,22 @@ td > .fa {
 
   &.fa-remove {
     color: #e74c3c;
+  }
+}
+
+nav.navbar.navbar-inverse {
+  background-color: #2980b9;
+  border-color: #2980b9;
+
+  .navbar-collapse .nav.navbar-nav li.active a {
+    background-color: #1e6492;
+  }
+
+  .navbar-header a {
+    color: #FFF;
+  }
+
+  .navbar-nav > li > a {
+    color: #FFFFFF;
   }
 }
