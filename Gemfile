@@ -9,7 +9,6 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'figaro'
 
-gem 'therubyracer'
 gem 'execjs'
 
 gem 'le'
