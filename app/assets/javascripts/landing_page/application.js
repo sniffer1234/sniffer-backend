@@ -11,6 +11,4 @@
 // about supported directives.
 //
 //= require jquery
-//= require waypoints
-//= require slick-carousel
 //= require_tree .
