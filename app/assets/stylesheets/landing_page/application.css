@@ -12,7 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap
- *= require slick-carousel/slick/slick
- *= require slick-carousel/slick/slick-theme
+ *= require bootstrap/dist/css/bootstrap.css
  */

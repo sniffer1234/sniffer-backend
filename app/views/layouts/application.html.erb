@@ -9,25 +9,10 @@
     <meta name="keywords" content="">
     <meta name="author" content="Kincode">
     <%= csrf_meta_tags %>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,700" rel="stylesheet" type="text/css">
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
-
     <%= stylesheet_link_tag 'landing_page/application' %>
     <%= javascript_include_tag 'landing_page/application' %>
   </head>
   <body>
-    <nav id="navigation_affix">
-      <%= render "landing_page/shared/navbar" %>
-    </nav>
-    <header id="header">
-      <%= render "landing_page/shared/header" %>
-    </header>
-    <section class="content">
-      <%= yield %>
-    </section>
-    <footer id="footer">
-      <%= render "landing_page/shared/footer" %>
-    </footer>
+    <%= yield %>
   </body>
 </html>

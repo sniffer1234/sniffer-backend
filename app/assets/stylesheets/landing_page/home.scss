@@ -1,3 +1,51 @@
 // Place all the styles related to the landingPage/home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about-container {
+  border: 1px solid #DCDCDC;
+  background: #FFF;
+  border-radius: 2px;
+  padding: 20px 20px 10px 20px;
+  margin-top: 50px;
+
+  p {
+    text-align: justify;
+    color: #333;
+  }
+
+  h1 {
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0 15px;
+    font-weight: 300;
+  }
+}
+
+.devices-container {
+  position: relative;
+}
+
+.device-one, .device-two {
+  width: 280px;
+  position: absolute;
+}
+
+.device-two {
+  width: 280px;
+  right: 50px;
+  top: 20px;
+}
+
+.logo-store {
+  height: 40px;
+}
+
+.app-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.download-title {
+  margin-bottom: 15px;
+}
