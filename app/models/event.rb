@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   belongs_to :establishment
 
   accepts_nested_attributes_for :establishment
-  validates_presence_of :name, :description, :starts_at
+  validates_presence_of :name, :description, :starts_at, :ends_at
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Events created by default users and not aprooved
@@ -20,11 +20,13 @@ class Event < ApplicationRecord
   }
 
   scope :group_by_date, -> {
-    where(aprooved: true).order(:starts_at).group_by{ |event| event.starts_at.to_date }
+    where(aprooved: true) #.where("created_at < ?" Time.zone.now)
+    .group_by{ |event| event.starts_at.to_date }
   }
 
   scope :by_establishment, -> (id) {
-    where(establishment_id: id, aprooved: true).order(:starts_at)
+    where(establishment_id: id, aprooved: true)
+    .order(:starts_at)
   }
 
   scope :by_name, -> (search) {

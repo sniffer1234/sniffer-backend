@@ -54,6 +54,7 @@ class Establishment < ApplicationRecord
   scope :with_sniffs, -> () {
     includes(:sniffs)
     .where.not(sniffs: { id: nil })
+    .where(created_at: 12.hours.ago..Time.now)
     .order('sniffs.id DESC')
   }
 
@@ -78,7 +79,7 @@ class Establishment < ApplicationRecord
   end
 
   def create_chat
-    self.build_chat.save
+    self.build_chat
   end
 
 end
