@@ -51,6 +51,14 @@ class Establishment < ApplicationRecord
     joins(:tags).where(tags: { alias: [tags.split(',')]})
   }
 
+  scope :with_sniffs_by_user, -> (user_id) {
+    includes(:sniffs)
+    .where.not(sniffs: { id: nil })
+    .where(sniffs: { user_id: user_id })
+    .order('sniffs.id DESC')
+    .limit(5)
+  }
+
   scope :with_sniffs, -> () {
     includes(:sniffs)
     .where.not(sniffs: { id: nil }) #.where(created_at: 12.hours.ago..Time.now)

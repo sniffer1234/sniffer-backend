@@ -21,6 +21,12 @@ class Api::MeController < Api::BaseController
     render json: @current_user, root: 'data'
   end
 
+  # GET /api/me/sniffs
+  def sniffs
+    @establishments = Establishment.with_sniffs_by_user(@current_user.id)
+    render json: @establishments, root: 'data'
+  end
+
   # POST /api/me/sniff
   def create_sniff
     @sniff = @current_user.sniffs.build(sniff_params)

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     match '/me' => 'me#update', via: :put
     match '/me/password' => 'me#update_password', via: :put
     match '/me/sniff' => 'me#create_sniff', via: :post
+    match '/me/sniffs' => 'me#sniffs', via: :get
   end
 
   # Admin
