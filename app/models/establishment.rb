@@ -56,7 +56,6 @@ class Establishment < ApplicationRecord
     .where.not(sniffs: { id: nil })
     .where(sniffs: { user_id: user_id })
     .order('sniffs.id DESC')
-    .limit(5)
   }
 
   scope :with_sniffs, -> () {
