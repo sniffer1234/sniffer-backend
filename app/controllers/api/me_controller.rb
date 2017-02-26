@@ -23,8 +23,8 @@ class Api::MeController < Api::BaseController
 
   # GET /api/me/sniffs
   def sniffs
-    @establishments = Establishment.with_sniffs_by_user(@current_user.id)
-    render json: @establishments, root: 'data'
+    @establishments = Establishment.with_sniffs_by_user(@current_user.id).per(5).page(params[:page] || 1)
+    render json: @establishments, each_serializer: EstablishmentSniffSerializer, root: 'data', meta: pagination_dict(@establishments)
   end
 
   # POST /api/me/sniff
