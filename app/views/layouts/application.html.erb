@@ -12,6 +12,9 @@
     <%= stylesheet_link_tag 'landing_page/application' %>
   </head>
   <body>
+    <header class="navbar navbar-inverse">
+      <%= render "landing_page/shared/header" %>
+    </header>
     <%= yield %>
   </body>
 </html>

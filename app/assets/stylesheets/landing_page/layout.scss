@@ -1,0 +1,27 @@
+.inner {
+  margin: 30px auto 0;
+  max-width: 850px;
+}
+
+body {
+  padding-bottom: 70px;
+
+  > .navbar-inverse {
+    background-color: #FFF;
+    border: none;
+    padding-top: 10px;
+    margin-bottom: 45px;
+
+    .navbar-brand {
+      margin-top: -5px;
+    }
+
+    .navbar-nav > li > a {
+      color: #333;
+
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}

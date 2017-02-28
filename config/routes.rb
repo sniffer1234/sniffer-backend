@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get '/' => 'landing_page/home#index'
+  get '/termos-de-uso' => 'landing_page/terms#index'
 
   # Api
   # Necessary to use devise_scope to avoid route conflicts
