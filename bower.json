@@ -14,10 +14,6 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "jquery-ujs": "^1.2.2",
-    "bootstrap": "^3.3.7",
-    "tether": "^1.4.0",
-    "waypoints": "^4.0.1",
-    "slick-carousel": "^1.6.0",
-    "font-awesome": "^4.7.0"
+    "bootstrap": "^3.3.7"
   }
 }

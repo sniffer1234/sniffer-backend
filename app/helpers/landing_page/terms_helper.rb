@@ -1,2 +1,0 @@
-module LandingPage::TermsHelper
-end
