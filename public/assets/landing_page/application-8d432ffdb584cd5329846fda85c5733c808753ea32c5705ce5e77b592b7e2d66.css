@@ -1,70 +1,81 @@
-/* line 5, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
-.about-container {
-  border: 1px solid #DCDCDC;
-  background: #FFF;
-  border-radius: 2px;
-  padding: 20px 20px 10px 20px;
-  margin-top: 50px;
-}
-/* line 12, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
-.about-container p {
-  text-align: justify;
-  color: #333;
-}
-/* line 17, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
-.about-container h1 {
-  font-size: 16px;
-  text-align: center;
-  margin: 10px 0 15px;
+/* line 6, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+.about-container h2 {
+  text-align: left;
+  color: #666;
+  font-size: 24px;
   font-weight: 300;
+  margin-bottom: 30px;
+}
+/* line 15, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+.about-container h2 span {
+  color: #000;
 }
 
-/* line 25, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 21, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .devices-container {
   position: relative;
 }
 
-/* line 29, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 25, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .device-one, .device-two {
   width: 280px;
   position: absolute;
 }
 
-/* line 34, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 30, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .device-two {
   width: 280px;
   right: 50px;
   top: 20px;
 }
 
-/* line 40, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 36, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .logo-store {
-  height: 40px;
+  height: 50px;
 }
 
-/* line 44, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 40, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .app-container {
   margin-top: 15px;
   text-align: center;
 }
 
-/* line 49, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
+/* line 45, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/home.scss */
 .download-title {
   margin-bottom: 15px;
 }
-body {
-  background: #FAFAFA !important;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-}
-
+/* line 1, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
 .inner {
   margin: 30px auto 0;
   max-width: 850px;
+}
+
+/* line 6, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
+body {
+  padding-bottom: 70px;
+}
+/* line 9, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
+body > .navbar-inverse {
+  background-color: #FFF;
+  border: none;
+  padding-top: 10px;
+  margin-bottom: 45px;
+}
+/* line 15, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
+body > .navbar-inverse .navbar-brand {
+  margin-top: -5px;
+}
+/* line 19, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
+body > .navbar-inverse .navbar-nav > li > a {
+  color: #333;
+}
+/* line 22, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/layout.scss */
+body > .navbar-inverse .navbar-nav > li > a:hover {
+  color: #333;
+}
+/* line 2, /Users/motta/Documents/Sites/kincode/sniffer/sniffer-backend/app/assets/stylesheets/landing_page/terms.scss */
+.terms-page li {
+  margin-bottom: 7.5px;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
