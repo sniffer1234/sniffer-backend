@@ -5,7 +5,7 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.attachment :cover
       t.text :suggestion_message
       t.string :name, index: true, null: false
-      t.string :business_hours
+      t.string :business_hours, null: false
       t.text :description
       t.string :small_description
       t.string :slug

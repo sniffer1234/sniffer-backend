@@ -22,7 +22,9 @@ class Event < ApplicationRecord
 
   # Return events approoved by establishments
   scope :by_establishment, -> (id) {
-    where(establishment_id: id, aprooved: true)
+    where(establishment_id: id)
+    .where(aprooved: true)
+    .where("ends_at > ?", Time.zone.now)
     .order(:starts_at)
   }
 
