@@ -9,8 +9,6 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.text :description
       t.text :small_description
 
-      t.string :business_hours, null: false
-
       t.string :slug
       t.string :facebook
       t.string :instagram
@@ -21,7 +19,7 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.boolean :vip, default: false
       t.boolean :aprooved, default: true
       t.boolean :visible, default: true
-      
+
       t.references :user, index: true
 
       t.timestamps
