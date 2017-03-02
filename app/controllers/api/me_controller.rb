@@ -23,7 +23,7 @@ class Api::MeController < Api::BaseController
 
   # GET /api/me/sniffs
   def sniffs
-    @establishments = Establishment.with_sniffs_by_user(@current_user.id).page(1).per(5)
+    @establishments = Establishment.sniffs_by_user_from_last_12_hours(@current_user.id).page(1).per(5)
     render json: @establishments, each_serializer: EstablishmentSniffSerializer, root: 'data', meta: pagination_dict(@establishments)
   end
 
@@ -37,7 +37,7 @@ class Api::MeController < Api::BaseController
 
       # Create active model serializers
       sniff = ActiveModelSerializers::SerializableResource.new(
-        Establishment.with_sniffs.limit(1),
+        Establishment.sniffs_from_last_12_hours.limit(1),
         each_serializer: EstablishmentSniffSerializer,
         root: 'data'
       ).as_json

@@ -25,7 +25,7 @@ class Establishment < ApplicationRecord
 
   accepts_nested_attributes_for :address, allow_destroy: true
 
-  validates_presence_of :name, :small_description, :description, :phone
+  validates_presence_of :name, :small_description, :description, :phone, :business_hours
   validates_length_of :small_description, :in => 30..250
   validates_length_of :description, :in => 30..1500
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
@@ -51,16 +51,17 @@ class Establishment < ApplicationRecord
     joins(:tags).where(tags: { alias: [tags.split(',')]})
   }
 
-  scope :with_sniffs_by_user, -> (user_id) {
+  scope :sniffs_by_user_from_last_12_hours, -> (user_id) {
     includes(:sniffs)
     .where.not(sniffs: { id: nil })
     .where(sniffs: { user_id: user_id })
     .order('sniffs.id DESC')
   }
 
-  scope :with_sniffs, -> () {
+  scope :sniffs_from_last_12_hours, -> () {
     includes(:sniffs)
-    .where.not(sniffs: { id: nil }) #.where(created_at: 12.hours.ago..Time.now)
+    .where.not(sniffs: { id: nil })
+    .where(sniffs: { created_at: 12.hours.ago..Time.now })
     .order('sniffs.id DESC')
   }
 

@@ -3,10 +3,9 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
     create_table :establishments do |t|
       t.attachment :avatar
       t.attachment :cover
-
       t.text :suggestion_message
-
       t.string :name, index: true, null: false
+      t.string :business_hours
       t.text :description
       t.string :small_description
       t.string :slug

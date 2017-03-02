@@ -32,7 +32,7 @@ class Api::EstablishmentsController < Api::BaseController
 
   # GET api/establishments/sniffs
   def sniffs
-    @establishments = Establishment.with_sniffs.page(params[:page] || 1)
+    @establishments = Establishment.sniffs_from_last_12_hours.page(params[:page] || 1)
     render json: @establishments, each_serializer: EstablishmentSniffSerializer, root: 'data', meta: pagination_dict(@establishments)
   end
 

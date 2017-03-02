@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.datetime "cover_updated_at"
     t.text     "suggestion_message"
     t.string   "name",                                null: false
+    t.text     "business_hours"
     t.text     "description"
     t.string   "small_description"
     t.string   "slug"
@@ -113,9 +114,7 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.datetime "cover_updated_at"
     t.text     "suggestion_message"
     t.string   "name",                               null: false
-    t.datetime "starts_at",                          null: false
     t.datetime "ends_at"
-    t.boolean  "no_time_to_end",     default: false
     t.text     "description",                        null: false
     t.string   "slug"
     t.boolean  "vip",                default: false

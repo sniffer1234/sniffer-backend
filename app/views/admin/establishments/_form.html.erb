@@ -17,29 +17,29 @@
   <%= render "admin/shared/notice" %>
 
   <ul class="nav nav-tabs">
-    <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#form-basic" role="tab">
+    <li class="active">
+      <a data-toggle="tab" href="#form-basic" role="tab">
         Dados básicos
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-address" role="tab">
+    <li>
+      <a data-toggle="tab" href="#form-address" role="tab">
         Endereço
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">
+    <li>
+      <a data-toggle="tab" href="#form-visibility" role="tab">
         Visibilidade
       </a>
     </li>
     <% if @establishment.id %>
-      <li class="nav-item">
+      <li>
         <%= link_to [:admin, @establishment, :establishment_events], class: 'nav-link', role: 'tab' do %>
           Eventos (<%= @establishment.events.size %>)
         <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#sniffs-visibility" role="tab">
+      <li>
+        <a href="#sniffs-visibility" role="tab">
           Sniffs (<%= @establishment.sniffs.size %>)
         </a>
       </li>

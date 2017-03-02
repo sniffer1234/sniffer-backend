@@ -13,16 +13,14 @@
     </div>
     <hr />
   <% end %>
-
   <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
+    <li class="active">
+      <a data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-access" role="tab">Acesso</a>
+    <li>
+      <a data-toggle="tab" href="#form-access" role="tab">Acesso</a>
     </li>
   </ul>
-
   <div class="tab-content">
     <div class="tab-pane active" id="form-basic" role="tabpanel">
       <%= render 'form_basic', f: f %>
@@ -31,9 +29,7 @@
       <%= render 'form_access', f: f %>
     </div>
   </div>
-
   <hr />
-
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success' %>
   </div>

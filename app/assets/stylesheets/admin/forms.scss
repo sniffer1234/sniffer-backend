@@ -3,3 +3,9 @@
     color: #c0392b;
   }
 }
+
+.form-group.image {
+  .clearfix > img {
+    float: left;
+  }
+}

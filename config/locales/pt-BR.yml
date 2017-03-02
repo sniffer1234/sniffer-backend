@@ -74,6 +74,7 @@ pt-BR:
         description: Descrição
         small_description: Descrição curta
         slug: Slug
+        business_hours: Horário de funcionamento
         facebook: Facebook
         instagram: Instagram
         phone: Telefone

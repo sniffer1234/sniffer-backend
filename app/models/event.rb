@@ -1,6 +1,4 @@
 class Event < ApplicationRecord
-  before_save :set_to_time
-
   has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   belongs_to :user
@@ -45,14 +43,5 @@ class Event < ApplicationRecord
 
   def establishment_name
     self.establishment.name
-  end
-
-  private
-
-  # Prevent to set to attribute if no_time_to_end is checked
-  def set_to_time
-    if self.no_time_to_end
-      self.ends_at = nil
-    end
   end
 end
