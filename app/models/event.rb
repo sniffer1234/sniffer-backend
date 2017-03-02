@@ -19,11 +19,13 @@ class Event < ApplicationRecord
     .group_by{ |event| event.starts_at.to_date }
   }
 
+  # Return events approoved by establishments
   scope :by_establishment, -> (id) {
     where(establishment_id: id, aprooved: true)
     .order(:starts_at)
   }
 
+  # Return events by name
   scope :by_name, -> (search) {
     return all if !search.present?
     where("name ILIKE ?", "%#{search}%")
@@ -36,6 +38,11 @@ class Event < ApplicationRecord
       week_day_name: I18n.l(self.starts_at, format: :week_day_name),
       timing: "#{ I18n.l(self.starts_at, format: :timing_starts) }#{ I18n.l(self.ends_at, format: :timing_ends) rescue nil}",
     }
+  end
+
+  # Indicate if the event ends in the same day that he starts
+  def ends_in_the_same_day
+    self.starts_at.day == self.ends_at.day
   end
 
   def establishment_name
