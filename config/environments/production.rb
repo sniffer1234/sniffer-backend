@@ -93,5 +93,6 @@ Rails.application.configure do
     :authentication => :plain,
   }
 
-  Rails.application.routes.default_url_options[:host] = 'http://snifferapp.com'
+  config.action_mailer.default_url_options = { :host => 'http://snifferapp.com' }
+
 end
