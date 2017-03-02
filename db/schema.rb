@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170208150651) do
   end
 
   create_table "establishments", force: :cascade do |t|
+    t.string   "name",                                null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -81,10 +82,9 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.text     "suggestion_message"
-    t.string   "name",                                null: false
-    t.text     "business_hours"
     t.text     "description"
-    t.string   "small_description"
+    t.text     "small_description"
+    t.string   "business_hours",                      null: false
     t.string   "slug"
     t.string   "facebook"
     t.string   "instagram"
@@ -112,9 +112,10 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.text     "suggestion_message"
     t.string   "name",                               null: false
+    t.datetime "starts_at"
     t.datetime "ends_at"
+    t.text     "suggestion_message"
     t.text     "description",                        null: false
     t.string   "slug"
     t.boolean  "vip",                default: false

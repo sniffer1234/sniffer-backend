@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.datetime :starts_at
       t.datetime :ends_at
 
+      t.text :suggestion_message
       t.text :description, null: false
       t.string :slug
 

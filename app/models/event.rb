@@ -1,10 +1,15 @@
 class Event < ApplicationRecord
+
+  # Third part
   has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
+  # Relations
   belongs_to :user
   belongs_to :establishment
 
+  # Validations
   accepts_nested_attributes_for :establishment
+  validates_length_of :suggestion_message, maximum: 500, allow_blank: true
   validates_presence_of :name, :description, :starts_at, :ends_at
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
