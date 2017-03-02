@@ -25,7 +25,7 @@ class Establishment < ApplicationRecord
 
   accepts_nested_attributes_for :address, allow_destroy: true
 
-  validates_presence_of :name, :small_description, :description, :phone, :business_hours
+  validates_presence_of :name, :small_description, :description, :phone
   validates_length_of :small_description, :in => 30..250
   validates_length_of :description, :in => 30..1500
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
