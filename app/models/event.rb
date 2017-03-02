@@ -16,6 +16,7 @@ class Event < ApplicationRecord
   scope :group_by_date, -> {
     where(aprooved: true)
     .where("ends_at > ?", Time.zone.now)
+    .order(:starts_at)
     .group_by{ |event| event.starts_at.to_date }
   }
 
