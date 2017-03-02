@@ -14,7 +14,7 @@ class EventSerializer < ActiveModel::Serializer
   end
 
   def ends_at
-    I18n.l(object.starts_at, format: :abbreviated)
+    I18n.l(object.ends_at, format: :abbreviated)
   end
 
 end
