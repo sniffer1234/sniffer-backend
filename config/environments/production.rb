@@ -84,6 +84,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default chaset: 'utf-8'
+
   ActionMailer::Base.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :address        => ENV['MAILGUN_SMTP_SERVER'],
@@ -93,6 +96,6 @@ Rails.application.configure do
     :authentication => :plain,
   }
 
-  config.action_mailer.default_url_options = { :host => 'http://snifferapp.com' }
+  config.action_mailer.default_url_options = { :host => 'snifferapp.com' }
 
 end
