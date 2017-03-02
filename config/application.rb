@@ -9,12 +9,15 @@ Bundler.require(*Rails.groups)
 
 module SnifferBackend
   class Application < Rails::Application
-
+    config.time_zone = 'Brasilia'
+    
     # Default locales
     config.i18n.default_locale = :"pt-BR"
 
+    # Bower assets
     config.assets.paths << Rails.root.join("vendor", "assets", "bower")
 
+    # Devise layout
     config.to_prepare do
       Devise::SessionsController.layout "devise"
       Devise::RegistrationsController.layout "devise"
@@ -35,6 +38,5 @@ module SnifferBackend
         secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
       }
     }
-
   end
 end

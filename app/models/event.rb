@@ -13,12 +13,9 @@ class Event < ApplicationRecord
     where(aprooved: false).limit(5)
   }
 
-  scope :to_happen, -> {
-    where("starts_at >= ?", Time.zone.now)
-  }
-
   scope :group_by_date, -> {
-    where(aprooved: true) #.where("created_at < ?" Time.zone.now)
+    where(aprooved: true)
+    .where("ends_at > ?", Time.zone.now)
     .group_by{ |event| event.starts_at.to_date }
   }
 
