@@ -1,4 +1,4 @@
-pt-BR:
+  pt-BR:
 
   restaurant: Restaurante
   event: Evento
@@ -331,9 +331,9 @@ pt-BR:
       timing_starts: "A partir das %H:%M"
       timing_ends: " até %H:%M"
       week_day_name: "%A"
-      default: "%d-%m-%Y"
-      registred_at: "%d-%m-%Y %H:%M"
-      abbreviated: "%d-%m - %H:%M"
-      only_dates: "%d-%m-%Y"
+      default: "%d/%m/%Y"
+      registred_at: "%d/%m/%Y %H:%M"
+      abbreviated: "%d/%m - %H:%M"
+      only_dates: "%d/%m-%Y"
       short: "%d/%m - %H:%M"
       long: "%B %d - %Y"

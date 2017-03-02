@@ -40,9 +40,14 @@ class Event < ApplicationRecord
     }
   end
 
-  # Indicate if the event ends in the same day that he starts
+  # Indicates if the event ends in the same day that he starts
   def ends_in_the_same_day
     self.starts_at.day == self.ends_at.day
+  end
+
+  # Indicates if the events ends in the next day
+  def ends_in_the_next_day
+    (self.starts_at + 1.day).day == self.ends_at.day
   end
 
   def establishment_name
