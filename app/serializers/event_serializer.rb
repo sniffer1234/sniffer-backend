@@ -1,7 +1,7 @@
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :name, :description,
-             :starts_at, :ends_at, :start_time,
-             :end_time, :cover, :when
+             :starts_at, :ends_at, :start_time, :end_time,
+             :cover, :when
 
   has_one :establishment, serializer: ShortEstablishmentSerializer
 
