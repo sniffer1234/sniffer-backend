@@ -54,7 +54,7 @@ class Establishment < ApplicationRecord
   scope :sniffs_by_user_from_last_12_hours, -> (user_id) {
     includes(:sniffs)
     .where.not(sniffs: { id: nil })
-    .where(sniffs: { user_id: user_id })
+    .where(sniffs: { user_id: user_id, created_at: 12.hours.ago..Time.now })
     .order('sniffs.id DESC')
   }
 
