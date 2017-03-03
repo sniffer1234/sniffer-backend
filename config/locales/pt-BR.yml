@@ -62,8 +62,8 @@ pt-BR:
         vip: VIP
         establishment: Estabelecimento
         user: Usuário
-        starts_at: Começa em
-        ends_at: Termina em
+        starts_at: Data de início
+        ends_at: Data de término
 
       establishment:
         id: Estabelecimento
@@ -88,7 +88,7 @@ pt-BR:
       tag:
         name: Nome
         alias: Alias
-        
+
       state:
         name: Handle
         short_name: Handle
@@ -222,6 +222,7 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      must_be_greater_than_ends_at: deve ser menor que a data de término
       accepted: deve ser aceito
       blank: não pode ficar em branco
       present: deve ficar em branco

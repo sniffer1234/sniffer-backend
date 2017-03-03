@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <% @events.each do |event| %>
-      <tr class="<%= !event.aprooved ? 'table-warning' : '' %> <%= !event.visible ? 'table-warning' : '' %> <%= event.vip ? 'table-info' : '' %>">
+      <tr class="<%= !event.aprooved ? 'warning' : '' %> <%= !event.visible ? 'warning' : '' %> <%= event.vip ? 'info' : '' %>">
         <td><%= icon_check(event.vip) %></td>
         <td><%= icon_check(event.visible) %></td>
         <td><%= icon_check(event.aprooved) %></td>
@@ -28,10 +28,10 @@
         <%= l event.ends_at, format: :short rescue '-' %>
         </td>
         <td colspan="2">
-          <%= link_to [:edit, :admin, event], class: 'btn btn-sm btn-info' do %>
+          <%= link_to [:edit, :admin, event], class: 'btn btn-xs btn-info' do %>
             <i class="fa fa-pencil"></i>
           <% end %>
-          <%= link_to [:admin, event], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+          <%= link_to [:admin, event], method: :delete, class: 'btn btn-xs btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
             <i class="fa fa-remove"></i>
           <% end %>
         </td>

@@ -1,5 +1,6 @@
 class ChatMessage < ApplicationRecord
 
+  # Third part
   paginates_per 10
 
   # Relations

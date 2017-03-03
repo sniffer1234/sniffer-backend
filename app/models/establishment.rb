@@ -34,6 +34,7 @@ class Establishment < ApplicationRecord
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+  # Return last 5 establishments to aproove
   scope :pending, -> {
     all.where(aprooved: false).limit(5)
   }
@@ -42,16 +43,19 @@ class Establishment < ApplicationRecord
     all.where(visible: true, aprooved: true).order(:name)
   }
 
+  # Get establishments by name
   scope :by_name, -> (search) {
     return all unless search.present?
     where("name ILIKE ?", "%#{search}%")
   }
 
+  # Get establishments by tags
   scope :by_tags, -> (tags) {
     return all unless tags.present?
     joins(:tags).where(tags: { alias: [tags.split(',')]})
   }
 
+  # Get establishment sniffs created in the last 12hours by user id
   scope :sniffs_by_user_from_last_12_hours, -> (user_id) {
     includes(:sniffs)
     .where.not(sniffs: { id: nil })
@@ -59,6 +63,7 @@ class Establishment < ApplicationRecord
     .order('sniffs.id DESC')
   }
 
+  # Get establishment sniffs created in the last 12hours
   scope :sniffs_from_last_12_hours, -> () {
     includes(:sniffs)
     .where.not(sniffs: { id: nil })

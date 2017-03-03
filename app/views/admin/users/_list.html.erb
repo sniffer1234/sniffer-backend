@@ -11,21 +11,21 @@
     </thead>
     <tbody>
       <% @users.each do |user| %>
-        <tr class="<%= !user.active ? 'table-danger' : '' %>">
+        <tr class="<%= !user.active ? 'danger' : '' %>">
           <td><%= user.name %></td>
           <td><%= t(user.role) %></td>
           <td><%= l(user.created_at, format: :registred_at) %></td>
           <td><%= l(user.last_sign_in_at, format: :registred_at) rescue '-' %></td>
           <td colspan="2">
-            <%= link_to [:edit, :admin, user], class: 'btn btn-sm btn-info' do %>
+            <%= link_to [:edit, :admin, user], class: 'btn btn-xs btn-info' do %>
               <i class="fa fa-pencil"></i>
             <% end %>
             <% unless user.active %>
-              <%= link_to [:admin, user], method: :delete, class: "btn btn-sm btn-success", data: { confirm: 'Esta ação irá desbloquear o usuário e ele poderá acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
+              <%= link_to [:admin, user], method: :delete, class: "btn btn-xs btn-success", data: { confirm: 'Esta ação irá desbloquear o usuário e ele poderá acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
                 <i class="fa fa-user-plus"></i>
               <% end %>
             <% else %>
-              <%= link_to [:admin, user], method: :delete, class: "btn btn-sm btn-warning", data: { confirm: 'Esta ação irá bloquear o usuário e ele não terá como acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
+              <%= link_to [:admin, user], method: :delete, class: "btn btn-xs btn-warning", data: { confirm: 'Esta ação irá bloquear o usuário e ele não terá como acessar a plataforma. Você tem certeza que deseja continuar?' } do %>
                 <i class="fa fa-user-times"></i>
               <% end %>
             <% end %>

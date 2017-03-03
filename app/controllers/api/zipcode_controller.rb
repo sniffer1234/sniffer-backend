@@ -1,5 +1,6 @@
 class Api::ZipcodeController < ApplicationController
 
+  # GET /api/zipcode
   def index
     response = ViaCep::Address.new(params[:zipcode]) rescue nil
 

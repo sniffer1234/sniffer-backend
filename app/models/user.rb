@@ -8,11 +8,6 @@ class User < ApplicationRecord
     }
   end
 
-  enum :alias => [ :restaurant, :event, :beverage_distributor,
-    :bar, :nightclub, :pizzaria, :steak_house,
-    :pastry_chop, :japanese, :lunch, :dinner, :arabic
-  ]
-
   # Callbacks
   before_validation :generate_password
   before_validation :set_avatar
@@ -100,10 +95,12 @@ class User < ApplicationRecord
     user
   end
 
+  # Return if user has admin role
   def admin?
     self.role == 'admin'
   end
 
+  # Return if user has default role
   def default?
     self.role == 'default'
   end
@@ -116,6 +113,7 @@ class User < ApplicationRecord
     authentication = self.authentications.last
   end
 
+  # Expire user session
   def expire!
     Authentication.expire!(self.current_authentication.id)
   end
@@ -124,6 +122,7 @@ class User < ApplicationRecord
     self.authentications.build().save!
   end
 
+  # Return user first name
   def first_name
     self.name.split(' ').first
   end

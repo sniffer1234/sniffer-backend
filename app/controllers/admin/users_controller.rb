@@ -30,7 +30,7 @@ class Admin::UsersController < Admin::BaseController
                  .page(params[:page] || 1)
   end
 
-  # GET /admin/users/:id
+  # GET /admin/users
   def new
     @user = User.new
   end
@@ -64,7 +64,7 @@ class Admin::UsersController < Admin::BaseController
     @user.active = !@user.active
 
     if @user.save
-      redirect_to admin_users_path, notice: 'Usuário removido com sucesso.'
+      redirect_to admin_users_path, notice: 'Usuário editado com sucesso.'
     end
   end
 
@@ -78,9 +78,8 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def user_params
-    params.require(:user).permit(
-      :name, :cellphone, :email, :password, :avatar, :role
-    )
+    params.require(:user)
+          .permit(:name, :cellphone, :email, :password, :avatar, :role)
   end
 
 end

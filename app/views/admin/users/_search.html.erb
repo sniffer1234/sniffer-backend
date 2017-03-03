@@ -36,8 +36,8 @@
                 Últimos login
               <% end %>
             </li>
-            <li class="dropdown-item <%= filter_link_class(params, 'active', 'desc') %>">
-              <%= link_to admin_users_path(order_by_attr: 'active', order_by_asc: 'desc') do %>
+            <li class="dropdown-item <%= filter_link_class(params, 'active', 'asc') %>">
+              <%= link_to admin_users_path(order_by_attr: 'active', order_by_asc: 'asc') do %>
                 Bloqueados
               <% end %>
             </li>

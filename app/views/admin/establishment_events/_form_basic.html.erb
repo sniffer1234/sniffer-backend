@@ -14,34 +14,6 @@
 <%= f.input :name %>
 <%= f.input :description, hint: 'Entre 30 à 500 carácteres', input_html: { rows: 6 } %>
 
-<hr />
-<div class="row">
-  <div class='col-sm-6'>
-    <div class="form-group">
-      <label class="form-control-label">
-        Inicia em
-      </label>
-      <div class='input-group date' id='starts-at-picker'>
-        <input type="text" class="form-control" name="event[starts_at]">
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class='col-sm-6'>
-    <div class="form-group">
-      <label class="form-control-label">
-        Inicia em
-      </label>
-      <div class='input-group date' id='ends-at-picker'>
-        <input type="text" class="form-control"  name="event[ends_at]">
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
+<hr>
+<%= f.input :starts_at, wrapper: :horizontal_select_date %>
+<%= f.input :ends_at, wrapper: :horizontal_select_date %>

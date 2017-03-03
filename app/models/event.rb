@@ -1,7 +1,11 @@
 class Event < ApplicationRecord
 
   # Third part
-  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+  has_attached_file :cover, styles: {
+    medium: "300x300>",
+    thumb: "100x100>"
+  },
+  default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   # Relations
   belongs_to :user
@@ -11,7 +15,9 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :establishment
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
   validates_presence_of :name, :description, :starts_at, :ends_at
-  validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validate :starts_at_greater_than_ends_at
+  validates_attachment_content_type :cover,
+    :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Events created by default users and not aprooved
   scope :pending, -> {
@@ -58,7 +64,20 @@ class Event < ApplicationRecord
     (self.starts_at + 1.day).day == self.ends_at.day
   end
 
+  # Indicate establishment name
   def establishment_name
     self.establishment.name
+  end
+
+  protected
+
+  # Check if starts_at is greater than ends_at
+  def starts_at_greater_than_ends_at
+    if self.starts_at && self.ends_at
+
+      if self.starts_at > self.ends_at
+        errors.add(:starts_at, :must_be_greater_than_ends_at)
+      end
+    end
   end
 end

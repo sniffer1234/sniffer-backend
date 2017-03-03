@@ -1,1 +1,6 @@
+<div class="alert alert-info">
+  <i class="fa fa-info-circle"></i>
+  Você pode adicionar múltiplas categorias
+</div>
+<hr />
 <%= f.collection_select(:tag_ids, Tag.all, :id, :name, {}, { multiple: true, class: 'form-control', style: 'height: 250px;'}) %>

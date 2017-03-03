@@ -1,6 +1,4 @@
 document.addEventListener('turbolinks:load', function(){
-  $('#starts-at-picker').datetimepicker();
-  $('#ends-at-picker').datetimepicker();
 
   $('[data-mask]').each(function(key, el){
     var $el = $(el)

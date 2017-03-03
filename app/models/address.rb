@@ -1,12 +1,8 @@
 class Address < ApplicationRecord
 
-  # Third part
-  #geocoded_by :geocode_address
-
   # Callbacks
   after_validation :remove_zipcode_bar
   after_validation :set_completed_address
-#  after_validation :geocode
 
   # Relationship
   belongs_to :city
@@ -38,11 +34,6 @@ class Address < ApplicationRecord
 
       self.completed = address
     end
-  end
-
-  # Get geocoded attribute
-  def geocode_address
-    self.completed
   end
 
   # Remove bars from zipcode to avoid problems with masks
