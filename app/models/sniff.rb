@@ -2,6 +2,8 @@ include ActionView::Helpers::DateHelper
 
 class Sniff < ApplicationRecord
 
+  paginates_per 10
+
   # Callbacks
   before_validation :set_src
 
@@ -30,6 +32,10 @@ class Sniff < ApplicationRecord
   # Return created at with time_ago helper
   def time_ago
     return "#{ time_ago_in_words(self.created_at) } atrás"
+  end
+
+  def establishment_name
+    self.sniffable.name
   end
 
   private
