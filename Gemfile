@@ -10,8 +10,7 @@ gem 'pg', '~> 0.18'
 gem 'figaro'
 
 gem 'mailgun_rails'
-#gem 'execjs'
-#gem 'le'
+gem 'execjs'
 
 # Pusher api
 gem 'pusher'
