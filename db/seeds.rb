@@ -40,6 +40,8 @@ e = Establishment.create(
   small_description: 'Os maiores clubs de música eletrônica do Brasil, Warung, Grupo Sirena e Grupo El Divino, se juntaram',
   phone: '(48) 3028-5300',
   email: 'contato@pachafloripa.com.br',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'https://www.facebook.com/pachafloripa/?fref=ts',
   instagram: 'https://www.instagram.com/pachafloripaoficial'
 )
@@ -60,6 +62,8 @@ e = Establishment.create(
   small_description: 'Uma das mais prestigiadas casas noturnas de Florianópolis.',
   phone: '(48) 3232-8535',
   email: 'contato@johnbullfloripa.com.br',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'https://www.facebook.com/johnbullfloripa',
   instagram: ''
 )
@@ -80,6 +84,8 @@ e = Establishment.create(
   description: 'Redneck é o termo utilizado nos Estados Unidos e Canadá para nomear o estereótipo de um homem que mora no interior e tem uma baixa renda. Sua origem deve-se ao fato de que pelo trabalho constante dos trabalhadores rurais em exposição ao sol acabam ficando com seus pescoços avermelhados (do inglês red neck, “pescoço vermelho”). O General Lee traz este conceito estético e se inspira no filme The Dukes of Hazzard, dirigido por Jay Chandrasekhar e baseado na série de TV da década de 70.',
   phone: '(48) 3028-3445',
   email: 'lucianojung@gmail.com',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'https://www.facebook.com/General-Lee-271761482844679/?fref=ts',
   instagram: ''
 )
@@ -100,6 +106,8 @@ e = Establishment.create(
   small_description: 'Patrimônio histórico, etílico, gastronômico e musical.',
   phone: '(48) 3333-8687',
   email: 'armazemvieira@armazemvieira.com.br ',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'https://www.facebook.com/armazemvieira',
   instagram: ''
 )
@@ -120,6 +128,8 @@ e = Establishment.create(
   small_description: 'Uma mistura de cores e sabores intensos dá o tom ao Guacamole Cocina Mexicana',
   phone: '(48) 3225-0900',
   email: 'contato@guacamolemex.com.br',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'https://www.facebook.com/guacamolefln',
   instagram: ''
 )
@@ -140,6 +150,8 @@ e = Establishment.create(
   small_description: 'Ultrapasse sua fome com o Speedy Food.',
   phone: '(48) 3371-4100',
   email: 'contato@speedyfood.com.br',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'http://www.facebook.com.br/speedyfoodbr',
   instagram: ''
 )
@@ -160,6 +172,8 @@ e = Establishment.create(
   small_description: 'Boteco aconchegante e estilizado, com temas e bandas de rock nostálgico, petiscos e ambiente de taberna.',
   phone: '(48) 3028-5807',
   email: 'contato@choppdogus.com.br',
+  small_business_hours_description: 'Aberto todo dia, das 18 às 20',
+  business_hours_description: 'Aberto todo dia, das 18 às 20',
   facebook: 'www.facebook.com/choppdogus',
   instagram: ''
 )

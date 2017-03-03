@@ -76,7 +76,8 @@ class Admin::EstablishmentsController < Admin::BaseController
     params.require(:establishment).permit(
       :name, :small_description, :description, :site,
       :facebook, :instagram, :phone, :email, :active, :visible,
-      :vip, :aprooved, :phone, :cover, :avatar,
+      :small_business_hours_description, :business_hours_description,
+      :vip, :aprooved, :phone, :cover, :avatar, :tags => [],
       address_attributes: [
         :id, :zipcode, :neighborhood, :street, :number, :complement, :city_id
       ]

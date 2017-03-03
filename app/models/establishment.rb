@@ -23,11 +23,12 @@ class Establishment < ApplicationRecord
 
   belongs_to :user
 
-  accepts_nested_attributes_for :address, allow_destroy: true
+  accepts_nested_attributes_for :tags, :address, allow_destroy: true
 
-  validates_presence_of :name, :small_description, :description, :phone
+  validates_presence_of :name, :small_description, :description, :phone, :business_hours_description, :small_business_hours_description
   validates_length_of :small_description, :in => 30..250
-  validates_length_of :description, :in => 30..1500
+  validates_length_of :small_business_hours_description, :in => 5..35
+  validates_length_of :description, :business_hours_description, :in => 15..1500
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
 
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

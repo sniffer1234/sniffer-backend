@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 20170208150651) do
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                                             null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -84,19 +84,20 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.text     "suggestion_message"
     t.text     "description"
     t.text     "small_description"
-    t.string   "business_hours",                      null: false
+    t.text     "small_business_hours_description"
+    t.text     "business_hours_description"
     t.string   "slug"
     t.string   "facebook"
     t.string   "instagram"
     t.string   "phone"
     t.string   "site"
     t.string   "email"
-    t.boolean  "vip",                 default: false
-    t.boolean  "aprooved",            default: true
-    t.boolean  "visible",             default: true
+    t.boolean  "vip",                              default: false
+    t.boolean  "aprooved",                         default: true
+    t.boolean  "visible",                          default: true
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.index ["name"], name: "index_establishments_on_name", using: :btree
     t.index ["user_id"], name: "index_establishments_on_user_id", using: :btree
   end
@@ -116,7 +117,7 @@ ActiveRecord::Schema.define(version: 20170208150651) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.text     "suggestion_message"
-    t.text     "description",                        null: false
+    t.text     "description"
     t.string   "slug"
     t.boolean  "vip",                default: false
     t.boolean  "aprooved",           default: true

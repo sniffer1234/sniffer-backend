@@ -6,7 +6,7 @@ class Admin::EventsController < Admin::BaseController
     order_by_attrs = ['vip', 'name', 'visible', 'starts_at']
     order_by_asc = ['asc', 'desc']
     order_by = ""
-    
+
     if params[:order_by_attr]
        if order_by_attrs.include?(params[:order_by_attr])
          order_by += params[:order_by_attr]
@@ -23,8 +23,7 @@ class Admin::EventsController < Admin::BaseController
       order_by = "starts_at ASC"
     end
 
-    @events = Event.where(aprooved: true)
-                   .order(order_by)
+    @events = Event.order(order_by)
                    .page(params[:page] || 1)
   end
 
@@ -55,7 +54,7 @@ class Admin::EventsController < Admin::BaseController
 
   def event_params
     params.require(:event).permit(
-      :name, :description, :when,
+      :name, :description, :when, :establishment_id,
       :images, :vip, :aprooved, :cover,
       :visible, :starts_at, :ends_at, :no_time_to_end
     ).merge(user_id: @current_user.id)

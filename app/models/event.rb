@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   }
 
   scope :group_by_date, -> {
-    where(aprooved: true)
+    where(aprooved: true, visible: true)
     .where("ends_at > ?", Time.zone.now)
     .order(:starts_at)
     .group_by{ |event| event.starts_at.to_date }
@@ -28,7 +28,7 @@ class Event < ApplicationRecord
   # Return events approoved by establishments
   scope :by_establishment, -> (id) {
     where(establishment_id: id)
-    .where(aprooved: true)
+    .where(aprooved: true, visible: true)
     .where("ends_at > ?", Time.zone.now)
     .order(:starts_at)
   }

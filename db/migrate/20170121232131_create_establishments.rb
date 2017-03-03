@@ -8,6 +8,8 @@ class CreateEstablishments < ActiveRecord::Migration[5.0]
       t.text :suggestion_message
       t.text :description
       t.text :small_description
+      t.text :small_business_hours_description
+      t.text :business_hours_description
 
       t.string :slug
       t.string :facebook

@@ -22,21 +22,17 @@ class Api::EventsController < Api::BaseController
 
   # POST /api/events
   def create
-    # TODO - SET USER_ID
-    @event = event.new(event_params)
+    @event = Event.new(event_params)
 
-    # Necessary to filter
-    @event.aprooved = false
-
-    if @event.save(validate: false)
-      render json: {}
-    else
-      render json: { errors: @event.errors.full_messages }
+    unless @event.save(validate: false)
+      return render :json => { :error => { :code => 422, :description =>  @event.errors.full_messages } }, :status => 422
     end
   end
 
   private
   def event_params
-    params.require(:event).permit(:name, :phone, :suggestion_message)
+    params.require(:event)
+          .permit(:name, :phone, :suggestion_message)
+          .merge(user_id: @current_user.id, visible: false, aprooved: false)
   end
 end

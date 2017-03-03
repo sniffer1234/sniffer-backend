@@ -17,11 +17,11 @@
   <%= render "admin/shared/notice" %>
 
   <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link <%= 'active' unless params[:show_img_tab].present? %>" data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
+    <li class="<%= 'active' unless params[:show_img_tab].present? %>">
+      <a data-toggle="tab" href="#form-basic" role="tab">Dados básicos</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#form-visibility" role="tab">Visibilidade</a>
+      <a data-toggle="tab" href="#form-visibility" role="tab">Visibilidade</a>
     </li>
   </ul>
 

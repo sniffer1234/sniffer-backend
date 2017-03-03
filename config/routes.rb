@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: 'json' } do
-    resources :events, only: [:index, :show]
+    resources :events, only: [:index, :create, :show]
     resources :sniffs, only: [:index]
 
     resources :establishments, only: [:index, :show, :create] do
@@ -38,7 +38,6 @@ Rails.application.routes.draw do
 
   # Admin
   devise_for :users, path: '/admin'
-
 
   namespace :admin do
     resources :dashboard, only: [:index]

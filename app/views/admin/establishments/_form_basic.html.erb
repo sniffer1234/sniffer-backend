@@ -7,9 +7,10 @@
 <% end %>
 <%= f.input :avatar, as: :file %>
 <%= f.input :name %>
-<%= f.input :small_description, hint: 'Entre 30 à 150 carácteres', input_html: { rows: 6 } %>
-<%= f.input :description, hint: 'Entre 30 à 500 carácteres', input_html: { rows: 6 } %>
-<%= f.input :business_hours, hint: 'Ex: Todos os dias das 16:30 até 00:00' %>
+<%= f.input :small_business_hours_description, hint: 'Entre 5 à 35 carácteres', input_html: { rows: 6 } %>
+<%= f.input :business_hours_description, hint: 'Entre 15 à 1500 carácteres', input_html: { rows: 6 } %>
+<%= f.input :small_description, hint: 'Entre 30 à 250 carácteres', input_html: { rows: 6 } %>
+<%= f.input :description, hint: 'Entre 30 à 1500 carácteres', input_html: { rows: 6 } %>
 <%= f.input :email %>
 <%= f.input :site %>
 <%= f.input :facebook %>

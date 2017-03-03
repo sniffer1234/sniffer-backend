@@ -25,7 +25,7 @@ class Admin::EstablishmentEventsController < Admin::BaseController
     end
 
     @events = Event
-                .by_establishment(@establishment)
+                .where(establishment_id: @establishment.id)
                 .by_name(params[:search])
                 .order(order_by)
                 .page(params[:page] || 1)
