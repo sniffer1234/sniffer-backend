@@ -74,6 +74,8 @@ GEM
       responders
       warden (~> 1.2.3)
     devise-bootstrap-views (0.0.10)
+    domain_name (0.5.20170223)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.7.3)
@@ -83,11 +85,14 @@ GEM
       thor (~> 0.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     i18n (0.8.1)
     jmespath (1.3.1)
+    json (2.0.3)
     jsonapi (0.1.1.beta6)
       jsonapi-parser (= 0.1.1.beta3)
       jsonapi-renderer (= 0.1.1.beta1)
@@ -105,7 +110,6 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    le (2.7.5)
     ledermann-rails-settings (2.4.2)
       activerecord (>= 3.1)
     listen (3.0.8)
@@ -115,6 +119,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    mailgun_rails (0.9.0)
+      actionmailer (>= 3.2.13)
+      json (>= 1.7.7)
+      rest-client (>= 1.6.7)
     maskedinput-rails (1.4.0.0)
     method_source (0.8.2)
     mime-types (3.1)
@@ -125,6 +133,7 @@ GEM
     minitest (5.10.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
+    netrc (0.11.0)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -178,6 +187,10 @@ GEM
       ffi (>= 0.5.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
+    rest-client (2.0.1)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -210,6 +223,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.1.1)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     via_cep (0.2.3)
       httparty
     warden (1.2.7)
@@ -234,13 +250,12 @@ DEPENDENCIES
   byebug
   devise
   devise-bootstrap-views
-  execjs
   faker
   figaro
   kaminari
-  le
   ledermann-rails-settings
   listen (~> 3.0.5)
+  mailgun_rails
   maskedinput-rails
   paperclip (~> 5.0.0)
   paperclip-av-transcoder
