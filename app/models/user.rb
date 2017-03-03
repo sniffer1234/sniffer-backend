@@ -100,6 +100,14 @@ class User < ApplicationRecord
     user
   end
 
+  def admin?
+    self.role == 'admin'
+  end
+
+  def default?
+    self.role == 'default'
+  end
+
   def authentication_token
     current_authentication.token if self.current_authentication
   end

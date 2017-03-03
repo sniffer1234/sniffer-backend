@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   # Admin
   devise_for :users, path: '/admin'
+
+
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :events, only: [:index, :edit, :update, :destroy]
