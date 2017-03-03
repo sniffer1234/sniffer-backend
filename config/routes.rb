@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get '/' => 'landing_page/home#index'
   get '/termos-de-uso' => 'landing_page/terms#index'
 
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
+    resources :tags , only: [:index, :edit, :new, :create, :update, :destroy]
     resources :events, only: [:index, :edit, :update, :destroy]
     resources :establishments, only: [:index, :new, :create, :destroy, :edit, :update] do
       resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update]

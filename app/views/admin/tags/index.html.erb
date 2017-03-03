@@ -1,0 +1,26 @@
+<div class="events-page">
+  <div class="page-title">
+    <div class="clearfix">
+      <div class="pull-left">
+        <h2>Tags
+          <small>
+            <%= @tags.total_count %> tags encontradas
+          </small>
+        </h2>
+      </div>
+      <div class="pull-right">
+        <a href="<%= new_admin_tag_path %>" class="btn btn-success">
+          <i class="fa fa-plus-square"></i>
+          Novo
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= render "admin/shared/notice" %>
+    <%= render "list" %>
+    <div class="pagination-container">
+      <%= paginate @tags, :theme => 'twitter-bootstrap-3' %>
+    </div>
+  </div>
+</div>

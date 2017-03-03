@@ -85,7 +85,10 @@ pt-BR:
         active: Ativo
         visible: Visível
 
-
+      tag:
+        name: Nome
+        alias: Alias
+        
       state:
         name: Handle
         short_name: Handle

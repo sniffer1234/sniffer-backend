@@ -22,7 +22,7 @@
         </td>
         <td>
           <% establishment.tags.each do |tag| %>
-            <span><%= t tag.alias %></span>
+            <span class="label label-default"><%= t tag.alias %></span>
           <% end %>
           <% if establishment.tags.size == 0 %>
             -

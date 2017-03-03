@@ -1,18 +1,19 @@
 class Tag < ApplicationRecord
 
-  validates :alias, :inclusion => { :in => %w(restaurant event beverage_distributor
-    bar nightclub pizzaria steak_house pastry_chop japanese lunch dinner arabic) }
+  paginates_per 50
 
-  enum :alias => [ :restaurant, :event, :beverage_distributor,
-    :bar, :nightclub, :pizzaria, :steak_house,
-    :pastry_chop, :japanese, :lunch, :dinner, :arabic
-  ]
+  # Callbacks
+  before_save :set_alias
 
-  belongs_to :establishment
-  validates_presence_of :establishment, :alias
+  # Relations
+  has_and_belongs_to_many :establishments
 
-  def name
-    I18n.t(self.alias)
+  # Validations
+  validates_presence_of :name
+
+  private
+  def set_alias
+    self.alias = self.name.downcase.gsub(/[^a-z1-9]+/, '-').chomp('-')
   end
 
 end

@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width: 75%;">Nome</th>
+      <th style="width: 25%;" colspan="2">
+        Ações
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.name %></td>
+        <td colspan="2">
+          <%= link_to [:edit, :admin,  tag], class: 'btn btn-sm btn-info' do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= link_to [:admin,  tag], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+            <i class="fa fa-remove"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @tags.size == 0 %>
+      <tr>
+        <td colspan="6">
+          <%= render "no_results" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

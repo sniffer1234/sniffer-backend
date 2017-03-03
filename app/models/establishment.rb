@@ -19,11 +19,11 @@ class Establishment < ApplicationRecord
   has_many :sniffs, as: :sniffable, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :events, dependent: :destroy
-  has_many :tags, dependent: :destroy
+  has_and_belongs_to_many :tags
 
   belongs_to :user
 
-  accepts_nested_attributes_for :tags, :address, allow_destroy: true
+  accepts_nested_attributes_for :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone, :business_hours_description, :small_business_hours_description
   validates_length_of :small_description, :in => 30..250
