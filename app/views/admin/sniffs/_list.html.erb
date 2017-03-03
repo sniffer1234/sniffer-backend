@@ -14,13 +14,13 @@
     <% @sniffs.each do |sniff| %>
       <tr>
         <td><%= sniff.user.name %></td>
-        <td class="sniff-td-item">
+        <td>
           <%= sniff.created_at.strftime('%d-%m-%Y %H:%M') %>
         </td>
         <td>
           <%= sniff.establishment_name %>
         </td>
-        <td>
+        <td class="sniff-td-item">
           <%= image_tag sniff.src.url(:medium) %>
         </td>
         <td colspan="2">
