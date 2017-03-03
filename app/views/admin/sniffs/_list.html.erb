@@ -3,8 +3,8 @@
     <tr>
       <th style="width: 20%;">Usuário</th>
       <th style="width: 20%;">Criado em</th>
-      <th style="width: 20%;">Conteúdo</th>
       <th style="width: 25%;">Estabelecimento</th>
+      <th style="width: 20%;">Conteúdo</th>
       <th style="width: 15%;">
         Ações
       </th>
@@ -14,14 +14,14 @@
     <% @sniffs.each do |sniff| %>
       <tr>
         <td><%= sniff.user.name %></td>
-        <td>
-          <%= image_tag sniff.src.url(:medium) %>
-        </td>
         <td class="sniff-td-item">
           <%= sniff.created_at.strftime('%d-%m-%Y %H:%M') %>
         </td>
         <td>
           <%= sniff.establishment_name %>
+        </td>
+        <td>
+          <%= image_tag sniff.src.url(:medium) %>
         </td>
         <td colspan="2">
           <%= link_to [:admin, sniff], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse sniff? Será uma ação irreversível' } do %>
