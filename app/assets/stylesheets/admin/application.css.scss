@@ -12,5 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap
  */
+
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+ @import 'bootstrap-datetimepicker';

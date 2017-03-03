@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require maskedinput
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

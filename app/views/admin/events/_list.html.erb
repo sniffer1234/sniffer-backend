@@ -1,0 +1,48 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width: 5%;">Vip</th>
+      <th style="width: 5%;">Visível</th>
+      <th style="width: 5%;">Aprovado</th>
+      <th style="width: 30%;">Nome</th>
+      <th style="width: 20%;">Início</th>
+      <th style="width: 20%;">Final</th>
+      <th style="width: 15%;" colspan="2">
+        Ações
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr class="<%= !event.aprooved ? 'table-warning' : '' %> <%= !event.visible ? 'table-warning' : '' %> <%= event.vip ? 'table-info' : '' %>">
+        <td><%= icon_check(event.vip) %></td>
+        <td><%= icon_check(event.visible) %></td>
+        <td><%= icon_check(event.aprooved) %></td>
+        <td>
+          <%= event.name %>
+        </td>
+        <td>
+          <%= l event.starts_at, format: :short %>
+        </td>
+        <td>
+        <%= l event.ends_at, format: :short rescue '-' %>
+        </td>
+        <td colspan="2">
+          <%= link_to [:edit, :admin, event], class: 'btn btn-sm btn-info' do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+          <%= link_to [:admin, event], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+            <i class="fa fa-remove"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <% if @events.size == 0 %>
+      <tr>
+        <td colspan="6">
+          <%= render "no_results" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

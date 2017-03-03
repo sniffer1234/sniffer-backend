@@ -64,7 +64,6 @@ pt-BR:
         user: Usuário
         starts_at: Começa em
         ends_at: Termina em
-        no_time_to_end: Sem hora para terminar
 
       establishment:
         id: Estabelecimento
@@ -74,7 +73,8 @@ pt-BR:
         description: Descrição
         small_description: Descrição curta
         slug: Slug
-        business_hours: Horário de funcionamento
+        small_business_hours_description: Horário de funcionamento curto
+        business_hours_description: Horário de funcionamento
         facebook: Facebook
         instagram: Instagram
         phone: Telefone

@@ -1,16 +1,34 @@
 <% if @establishment.cover %>
-    <%= image_tag @establishment.cover.url(:thumb) %>
+  <div class="form-group image">
+    <label class="form-control-label">
+      Capa
+    </label>
+    <div class="clearfix">
+      <%= image_tag @establishment.cover.url(:thumb) %>
+    </div>
+  </div>
 <% end %>
-<%= f.input :cover, as: :file %>
+<%= f.input :cover, as: :file, label: false %>
+<hr />
+
 <% if @establishment.avatar %>
-    <%= image_tag @establishment.avatar.url(:thumb) %>
+  <div class="form-group image">
+    <label class="form-control-label">
+      Capa
+    </label>
+    <div class="clearfix">
+      <%= image_tag @establishment.cover.url(:thumb) %>
+    </div>
+  </div>
 <% end %>
-<%= f.input :avatar, as: :file %>
+<%= f.input :avatar, as: :file, label: false  %>
+<hr />
+
 <%= f.input :name %>
-<%= f.input :small_business_hours_description, hint: 'Entre 5 à 35 carácteres', input_html: { rows: 6 } %>
-<%= f.input :business_hours_description, hint: 'Entre 15 à 1500 carácteres', input_html: { rows: 6 } %>
-<%= f.input :small_description, hint: 'Entre 30 à 250 carácteres', input_html: { rows: 6 } %>
-<%= f.input :description, hint: 'Entre 30 à 1500 carácteres', input_html: { rows: 6 } %>
+<%= f.input :small_business_hours_description, hint: 'Entre 5 à 35 carácteres', input_html: { rows: 3 } %>
+<%= f.input :business_hours_description, hint: 'Entre 15 à 1500 carácteres', input_html: { rows: 5 } %>
+<%= f.input :small_description, hint: 'Entre 30 à 250 carácteres', input_html: { rows: 3 } %>
+<%= f.input :description, hint: 'Entre 30 à 1500 carácteres', input_html: { rows: 5 } %>
 <%= f.input :email %>
 <%= f.input :site %>
 <%= f.input :facebook %>

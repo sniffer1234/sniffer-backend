@@ -46,9 +46,6 @@ Rails.application.routes.draw do
       resources :establishment_events, only: [:index, :new, :create, :destroy, :edit, :update]
       resources :sniffs, only: [:destroy]
     end
-    resources :imgs do
-      put :sort, on: :collection
-    end
     resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :sniffs, only: [:index, :destroy]
   end

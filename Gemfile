@@ -31,6 +31,9 @@ gem 'turbolinks', '~> 5.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'simple_form'
 gem 'maskedinput-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 # Secure
 gem 'bcrypt', '~> 3.1.7'

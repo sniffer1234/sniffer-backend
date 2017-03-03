@@ -19,48 +19,7 @@
   <div>
     <%= render "admin/shared/notice" %>
     <%= render "search" %>
-    <table class="table">
-      <thead>
-        <tr>
-          <th style="width: 5%;">Vip</th>
-          <th style="width: 5%;">Visível</th>
-          <th style="width: 5%;">Aprovado</th>
-          <th style="width: 30%;">Nome</th>
-          <th style="width: 30%;">Categoria</th>
-          <th style="width: 15%;" colspan="2">
-            Ações
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @establishments.each do |establishment| %>
-          <tr class="<%= !establishment.aprooved ? 'table-warning' : '' %> <%= !establishment.visible ? 'table-warning' : '' %> <%= establishment.vip ? 'table-info' : '' %>">
-            <td><%= icon_check(establishment.vip) %></td>
-            <td><%= icon_check(establishment.visible) %></td>
-            <td><%= icon_check(establishment.aprooved) %></td>
-            <td>
-              <%= establishment.name %>
-            </td>
-            <td>
-              <% establishment.tags.each do |tag| %>
-                <span><%= t tag.alias %></span>
-              <% end %>
-              <% if establishment.tags.size == 0 %>
-                -
-              <% end %>
-            </td>
-            <td colspan="2">
-              <%= link_to [:edit, :admin, establishment], class: 'btn btn-sm btn-info' do %>
-                <i class="fa fa-pencil"></i>
-              <% end %>
-              <%= link_to [:admin, establishment], method: :delete, class: 'btn btn-sm btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
-                <i class="fa fa-remove"></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render "list" %>
     <div class="pagination-container">
       <%= paginate @establishments, :theme => 'twitter-bootstrap-3' %>
     </div>

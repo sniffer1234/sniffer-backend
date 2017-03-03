@@ -1,15 +1,15 @@
 <table class="table">
   <thead>
     <tr>
-      <th style="width: 20%;">Ativa</th>
-      <th style="width: 80%;">Nome</th>
+      <th style="width: 10%;">Ativa</th>
+      <th style="width: 90%;">Nome</th>
     </tr>
   </thead>
   <tbody>
     <% Tag.aliases.each do |tag, key| %>
       <tr>
         <td>
-           <%= f.input :tags, as: :boolean %>
+           <%= f.input :tags, value: 'poi', as: :boolean, label: false %>
         </td>
         <td>
           <%= I18n.t(tag) %>
