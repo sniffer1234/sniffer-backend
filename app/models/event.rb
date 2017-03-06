@@ -14,6 +14,7 @@ class Event < ApplicationRecord
   # Validations
   accepts_nested_attributes_for :establishment
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
+  validates_length_of :description, minimum: 30, maximum: 1500
   validates_presence_of :name, :description, :starts_at, :ends_at
   validate :starts_at_greater_than_ends_at
   validates_attachment_content_type :cover,

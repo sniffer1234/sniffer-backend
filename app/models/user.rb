@@ -16,8 +16,7 @@ class User < ApplicationRecord
   paginates_per 20
 
   devise :database_authenticatable, :registerable,
-         :confirmable, :recoverable, :rememberable,
-         :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_attached_file :avatar, styles: {
     large: '600x600#',

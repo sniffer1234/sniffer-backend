@@ -28,7 +28,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
 
       # Criado com sucesso, nao precisa de confirmação
       if resource.active_for_authentication?
-        sign_up(resource_name, resource, store: false)
+        sign_up(resource_name, resource)
       else
 
         # Conta criada com sucesso, necessita fazer confirmação
@@ -41,7 +41,10 @@ class Api::RegistrationsController < Devise::RegistrationsController
       return render :json => { :error => { :code => 422, :description =>  resource.errors.full_messages } }, :status => 422
     end
 
-    return render json: {}
+
+    sign_in(resource_name, resource, store: false)
+    resource.authentications.build().save!
+    render json: resource, root: 'data'
   end
 
   private
