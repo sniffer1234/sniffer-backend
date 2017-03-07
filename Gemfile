@@ -32,6 +32,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'simple_form'
 gem 'maskedinput-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem "font-awesome-rails"
 
 # Secure
 gem 'bcrypt', '~> 3.1.7'
