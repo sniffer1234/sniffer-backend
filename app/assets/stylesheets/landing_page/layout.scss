@@ -11,11 +11,25 @@ html, body {
 body {
   padding-bottom: 70px;
 
+  .navbar-collapse {
+    margin-top: 35px;
+  }
+
   > .navbar-inverse {
     background-color: #FFF;
     border: none;
     padding-top: 10px;
     margin-bottom: 45px;
+
+    .navbar-header .navbar-toggle {
+      background: #FFF;
+      position: relative;
+      top: 20px;
+
+      .icon-bar {
+        background-color: #333;
+      }
+    }
 
     .navbar-brand {
       margin-top: -5px;
