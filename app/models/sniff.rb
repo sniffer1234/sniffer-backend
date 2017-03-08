@@ -15,7 +15,7 @@ class Sniff < ApplicationRecord
 
   has_attached_file :video,
     styles: { medium: { geometry: "480x640>", format: 'mp4' } },
-    processors: [ :ffmpeg ]
+    processors: [ :transcoder ]
 
   # Relations
   belongs_to :user, counter_cache: true
