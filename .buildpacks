@@ -1,3 +1,2 @@
 https://github.com/heroku/heroku-buildpack-ruby.git#v154
-https://github.com/shunjikonishi/heroku-buildpack-ffmpeg
-https://github.com/heroku/heroku-buildpack-play#v26
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
