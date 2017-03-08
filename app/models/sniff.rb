@@ -55,6 +55,15 @@ class Sniff < ApplicationRecord
 
   def set_video_duration
     result = `ffmpeg -i #{self.video.staged_path} 2>&1`
+
+    puts "------ video stage ath ------"
+    puts "------ video stage ath ------"
+    puts self.video.staged_path
+    puts result
+    puts "------ video stage ath ------"
+    puts "------ video stage ath ------"
+
+
     r = result.match("Duration: ([0-9]+):([0-9]+):([0-9]+).([0-9]+)")
     duration = "#{ r[1].to_i*3600+r[2].to_i*60+r[3].to_i }.#{ r[1].to_i*3600+r[2].to_i*60+r[4].to_i }".to_f
 
