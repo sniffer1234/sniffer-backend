@@ -19,7 +19,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_attached_file :avatar, styles: {
-    large: '600x600#',
     medium: '300x300#',
     thumb: '150x150#'
    }, default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
@@ -137,7 +136,7 @@ class User < ApplicationRecord
     facebook_identity = self.identities.find_by(provider: "facebook")
 
     if facebook_identity
-      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?type=large"
+      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?width=300&height=300"
     else
       return nil
     end
