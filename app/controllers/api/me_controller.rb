@@ -62,8 +62,8 @@ class Api::MeController < Api::BaseController
   def sniff_params
     params.require(:sniff)
       .permit(
-        :src, :duration, :src_data,
-        :sniffable_id, :sniffable_type
+        :src, :duration,:sniffable_id, :sniffable_type,
+        :image_data, :video_data
       )
   end
 end

@@ -1,5 +1,5 @@
 class SniffSerializer < ActiveModel::Serializer
-  attributes :id, :src, :duration, :time_ago, :user
+  attributes :id, :img, :video, :duration, :time_ago, :user
 
   def user
     return {
@@ -13,10 +13,24 @@ class SniffSerializer < ActiveModel::Serializer
     }
   end
 
-  def src
-    return {
-      thumb: object.src.url(:thumb),
-      large: object.src.url(:large)
-    }
+  def img
+    unless object.img_file_size.nil?
+      return {
+        thumb: object.img.url(:thumb),
+        large: object.img.url(:large)
+      }
+    end
+
+    return nil
+  end
+
+  def video
+    unless object.video_file_size.nil?
+      return {
+        medium: object.video.url(:medium)
+      }
+    end
+
+    return nil
   end
 end

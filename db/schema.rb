@@ -147,20 +147,6 @@ ActiveRecord::Schema.define(version: 20170303151513) do
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
-  create_table "imgs", force: :cascade do |t|
-    t.string   "label"
-    t.string   "src_file_name",    null: false
-    t.string   "src_content_type", null: false
-    t.integer  "src_file_size",    null: false
-    t.datetime "src_updated_at",   null: false
-    t.integer  "position"
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_imgs_on_imageable_type_and_imageable_id", using: :btree
-  end
-
   create_table "settings", force: :cascade do |t|
     t.string   "var",         null: false
     t.text     "value"
@@ -173,18 +159,22 @@ ActiveRecord::Schema.define(version: 20170303151513) do
   end
 
   create_table "sniffs", force: :cascade do |t|
-    t.string   "src_file_name",                   null: false
-    t.string   "src_content_type",                null: false
-    t.integer  "src_file_size",                   null: false
-    t.datetime "src_updated_at",                  null: false
+    t.string   "img_file_name"
+    t.string   "img_content_type"
+    t.integer  "img_file_size"
+    t.datetime "img_updated_at"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
     t.string   "label"
     t.integer  "duration"
     t.string   "sniffable_type"
     t.integer  "sniffable_id"
-    t.integer  "user_id",                         null: false
-    t.boolean  "active",           default: true
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "user_id",                           null: false
+    t.boolean  "active",             default: true
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["sniffable_type", "sniffable_id"], name: "index_sniffs_on_sniffable_type_and_sniffable_id", using: :btree
     t.index ["user_id"], name: "index_sniffs_on_user_id", using: :btree
   end

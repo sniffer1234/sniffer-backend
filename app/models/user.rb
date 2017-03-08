@@ -80,8 +80,6 @@ class User < ApplicationRecord
           auto_password: true
         )
 
-        user.skip_confirmation!
-
         user.save!
       end
     end

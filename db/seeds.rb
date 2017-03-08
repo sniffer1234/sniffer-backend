@@ -21,16 +21,13 @@ end
 
 #Users
 u = User.new(name: 'Rafael Motta', email: 'rafaelmotta021@gmail.com', password: 'galera07', password_confirmation: 'galera07', role: 'admin')
-u.skip_confirmation!
 u.save
 
 
 u = User.new(email: 'juliano@sfhera.com.br', password: 'juliano1', password_confirmation: 'galera07', name: 'Juliano Londero', role: 'default')
-u.skip_confirmation!
 u.save
 
 u = User.new(email: 'marcos@kincode.com.br', password: 'galera07', password_confirmation: 'galera07', name: 'Marcos Demétrio', role: 'default')
-u.skip_confirmation!
 u.save
 
 # Establishments
