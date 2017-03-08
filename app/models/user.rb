@@ -102,6 +102,10 @@ class User < ApplicationRecord
     self.role == 'default'
   end
 
+  def after_database_authentication
+    self.authentications.build().save!
+  end
+
   def authentication_token
     current_authentication.token if self.current_authentication
   end
@@ -115,10 +119,6 @@ class User < ApplicationRecord
     Authentication.expire!(self.current_authentication.id)
   end
 
-  def after_database_authentication
-    self.authentications.build().save!
-  end
-
   # Return user first name
   def first_name
     self.name.split(' ').first
@@ -129,6 +129,18 @@ class User < ApplicationRecord
       email: self.settings(:notifications).email,
       push: self.settings(:notifications).push
     }
+  end
+
+  # Exibe o avatar do facebook
+  # Só exibe se tiver facebook associada a sua conta
+  def facebook_avatar
+    facebook_identity = self.identities.find_by(provider: "facebook")
+
+    if facebook_identity
+      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?type=large"
+    else
+      return nil
+    end
   end
 
   protected

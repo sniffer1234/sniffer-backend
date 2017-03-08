@@ -1,5 +1,6 @@
 class UserShortSerializer < ActiveModel::Serializer
-  attributes :id, :name, :first_name, :avatar
+  attributes :id, :name, :first_name,
+             :avatar, :facebook_avatar
 
   def avatar
     {
