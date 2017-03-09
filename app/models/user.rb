@@ -130,16 +130,8 @@ class User < ApplicationRecord
     }
   end
 
-  # Exibe o avatar do facebook
-  # Só exibe se tiver facebook associada a sua conta
-  def facebook_avatar
-    facebook_identity = self.identities.find_by(provider: "facebook")
-
-    if facebook_identity
-      return "https://graph.facebook.com/#{ facebook_identity.uid }/picture?width=300&height=300"
-    else
-      return nil
-    end
+  def facebook_identity
+    self.identities.find_by(provider: "facebook")
   end
 
   protected
