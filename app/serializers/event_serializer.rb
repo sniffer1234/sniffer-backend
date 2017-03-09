@@ -7,6 +7,7 @@ class EventSerializer < ActiveModel::Serializer
 
   def cover
     return {
+      large: object.cover.url(:large),
       medium: object.cover.url(:medium),
       thumb: object.cover.url(:thumb),
       micro: object.cover.url(:micro)
