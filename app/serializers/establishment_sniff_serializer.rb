@@ -4,6 +4,7 @@ class EstablishmentSniffSerializer < ActiveModel::Serializer
 
   def cover
     return {
+      medium: object.cover.url(:medium),
       thumb: object.cover.url(:thumb),
       micro: object.cover.url(:micro)
     }
@@ -11,6 +12,7 @@ class EstablishmentSniffSerializer < ActiveModel::Serializer
 
   def avatar
     return {
+      medium: object.cover.url(:medium),
       thumb: object.avatar.url(:thumb),
       micro: object.avatar.url(:micro)
     }
