@@ -7,11 +7,21 @@ class Establishment < ApplicationRecord
   before_create :create_chat
 
   has_attached_file :avatar,
-    styles: { default: "40x40>", micro: "10x10>" },
+    styles: {
+      large: "600x600>",
+      medium: "300x300>",
+      thumb: "40x40>",
+      micro: "10x10>"
+    },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   has_attached_file :cover,
-    styles: { medium: "300x300>", thumb: "100x100>", micro: "10x10>" },
+    styles: {
+      large: "600x600>",
+      medium: "300x300>",
+      thumb: "100x100>",
+      micro: "10x10>"
+    },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   has_one :address, as: :addressable, dependent: :destroy
