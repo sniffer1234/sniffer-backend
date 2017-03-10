@@ -21,7 +21,12 @@
           <%= sniff.establishment_name %>
         </td>
         <td class="sniff-td-item">
-          <%= image_tag sniff.src.url(:medium) %>
+          <% unless sniff.img.blank? %>
+            <%= image_tag sniff.img.url(:medium) %>
+          <% end %>
+          <% unless sniff.video.blank? %>
+            <%= video_tag(sniff.video, controls: true, autobuffer: true) %>
+          <% end %>
         </td>
         <td colspan="2">
           <%= link_to [:admin, sniff], method: :delete, class: 'btn btn-xs btn-warning', data: { confirm: 'Você realmente deseja remover esse sniff? Será uma ação irreversível' } do %>
