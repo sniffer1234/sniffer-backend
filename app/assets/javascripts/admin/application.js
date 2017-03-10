@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require maskedinput
 //= require bootstrap
+//= require tinymce/tinymce
 //= require_tree .

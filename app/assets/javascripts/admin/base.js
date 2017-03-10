@@ -1,5 +1,9 @@
 document.addEventListener('turbolinks:load', function(){
 
+  tinymce.init({
+    selector: '.tinymce'
+  });
+
   $('[data-mask]').each(function(key, el){
     var $el = $(el)
     $el.mask($el.data('mask'))
