@@ -29,21 +29,15 @@ class Api::MeController < Api::BaseController
 
   # POST /api/me/sniff
   def create_sniff
-    @sniff = @current_user.sniffs.build(sniff_params)
+    @sniff = @current_user.sniffs.build({
+      duration: params[:duration],
+      img: params[:img] || params[:video],
+      sniffable_type: params[:sniffable_type],
+      sniffable_id: params[:sniffable_id].to_i
+    })
 
     unless @sniff.save
       return render :json => { :error => { :description => @current_user.errors.full_messages, :code => 422 }} , :status => 422
-    else
-
-      # Create active model serializers
-      sniff = ActiveModelSerializers::SerializableResource.new(
-        Establishment.sniffs_from_last_12_hours.limit(1),
-        each_serializer: EstablishmentSniffSerializer,
-        root: 'data'
-      ).as_json
-
-      # Send push notification
-      Pusher.trigger('live', 'new:sniff', sniff)
     end
 
     render json: @sniff, root: 'data'
