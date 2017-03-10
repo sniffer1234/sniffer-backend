@@ -4,7 +4,7 @@
       Capa
     </label>
     <div class="clearfix">
-      <%= image_tag @event.cover.url(:thumb) %>
+      <%= image_tag @event.cover.url(:medium) %>
     </div>
   </div>
 <% end %>
@@ -12,7 +12,7 @@
 <hr />
 
 <%= f.input :name %>
-<%= f.input :description, hint: 'Entre 30 à 500 carácteres', input_html: { rows: 6, class: 'tinymce' } %>
+<%= f.input :description, hint: 'Deve ter pelo menos 30 carácteres', input_html: { rows: 6, class: 'tinymce' } %>
 
 <hr>
 <%= f.input :starts_at, wrapper: :horizontal_select_date %>

@@ -1,10 +1,21 @@
 <%= f.input :establishment_id, collection: Establishment.all, include_blank: false %>
 
-<%= f.input :name %>
-<% if @event.cover %>
-  <%= image_tag @event.cover.url(:thumb) %>
+<% if @establishment.cover %>
+  <div class="form-group image">
+    <label class="form-control-label">
+      Capa
+    </label>
+    <div class="clearfix">
+      <%= image_tag @event.cover.url(:medium) %>
+    </div>
+  </div>
 <% end %>
-<%= f.input :cover, as: :file %>
-<%= f.input :description, hint: 'Pelo menos 30 carácteres', input_html: { rows: 6 } %>
-<%= f.input :starts_at %>
-<%= f.input :ends_at, input_html: { class: 'event-ends-at'} %>
+<%= f.input :cover, as: :file, label: false %>
+<hr />
+
+<%= f.input :name %>
+<%= f.input :description, hint: 'Deve ter pelo menos 30 carácteres', input_html: { rows: 6, class: 'tinymce' } %>
+
+<hr>
+<%= f.input :starts_at, wrapper: :horizontal_select_date %>
+<%= f.input :ends_at, wrapper: :horizontal_select_date %>
