@@ -16,4 +16,5 @@
 //= require maskedinput
 //= require bootstrap
 //= require tinymce/tinymce
+//= require tinymce/themes/modern/theme
 //= require_tree .
