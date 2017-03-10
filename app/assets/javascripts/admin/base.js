@@ -1,7 +1,10 @@
 document.addEventListener('turbolinks:load', function(){
 
   tinymce.init({
-    selector: '.tinymce'
+    selector: '.tinymce',
+    toolbar: 'undo redo | styleselect | bold italic | link image | forecolor backcolor',
+    language: 'pt_BR',
+    plugins: 'image link textcolor'
   });
 
   $('[data-mask]').each(function(key, el){

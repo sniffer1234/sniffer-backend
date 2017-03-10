@@ -34,6 +34,7 @@ gem 'maskedinput-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "font-awesome-rails"
 gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 
 # Secure
 gem 'bcrypt', '~> 3.1.7'
