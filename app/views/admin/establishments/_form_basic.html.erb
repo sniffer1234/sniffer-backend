@@ -14,10 +14,10 @@
 <% if @establishment.avatar %>
   <div class="form-group image">
     <label class="form-control-label">
-      Capa
+      Avatar
     </label>
     <div class="clearfix">
-      <%= image_tag @establishment.cover.url(:medium) %>
+      <%= image_tag @establishment.avatar.url(:medium) %>
     </div>
   </div>
 <% end %>
