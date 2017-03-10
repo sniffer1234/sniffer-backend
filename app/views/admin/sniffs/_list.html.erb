@@ -25,7 +25,7 @@
             <%= image_tag sniff.img.url(:medium) %>
           <% end %>
           <% unless sniff.video.blank? %>
-            <%= video_tag(sniff.video, controls: true, autobuffer: true) %>
+            <%= video_tag(sniff.video, controls: true, autobuffer: true, width: 250, height: 250) %>
           <% end %>
         </td>
         <td colspan="2">
