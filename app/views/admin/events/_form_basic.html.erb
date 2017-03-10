@@ -5,6 +5,6 @@
   <%= image_tag @event.cover.url(:thumb) %>
 <% end %>
 <%= f.input :cover, as: :file %>
-<%= f.input :description, hint: 'Entre 30 à 1500 carácteres', input_html: { rows: 6 } %>
+<%= f.input :description, hint: 'Pelo menos 30 carácteres', input_html: { rows: 6 } %>
 <%= f.input :starts_at %>
 <%= f.input :ends_at, input_html: { class: 'event-ends-at'} %>
