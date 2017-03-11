@@ -8,18 +8,18 @@ class Establishment < ApplicationRecord
 
   has_attached_file :avatar,
     styles: {
-      large: "600x600>",
-      medium: "300x300>",
-      thumb: "40x40>",
-      micro: "10x10>"
+      large: "600x600#",
+      medium: "300x300#",
+      thumb: "40x40#",
+      micro: "10x10#"
     },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   has_attached_file :cover,
     styles: {
-      large: "650x450#",
+      large: "600x450#",
       medium: "400x300#",
-      thumb: "40x30#",
+      thumb: "80x60#",
       micro: "10x10#"
     },
     default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
@@ -36,10 +36,10 @@ class Establishment < ApplicationRecord
   accepts_nested_attributes_for :address, allow_destroy: true
 
   validates_presence_of :name, :small_description, :description, :phone, :business_hours_description, :small_business_hours_description
-  validates_length_of :small_description, :in => 30..250
+  validates_length_of :small_description, :in => 30..350
+  validates_length_of :description, minimum: 30
   validates_length_of :small_business_hours_description, :in => 5..35
   validates_length_of :business_hours_description, :in => 15..1500
-  validates_length_of :description, minimum: 30
   validates_length_of :suggestion_message, maximum: 500, allow_blank: true
 
   validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

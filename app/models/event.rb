@@ -1,13 +1,23 @@
 class Event < ApplicationRecord
 
   # Third part
-  has_attached_file :cover, styles: {
-    large: "650x450#",
-    medium: "400x300#",
-    thumb: "40x30#",
-    micro: "10x10#"
-  },
-  default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+  has_attached_file :avatar,
+    styles: {
+      large: "600x600#",
+      medium: "300x300#",
+      thumb: "65x65#",
+      micro: "10x10#"
+    },
+    default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
+
+  has_attached_file :cover,
+    styles: {
+      large: "600x450#",
+      medium: "400x300#",
+      thumb: "80x60#",
+      micro: "10x10#"
+    },
+    default_url: "#{ ENV['S3_DEFAULT_PATH'] }/default/:style/missing.png"
 
   # Relations
   belongs_to :user
@@ -15,12 +25,13 @@ class Event < ApplicationRecord
 
   # Validations
   accepts_nested_attributes_for :establishment
-  validates_length_of :suggestion_message, maximum: 500, allow_blank: true
+  validates_presence_of :name, :description, :small_description, :starts_at, :ends_at
+  validates_length_of :small_description, :in => 30..350
   validates_length_of :description, minimum: 30
-  validates_presence_of :name, :description, :starts_at, :ends_at
+  validates_length_of :suggestion_message, maximum: 500, allow_blank: true
   validate :starts_at_greater_than_ends_at
-  validates_attachment_content_type :cover,
-    :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :cover, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   # Events created by default users and not aprooved
   scope :pending, -> {

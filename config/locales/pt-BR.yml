@@ -56,7 +56,8 @@ pt-BR:
       event:
         name: Nome
         cover: Capa
-        description: Descricao
+        description: Descrição
+        small_description: Descrição curta
         visible: Visível
         aprooved: Aprovado
         vip: VIP

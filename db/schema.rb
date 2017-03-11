@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303151513) do
+ActiveRecord::Schema.define(version: 20170311184323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,19 +120,24 @@ ActiveRecord::Schema.define(version: 20170303151513) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.string   "name",                               null: false
+    t.string   "name",                                null: false
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.text     "suggestion_message"
     t.text     "description"
     t.string   "slug"
-    t.boolean  "vip",                default: false
-    t.boolean  "aprooved",           default: true
-    t.boolean  "visible",            default: true
+    t.boolean  "vip",                 default: false
+    t.boolean  "aprooved",            default: true
+    t.boolean  "visible",             default: true
     t.integer  "establishment_id"
     t.integer  "user_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.text     "small_description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["establishment_id"], name: "index_events_on_establishment_id", using: :btree
     t.index ["name"], name: "index_events_on_name", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree

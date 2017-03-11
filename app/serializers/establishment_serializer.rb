@@ -23,8 +23,9 @@ class EstablishmentSerializer < ActiveModel::Serializer
 
   def avatar
     return {
+      large: object.avatar.url(:large),
       medium: object.avatar.url(:medium),
-      thumb: object.cover.url(:thumb),
+      thumb: object.avatar.url(:thumb),
       micro: object.avatar.url(:micro)
     }
   end

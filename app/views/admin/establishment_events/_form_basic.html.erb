@@ -1,4 +1,4 @@
-<% if @establishment.cover %>
+<% if @event.cover %>
   <div class="form-group image">
     <label class="form-control-label">
       Capa
@@ -9,11 +9,29 @@
   </div>
 <% end %>
 <%= f.input :cover, as: :file, label: false %>
+<p class="help-block">Deve ter preferencialmente* proporção 4x3. Exemplo: 400x300, 600x450</p>
+<small class="help-block">Se a imagem não tiver a proporção recomendada, iremos redimensionar de forma automática</small>
+<hr />
+
+<% if @event.avatar %>
+  <div class="form-group image">
+    <label class="form-control-label">
+      Avatar
+    </label>
+    <div class="clearfix">
+      <%= image_tag @event.avatar.url(:medium) %>
+    </div>
+  </div>
+<% end %>
+<%= f.input :avatar, as: :file, label: false  %>
+<p class="help-block">Deve ter preferencialmente* proporção 1x1. Exemplo: 300x300</p>
+<small class="help-block">Se a imagem não tiver a proporção recomendada, iremos redimensionar de forma automática</small>
 <hr />
 
 <%= f.input :name %>
-<%= f.input :description, hint: 'Deve ter pelo menos 30 carácteres', input_html: { rows: 6, class: 'tinymce' } %>
-
-<hr>
+<hr />
+<%= f.input :small_description, hint: 'Entre 30 à 350 carácteres. Não suporta HTML', input_html: { rows: 3 } %>
+<%= f.input :description, hint: 'Deve ter pelo menos 30 carácteres. Suporta HTML', input_html: { rows: 5, class: 'tinymce' } %>
+<hr />
 <%= f.input :starts_at, wrapper: :horizontal_select_date %>
 <%= f.input :ends_at, wrapper: :horizontal_select_date %>
