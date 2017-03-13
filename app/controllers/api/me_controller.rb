@@ -29,12 +29,7 @@ class Api::MeController < Api::BaseController
 
   # POST /api/me/sniff
   def create_sniff
-    @sniff = @current_user.sniffs.build({
-      duration: params[:duration],
-      img: params[:img] || params[:video],
-      sniffable_type: params[:sniffable_type],
-      sniffable_id: params[:sniffable_id].to_i
-    })
+    @sniff = @current_user.sniffs.build(sniff_params)
 
     unless @sniff.save
       return render :json => { :error => { :description => @current_user.errors.full_messages, :code => 422 }} , :status => 422
@@ -57,7 +52,7 @@ class Api::MeController < Api::BaseController
     params.require(:sniff)
       .permit(
         :src, :duration,:sniffable_id, :sniffable_type,
-        :image_data, :video_data
+        :img_data, :video_data
       )
   end
 end

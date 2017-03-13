@@ -5,7 +5,7 @@ class Sniff < ApplicationRecord
   paginates_per 10
 
   # Callbacks
-  before_validation :set_img, unless: Proc.new{ |s| s.image_data.blank? }
+  before_validation :set_img, unless: Proc.new{ |s| s.img_data.blank? }
   before_validation :set_video, unless: Proc.new{ |s| s.video_data.blank? }
 
   # Paperclip image
@@ -28,7 +28,7 @@ class Sniff < ApplicationRecord
 
   before_video_post_process :set_video_duration
 
-  attr_accessor :image_data, :video_data
+  attr_accessor :img_data, :video_data
 
   # Find sniffs by establishment id
   scope :by_establishment, -> (id) {
@@ -48,9 +48,15 @@ class Sniff < ApplicationRecord
   private
 
   def set_img
-    self.img = self.image_data
-    self.image_data = "file.jpeg"
-    self.image_data = "image/jpeg"
+    self.img = self.img_data
+    self.img_file_name = "file.jpeg"
+    self.img_content_type = "image/jpeg"
+  end
+
+  def set_video
+    self.video = self.video_data
+    self.video_file_name = "file.mp4"
+    self.video_content_type = "video/mp4"
   end
 
   def set_video_duration
@@ -62,10 +68,6 @@ class Sniff < ApplicationRecord
     self.duration = duration.round * 1000
   end
 
-  def set_video
-    self.video = self.video_data
-    #self.video_data = "file.mp4"
-    #self.video_data = "video/mp4"
-  end
+
 
 end
