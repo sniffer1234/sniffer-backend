@@ -1,6 +1,5 @@
 class UserShortSerializer < ActiveModel::Serializer
-  attributes :id, :name, :first_name,
-             :avatar, :facebook_avatar
+  attributes :id, :name, :first_name, :avatar
 
   def avatar
     if object.avatar_file_size & !object.facebook_identity
