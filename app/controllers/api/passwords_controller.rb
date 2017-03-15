@@ -1,10 +1,10 @@
 class Api::PasswordsController < Devise::PasswordsController
 
-  skip_before_filter :require_no_authentication
-  
+  skip_before_action :require_no_authentication
+
   # POST /resource/password/new
   def create
-    @user = User.where.not(confirmed_at: nil).find_by(:email => resource_params[:email])
+    @user = User.find_by(:email => resource_params[:email])
 
     if @user.nil?
       return render :json => { :error => { :code => 422, :description =>  "Email não encontrado ou não confirmado" } }, :status => 422
@@ -13,7 +13,7 @@ class Api::PasswordsController < Devise::PasswordsController
     @user.send_reset_password_instructions
 
     unless successfully_sent?(@user)
-      retunr render json: { error: { :code => 422, :description =>  @user.errors.full_messages } }, :status => 422
+      return render json: { error: { :code => 422, :description =>  @user.errors.full_messages } }, :status => 422
     end
 
     render json: {}

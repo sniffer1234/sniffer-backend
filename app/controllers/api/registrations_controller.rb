@@ -1,6 +1,6 @@
 class Api::RegistrationsController < Devise::RegistrationsController
 
-  skip_before_filter :require_no_authentication
+  skip_before_action :require_no_authentication
   before_action :configure_devise_permitted_parameters
 
   def configure_devise_permitted_parameters
