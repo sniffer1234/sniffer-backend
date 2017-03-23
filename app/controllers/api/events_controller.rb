@@ -3,7 +3,7 @@ class Api::EventsController < Api::BaseController
   # GET /api/events
   def index
     events_calendar = []
-    events_by_date = Event.group_by_date
+    events_by_date = Event.by_tags(params[:tags]).group_by_date
 
     events_by_date.each do |date, event|
       event_item = EventCalendar.new(when: date)

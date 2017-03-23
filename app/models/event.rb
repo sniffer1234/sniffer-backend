@@ -38,6 +38,15 @@ class Event < ApplicationRecord
     where(aprooved: false).limit(5)
   }
 
+  # Filter by tags
+  scope :by_tags, -> (tags) {
+    return all unless tags.present?
+
+    includes(:establishment)
+    .joins(establishment: :tags)
+    .where(establishment: { tags: { alias: [tags.split(',')]} })
+  }
+
   scope :group_by_date, -> {
     where(aprooved: true, visible: true)
     .where("ends_at > ?", Time.zone.now)
@@ -58,6 +67,10 @@ class Event < ApplicationRecord
     return all if !search.present?
     where("name ILIKE ?", "%#{search}%")
   }
+
+  def tags
+    self.establishment.tags.limit(2)
+  end
 
   def when
     {

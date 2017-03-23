@@ -1,8 +1,12 @@
 class EventsSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :small_description,
-             :starts_at, :ends_at, :start_time,
+             :starts_at, :ends_at, :start_time, :tags,
              :end_time, :cover, :avatar, :establishment_name,
              :ends_in_the_same_day, :ends_in_the_next_day
+
+  def tags
+    object.establishment.tags.map { |t| t.name }
+  end
 
   def cover
     return {
