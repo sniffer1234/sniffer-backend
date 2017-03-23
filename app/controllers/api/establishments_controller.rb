@@ -7,7 +7,7 @@ class Api::EstablishmentsController < Api::BaseController
                         .by_tags(params[:tags])
                         .where(aprooved: true, visible: true)
                         .order(vip: :DESC)
-                        .order(name: :DESC)
+                        .order(name: :ASC)
                         .page(params[:page] || 1)
 
     render json: @establishments, root: 'data', meta: pagination_dict(@establishments)
