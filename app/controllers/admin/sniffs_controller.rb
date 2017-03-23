@@ -14,6 +14,13 @@ class Admin::SniffsController < Admin::BaseController
     end
   end
 
+  # DELETE /admin/sniffs/destroy_multiple
+  def destroy_multiple
+    if Sniff.destroy(params[:sniffs])
+      redirect_to admin_sniffs_path, notice: 'Sniffs removidos com sucesso.'
+    end
+  end
+
   private
   def load_sniff
     @sniff = Sniff.find(params[:id])

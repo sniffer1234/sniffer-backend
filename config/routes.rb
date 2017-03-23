@@ -49,6 +49,10 @@ Rails.application.routes.draw do
       resources :sniffs, only: [:destroy]
     end
     resources :users, only: [:index, :new, :create, :destroy, :edit, :update]
-    resources :sniffs, only: [:index, :destroy]
+    resources :sniffs, only: [:index, :destroy] do
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
   end
 end
