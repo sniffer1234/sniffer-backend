@@ -148,8 +148,11 @@
                   <td><%= establishment.name %></td>
                   <td><%= establishment.user.name rescue '-' %></td>
                   <td>
-                    <%= link_to [:edit, :admin, establishment], class: 'btn btn-sm btn-info' do %>
+                    <%= link_to [:edit, :admin, establishment], class: 'btn btn-xs btn-info' do %>
                       <i class="fa fa-pencil"></i>
+                    <% end %>
+                    <%= link_to [:admin, establishment], method: :delete, class: 'btn btn-xs btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+                      <i class="fa fa-remove"></i>
                     <% end %>
                   </td>
                 </tr>
@@ -192,8 +195,11 @@
                   <td><%= event.name %></td>
                   <td><%= event.user.name rescue '-' %></td>
                   <td>
-                    <%= link_to [:edit, :admin, event], class: 'btn btn-sm btn-info' do %>
+                    <%= link_to [:edit, :admin, event], class: 'btn btn-xs btn-info' do %>
                       <i class="fa fa-pencil"></i>
+                    <% end %>
+                    <%= link_to [:admin, event], method: :delete, class: 'btn btn-xs btn-warning', data: { confirm: 'Você realmente deseja remover esse estabelecimento? Será uma ação irreversível' } do %>
+                      <i class="fa fa-remove"></i>
                     <% end %>
                   </td>
                 </tr>
