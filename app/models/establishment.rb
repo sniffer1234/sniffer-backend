@@ -1,7 +1,7 @@
 class Establishment < ApplicationRecord
 
   # Kaminati pagination
-  paginates_per 10
+  paginates_per 15
 
   before_validation :format_url
   before_create :create_chat
