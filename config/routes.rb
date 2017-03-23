@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get '/' => 'landing_page/home#index'
   get '/termos-de-uso' => 'landing_page/terms#index'
 
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     resources :events, only: [:index, :create, :show]
     resources :sniffs, only: [:index]
+    resources :suggestions, only: [:create]
 
     resources :establishments, only: [:index, :show, :create] do
       member { get :events }

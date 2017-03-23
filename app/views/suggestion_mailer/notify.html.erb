@@ -1,0 +1,15 @@
+<h2>Olá Sniffer</h2>
+<p>Recebemos uma nova sugestão / crítica através do formulário em nosso app. Segue detalhes:</p>
+
+<ul>
+  <li>
+    <strong>Usuário:</strong> <%= @user.name %> (<%= @user.email %>)
+  </li>
+  <li>
+    <strong>Contéudo:</strong> <%= @suggestion.content %>
+  </li>
+</ul>
+
+<hr />
+
+<p>Você pode responder esse email para enviar uma mensagem ao usuário.</p>

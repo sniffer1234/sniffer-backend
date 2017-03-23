@@ -35,6 +35,7 @@ class User < ApplicationRecord
   has_many :sniffs, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :establishments, dependent: :destroy
+  has_many :suggestions, dependent: :destroy
 
   enum role: [ :default, :admin, :owner ]
 
