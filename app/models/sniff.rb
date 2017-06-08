@@ -38,7 +38,7 @@ class Sniff < ApplicationRecord
 
   # Return created at with time_ago helper
   def time_ago
-    return "#{ time_ago_in_words(self.created_at) } atrás"
+    "#{ time_ago_in_words(self.created_at) } atrás"
   end
 
   def establishment_name

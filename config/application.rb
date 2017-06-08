@@ -10,7 +10,7 @@ module SnifferBackend
     config.time_zone = 'Brasilia'
 
     # Default locales
-    config.i18n.default_locale = :"pt-BR"
+    config.i18n.default_locale = "pt-BR"
 
     # Bower assets
     config.assets.paths << Rails.root.join("vendor", "assets", "bower")

@@ -41,7 +41,6 @@ class Event < ApplicationRecord
   # Filter by tags
   scope :by_tags, -> (tags) {
     return all unless tags.present?
-
     includes(:establishment)
     .joins(establishment: :tags)
     .where(establishment: { tags: { alias: [tags.split(',')]} })
