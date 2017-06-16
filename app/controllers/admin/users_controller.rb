@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::BaseController
 
   before_action :set_users, only: [:edit, :update, :destroy]
-  before_action :set_roles, only: [:edit, :new]
+  before_action :set_roles
 
   # GET /admin/users
   def index
