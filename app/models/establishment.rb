@@ -29,6 +29,8 @@ class Establishment < ApplicationRecord
   has_many :sniffs, as: :sniffable, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :user_establishments
+  has_many :users, through: :user_establishments
   has_and_belongs_to_many :tags
 
   belongs_to :user

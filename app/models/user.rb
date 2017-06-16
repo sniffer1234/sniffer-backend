@@ -36,6 +36,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :establishments, dependent: :destroy
   has_many :suggestions, dependent: :destroy
+  has_many :user_establishments
+  has_many :establishments, through: :user_establishments
 
   enum role: [ :default, :admin, :owner ]
 
@@ -98,9 +100,22 @@ class User < ApplicationRecord
     self.role == 'admin'
   end
 
+  # Return if user has admin role
+  def owner?
+    self.role == 'owner'
+  end
+
   # Return if user has default role
   def default?
     self.role == 'default'
+  end
+
+  def role
+    if self[:role] != 'admin' && self.establishments.size > 0
+      return 'owner'
+    end
+
+    return self[:role]
   end
 
   def after_database_authentication

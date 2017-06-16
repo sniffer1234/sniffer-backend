@@ -77,7 +77,7 @@ class Admin::EstablishmentsController < Admin::BaseController
       :name, :small_description, :description, :site,
       :facebook, :instagram, :phone, :email, :active, :visible,
       :small_business_hours_description, :business_hours_description,
-      :vip, :aprooved, :phone, :cover, :avatar, :tag_ids => [],
+      :vip, :aprooved, :phone, :cover, :avatar, user_ids: [], :tag_ids => [],
       address_attributes: [
         :id, :zipcode, :neighborhood, :street, :number, :complement, :city_id
       ]

@@ -1,7 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :first_name,
+  attributes :id, :name, :email, :role, :first_name,
              :avatar, :cellphone, :authentication_token,
              :notifications
+
+  has_many :establishments, serializer: ExtraShortEstablishmentSerializer
 
   def avatar
     if object.avatar_file_size || !object.facebook_identity

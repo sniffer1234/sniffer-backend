@@ -6,10 +6,6 @@ class Admin::BaseController < ApplicationController
   before_action :get_current_user
   before_action :check_user_role!
 
-  def after_sign_in_path_for(resource)
-    admin_dashboard_index_path
-  end
-
   private
 
   # Create a alias to access user

@@ -28,6 +28,11 @@
       </a>
     </li>
     <li>
+      <a data-toggle="tab" href="#form-owners" role="tab">
+        Administradores
+      </a>
+    </li>
+    <li>
       <a data-toggle="tab" href="#form-tags" role="tab">
         Categorias
       </a>
@@ -39,7 +44,7 @@
     </li>
     <% if @establishment.id %>
       <li>
-        <%= link_to [:admin, @establishment, :establishment_events], class: 'nav-link', role: 'tab' do %>
+        <%= link_to [:admin, @establishment, :establishment_events], class: "nav-link", role: "tab" do %>
           Eventos (<%= @establishment.events.size %>)
         <% end %>
       </li>
@@ -47,23 +52,24 @@
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane <%= 'active' unless params[:show_img_tab].present? %>" id="form-basic" role="tabpanel">
-      <%= render 'form_basic', f: f %>
+    <div class="tab-pane <%= "active" unless params[:show_img_tab].present? %>" id="form-basic" role="tabpanel">
+      <%= render "form_basic", f: f %>
     </div>
     <div class="tab-pane" id="form-address" role="tabpanel">
-      <%= render 'form_address', f: f %>
+      <%= render "form_address", f: f %>
+    </div>
+    <div class="tab-pane" id="form-owners" role="tabpanel">
+      <%= render "form_owners", f: f %>
     </div>
     <div class="tab-pane" id="form-tags" role="tabpanel">
-      <%= render 'form_tags', f: f %>
+      <%= render "form_tags", f: f %>
     </div>
     <div class="tab-pane" id="form-visibility" role="tabpanel">
-      <%= render 'form_visibility', f: f %>
+      <%= render "form_visibility", f: f %>
     </div>
   </div>
-
   <hr />
-
-  <div class="actions">
-    <%= f.submit 'Salvar', class: 'btn btn-success' %>
+  <div class="form-actions">
+    <%= f.submit "Salvar", class: "btn btn-success" %>
   </div>
 <% end %>
