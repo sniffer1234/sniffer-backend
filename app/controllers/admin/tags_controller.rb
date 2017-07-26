@@ -48,6 +48,6 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, :avatar)
   end
 end

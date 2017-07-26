@@ -13,8 +13,21 @@
     </div>
     <hr />
   <% end %>
-
   <%= render "admin/shared/notice" %>
+  <% if @tag.avatar %>
+    <div class="form-group image">
+      <label class="form-control-label">
+        Avatar
+      </label>
+      <div class="clearfix">
+        <%= image_tag @tag.avatar.url(:medium) %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.input :avatar, as: :file, label: false  %>
+  <p class="help-block">Deve ter preferencialmente* proporção 1x1. Exemplo: 300x300</p>
+  <small class="help-block">Se a imagem não tiver a proporção recomendada, iremos redimensionar de forma automática</small>
+  <hr />
   <%= f.input :name %>
 
   <hr>

@@ -54,7 +54,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 # Image / videos
-gem 'paperclip', '~> 5.0.0'
+gem 'paperclip', '~> 5.1.0'
 gem 'paperclip-av-transcoder'
 
 gem 'posix-spawn'
