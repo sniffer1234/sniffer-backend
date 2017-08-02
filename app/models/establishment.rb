@@ -59,7 +59,7 @@ class Establishment < ApplicationRecord
   # Get establishments by name
   scope :by_name, -> (search) {
     return all unless search.present?
-    where("name ILIKE ?", "%#{search}%")
+    where("establishments.name ILIKE ?", "%#{search}%")
   }
 
   # Get establishments by tags

@@ -113,7 +113,6 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    le (2.7.5)
     ledermann-rails-settings (2.4.2)
       activerecord (>= 3.1)
     listen (3.0.8)
@@ -265,12 +264,10 @@ DEPENDENCIES
   byebug
   devise
   devise-bootstrap-views
-  execjs
   faker
   figaro
   font-awesome-rails
   kaminari
-  le
   ledermann-rails-settings
   listen (~> 3.0.5)
   mailgun_rails

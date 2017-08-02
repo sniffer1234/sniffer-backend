@@ -64,7 +64,7 @@ class Event < ApplicationRecord
   # Return events by name
   scope :by_name, -> (search) {
     return all if !search.present?
-    where("name ILIKE ?", "%#{search}%")
+    where("events.name ILIKE ?", "%#{search}%")
   }
 
   def tags
