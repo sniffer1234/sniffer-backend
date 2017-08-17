@@ -11,7 +11,7 @@ class Api::EventsController < Api::BaseController
       events_calendar.push(event_item)
     end
 
-    render json: events_calendar, root: 'data'
+    render json: events_calendar, root: 'data', meta: pagination_dict(@establishments)
   end
 
   # GET /api/events/:id
