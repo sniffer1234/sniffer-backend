@@ -5,7 +5,7 @@ class Admin::BaseController < ApplicationController
   before_action :authenticate_user!
   before_action :get_current_user
   before_action :check_user_role!
-
+  
   private
 
   # Create a alias to access user
