@@ -1,8 +1,10 @@
 <%= f.input :role, collection: @roles.map {|role, key| [t(role), role] }, hint: 'Define as regras para acesso ao sistema', include_blank: false %>
 <hr />
-<%= f.input :password %>
-<%= f.input :password_confirmation %>
-<hr />
+<% if @user.new_record? %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <hr />
+<% end %>
 <div class="form-group">
   <label class="form-control-label">
     Registrado em

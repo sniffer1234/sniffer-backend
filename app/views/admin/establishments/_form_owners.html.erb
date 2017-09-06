@@ -3,4 +3,4 @@
   Somente os usuários abaixo poderão postar contéudos (sniffs) dentro desse estabelecimento
 </div>
 <hr />
-<%= f.association :users %>
+<%= f.association :users, collection: User.order(:name), input_html: { class: "users-input" } %>
