@@ -9,7 +9,7 @@ class Api::FacebookController < ApplicationController
     })
 
     if @current_user.sign_in_count == 0
-      OauthMailer.welcome(@current_user).deliver_now
+      UserRegistrationMailer.welcome(@current_user).deliver_now
     end
 
     sign_in(:user, @current_user, store: false)
