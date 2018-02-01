@@ -43,7 +43,7 @@ class Event < ApplicationRecord
     return all unless tags.present?
     includes(:establishment)
     .joins(establishment: :tags)
-    .where(establishment: { tags: { alias: [tags.split(',')]} })
+    .where(establishment: { tags: { name: [tags.split(',')]} })
   }
 
   scope :group_by_date, -> {
