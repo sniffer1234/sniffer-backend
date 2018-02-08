@@ -63,9 +63,8 @@ class Establishment < ApplicationRecord
   }
 
   # Get establishments by tags
-  scope :by_tags, -> (tags) {
-    return all unless tags.present?
-    joins(:tags).where(tags: { name: [tags.split(',')]})
+  scope :by_tags, -> (tag) {
+    joins(:tags).where(tags: { name: tag })
   }
 
   # Get establishment sniffs created in the last 12hours by user id
